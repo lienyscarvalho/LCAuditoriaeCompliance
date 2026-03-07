@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LC Consultoria, Auditoria e Compliance</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 42 42' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='42' height='42' rx='6' fill='%23c9973a'/%3E%3Cpath d='M21 6 L33 11 L33 22 C33 28.5 27.5 33.5 21 36 C14.5 33.5 9 28.5 9 22 L9 11 Z' fill='%230b1f3a' stroke='%23e8be6e' stroke-width='1'/%3E%3Ccircle cx='20' cy='21' r='6' stroke='%23e8be6e' stroke-width='2' fill='none'/%3E%3Cline x1='24.2' y1='25.2' x2='28' y2='29' stroke='%23e8be6e' stroke-width='2.2' stroke-linecap='round'/%3E%3Cpolyline points='17,21 19.2,23.2 23,19' stroke='%23c9973a' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E">
+<title>LC Consultoria e Auditorias — Rio de Janeiro</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <style>
@@ -24,13 +23,18 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+
+/* ── SCROLLBAR ── */
 ::-webkit-scrollbar{width:6px}
 ::-webkit-scrollbar-track{background:var(--navy)}
 ::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+
+/* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:1rem 4rem;background:rgba(11,31,58,0.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(201,151,58,0.2)}
 .nav-brand{display:flex;align-items:center;gap:0.8rem}
-.nav-logo-svg{width:42px;height:42px;flex-shrink:0}
-.nav-brand-text{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:#fff;line-height:1.2}
+.nav-logo-icon{width:38px;height:38px;background:var(--gold);border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:var(--navy)}
+.nav-brand-text{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;line-height:1.2}
+.nav-brand-text small{display:block;font-size:0.65rem;font-family:'JetBrains Mono',monospace;letter-spacing:0.1em;color:var(--gold2);font-weight:400;text-transform:uppercase}
 .nav-links{display:flex;gap:2rem;list-style:none}
 .nav-links a{font-size:0.8rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.6);text-decoration:none;transition:color .2s}
 .nav-links a:hover{color:var(--gold2)}
@@ -38,6 +42,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .nav-ai-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(201,151,58,0.4)}
 .ham{display:none;flex-direction:column;gap:4px;cursor:pointer;background:none;border:none;padding:4px}
 .ham span{width:22px;height:2px;background:var(--gold2);display:block}
+
+/* ── HERO ── */
 #hero{min-height:100vh;background:var(--navy);display:grid;grid-template-columns:1fr 1fr;padding-top:72px;position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background-image:radial-gradient(ellipse 80% 60% at 70% 50%, rgba(201,151,58,0.06) 0%,transparent 70%)}
 .hero-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(201,151,58,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,151,58,0.04) 1px,transparent 1px);background-size:48px 48px}
@@ -55,6 +61,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .hero-badges{display:flex;gap:1rem;flex-wrap:wrap}
 .badge{display:flex;align-items:center;gap:0.5rem;padding:0.4rem 0.9rem;border:1px solid rgba(201,151,58,0.25);border-radius:20px;font-size:0.75rem;color:rgba(255,255,255,0.5)}
 .badge .dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
+
 .hero-right{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;padding:4rem 4rem 4rem 2rem}
 .hero-cards{display:flex;flex-direction:column;gap:1.2rem;width:100%;max-width:420px}
 .hcard{background:rgba(255,255,255,0.04);border:1px solid rgba(201,151,58,0.2);border-radius:6px;padding:1.4rem 1.8rem;display:flex;align-items:center;gap:1.2rem;opacity:0;transform:translateX(30px);animation:slideR .6s forwards}
@@ -66,6 +73,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .hcard-icon{width:44px;height:44px;border-radius:8px;background:rgba(201,151,58,0.15);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
 .hcard-text strong{display:block;font-size:0.9rem;font-weight:600;color:#fff;margin-bottom:0.2rem}
 .hcard-text span{font-size:0.78rem;color:rgba(255,255,255,0.45)}
+
+/* ── SECTIONS ── */
 section{padding:6rem 5rem}
 .sec-tag{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.8rem}
 h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3vw,3rem);font-weight:700;line-height:1.15;letter-spacing:-0.02em}
@@ -73,11 +82,13 @@ h2 em{font-style:italic;color:var(--gold)}
 .sec-sub{font-size:0.97rem;line-height:1.8;color:var(--slate);max-width:580px;margin-top:0.8rem}
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s,transform .7s}
 .reveal.on{opacity:1;transform:none}
+
+/* ── PILLARS ── */
 #pillars{background:var(--ink)}
 #pillars h2{color:#fff}
 #pillars .sec-sub{color:rgba(255,255,255,0.5)}
 .pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:3.5rem}
-.pillar{background:rgba(255,255,255,0.03);padding:2.5rem 2rem;border-top:3px solid transparent;transition:all .3s;cursor:default}
+.pillar{background:rgba(255,255,255,0.03);padding:2.5rem 2rem;border-top:3px solid transparent;transition:all .3s;cursor:default;position:relative;overflow:hidden}
 .pillar:hover{background:rgba(255,255,255,0.06);border-color:var(--gold)}
 .pillar-num{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.15em;color:var(--gold);margin-bottom:1.2rem}
 .pillar h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:#fff;margin-bottom:0.8rem}
@@ -85,6 +96,8 @@ h2 em{font-style:italic;color:var(--gold)}
 .pillar ul{margin-top:1.2rem;list-style:none;display:flex;flex-direction:column;gap:0.45rem}
 .pillar ul li{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--gold2);padding-left:1rem;position:relative}
 .pillar ul li::before{content:'▸';position:absolute;left:0;color:var(--gold)}
+
+/* ── DASHBOARD ── */
 #dashboard{background:var(--mist)}
 .dash-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem}
 .dash-tabs{display:flex;gap:0.5rem}
@@ -100,11 +113,15 @@ h2 em{font-style:italic;color:var(--gold)}
 .kpi-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:2px;transition:width 1.5s ease}
 .kpi-trend{font-size:0.75rem;margin-top:.5rem}
 .kpi-trend.up{color:var(--success)}
+.kpi-trend.dn{color:var(--danger)}
+
 .charts-grid{display:grid;grid-template-columns:2fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
 .chart-box{background:#fff;border-radius:6px;padding:1.8rem}
 .chart-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--navy);margin-bottom:0.3rem}
 .chart-sub{font-size:0.78rem;color:var(--slate);margin-bottom:1.2rem}
 .charts-grid2{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem}
+
+/* ── CASES ── */
 #cases{background:#fff}
 .cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3.5rem}
 .case-card{border:1px solid var(--mist);border-radius:6px;overflow:hidden;transition:all .3s;cursor:default}
@@ -119,7 +136,10 @@ h2 em{font-style:italic;color:var(--gold)}
 .result-chip{padding:0.3rem 0.8rem;background:rgba(201,151,58,0.1);border-radius:20px;font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--gold);border:1px solid rgba(201,151,58,0.25)}
 .case-footer{padding:1rem 1.5rem;border-top:1px solid var(--mist);display:flex;justify-content:space-between;align-items:center}
 .case-sector{font-size:0.75rem;color:var(--slate)}
+.case-rating{display:flex;gap:2px}
 .star{color:var(--gold);font-size:0.8rem}
+
+/* ── COMPLIANCE SECTION ── */
 #compliance{background:var(--cream)}
 .compliance-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:4rem}
 .compliance-diagram{background:var(--navy);border-radius:8px;padding:3rem;position:relative;overflow:hidden}
@@ -134,10 +154,15 @@ h2 em{font-style:italic;color:var(--gold)}
 .compliance-list li .ico{font-size:1.1rem;flex-shrink:0;margin-top:1px}
 .compliance-list li strong{display:block;font-size:0.88rem;font-weight:600;color:var(--navy);margin-bottom:0.2rem}
 .compliance-list li span{font-size:0.8rem;line-height:1.6;color:var(--slate)}
+
+/* ── RISCO ── */
 #risco{background:var(--navy)}
 #risco h2{color:#fff}
 #risco .sec-sub{color:rgba(255,255,255,0.5)}
 .matrix-section{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3.5rem;align-items:start}
+.matrix-wrap{position:relative}
+.matrix-ylabel{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:rgba(255,255,255,0.4);writing-mode:vertical-lr;transform:rotate(180deg);text-align:center;letter-spacing:0.12em;text-transform:uppercase}
+.matrix-content{display:flex;gap:0.8rem;align-items:center}
 .matrix{display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(5,52px);gap:2px;flex:1}
 .mc{border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:rgba(255,255,255,0.7);transition:transform .2s;cursor:default;position:relative}
 .mc:hover{transform:scale(1.08);z-index:5}
@@ -145,10 +170,29 @@ h2 em{font-style:italic;color:var(--gold)}
 .mc-m{background:rgba(245,158,11,0.25);border:1px solid rgba(245,158,11,0.3)}
 .mc-h{background:rgba(239,68,68,0.25);border:1px solid rgba(239,68,68,0.3)}
 .mc-dot{position:absolute;width:8px;height:8px;border-radius:50%;background:#fff;border:2px solid rgba(0,0,0,0.4);box-shadow:0 2px 8px rgba(0,0,0,0.5)}
+.matrix-xlabel{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:rgba(255,255,255,0.4);text-align:center;letter-spacing:0.12em;text-transform:uppercase;margin-top:0.6rem}
+.risk-categories{display:flex;flex-direction:column;gap:1.2rem}
+.risk-cat{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:1.3rem;transition:all .3s}
+.risk-cat:hover{background:rgba(201,151,58,0.08);border-color:rgba(201,151,58,0.3)}
+.risk-cat-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem}
+.risk-cat-head h4{font-size:0.9rem;font-weight:600;color:#fff;display:flex;align-items:center;gap:0.5rem}
+.risk-level{padding:0.2rem 0.6rem;border-radius:20px;font-family:'JetBrains Mono',monospace;font-size:0.62rem}
+.rl-high{background:rgba(239,68,68,0.2);color:#f87171;border:1px solid rgba(239,68,68,0.3)}
+.rl-med{background:rgba(245,158,11,0.2);color:#fcd34d;border:1px solid rgba(245,158,11,0.3)}
+.rl-low{background:rgba(34,197,94,0.2);color:#6ee7b7;border:1px solid rgba(34,197,94,0.3)}
+.risk-cat p{font-size:0.8rem;color:rgba(255,255,255,0.45);line-height:1.6}
+
+/* ── AUDITORIA ── */
 #auditoria{background:var(--cream)}
 .timeline{margin-top:3.5rem;position:relative}
 .timeline::before{content:'';position:absolute;left:20px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--gold),rgba(201,151,58,0.1))}
-.titem{display:flex;gap:2.2rem;margin-bottom:2rem}
+.titem{display:flex;gap:2.2rem;margin-bottom:2rem;opacity:0;transform:translateX(-20px);animation:tslide .5s forwards}
+.titem:nth-child(1){animation-delay:.05s}
+.titem:nth-child(2){animation-delay:.15s}
+.titem:nth-child(3){animation-delay:.25s}
+.titem:nth-child(4){animation-delay:.35s}
+.titem:nth-child(5){animation-delay:.45s}
+@keyframes tslide{to{opacity:1;transform:translateX(0)}}
 .tdot{width:42px;height:42px;flex-shrink:0;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:0.7rem;font-weight:500;color:var(--navy);z-index:1;box-shadow:0 0 0 4px rgba(201,151,58,0.2);margin-top:4px}
 .tbody{background:#fff;border-radius:6px;padding:1.4rem 1.8rem;flex:1;border:1px solid var(--mist);transition:all .3s}
 .titem:hover .tbody{border-color:var(--gold);box-shadow:0 4px 20px rgba(201,151,58,0.08)}
@@ -156,6 +200,8 @@ h2 em{font-style:italic;color:var(--gold)}
 .tbody p{font-size:0.85rem;line-height:1.7;color:var(--slate)}
 .tbody-tags{margin-top:.7rem;display:flex;gap:.5rem;flex-wrap:wrap}
 .ttag{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:.06em;padding:.2rem .6rem;background:rgba(201,151,58,0.1);color:var(--gold);border:1px solid rgba(201,151,58,0.2);border-radius:2px}
+
+/* ── NORMAS ── */
 #normas{background:#fff}
 .normas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3.5rem}
 .norma{border:1.5px solid var(--mist);border-radius:6px;padding:1.8rem;transition:all .3s}
@@ -163,13 +209,15 @@ h2 em{font-style:italic;color:var(--gold)}
 .norma-badge{display:inline-block;background:var(--navy);color:var(--gold2);padding:.3rem .8rem;border-radius:2px;font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:.06em;margin-bottom:1rem}
 .norma h3{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--navy);margin-bottom:.6rem}
 .norma p{font-size:0.83rem;line-height:1.7;color:var(--slate)}
+
+/* ── CONTATO ── */
 #contato{background:var(--mist)}
 .contato-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;margin-top:3.5rem;align-items:start}
 .contact-info h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--navy);margin-bottom:1rem}
 .contact-info p{font-size:0.93rem;line-height:1.8;color:var(--slate);margin-bottom:1.5rem}
 .contact-items{display:flex;flex-direction:column;gap:1rem}
 .ci{display:flex;align-items:center;gap:1rem;padding:1rem 1.3rem;background:#fff;border-radius:4px;border-left:3px solid var(--gold);text-decoration:none;transition:all .2s}
-.ci:hover{transform:translateX(4px)}
+.ci:hover{transform:translateX(4px);box-shadow:4px 0 16px rgba(201,151,58,0.1)}
 .ci .ico{font-size:1.1rem;flex-shrink:0}
 .ci strong{display:block;font-size:0.82rem;font-weight:600;color:var(--navy)}
 .ci span{font-size:0.82rem;color:var(--slate)}
@@ -179,6 +227,8 @@ h2 em{font-style:italic;color:var(--gold)}
 .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold)}
 .form-group textarea{min-height:110px;resize:vertical}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+
+/* ── FOOTER ── */
 footer{background:#070d17;padding:4rem 5rem 2rem;border-top:1px solid rgba(201,151,58,0.15)}
 .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3.5rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,0.06)}
 .fb p{margin-top:.8rem;font-size:.82rem;line-height:1.7;color:rgba(255,255,255,0.35);max-width:240px}
@@ -188,17 +238,24 @@ footer{background:#070d17;padding:4rem 5rem 2rem;border-top:1px solid rgba(201,1
 .fcol ul li a:hover{color:#fff}
 .footer-bot{padding-top:1.8rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .footer-bot p{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:rgba(255,255,255,.2);letter-spacing:.04em}
+
+/* ── AI CHAT ── */
 #ai-overlay{position:fixed;inset:0;z-index:5000;display:none;align-items:flex-end;justify-content:flex-end;padding:1.5rem;pointer-events:none}
 #ai-overlay.open{display:flex}
-#ai-chat{width:420px;height:580px;background:#fff;border-radius:12px;box-shadow:0 24px 80px rgba(0,0,0,0.3);display:flex;flex-direction:column;overflow:hidden;pointer-events:all;animation:chatPop .35s cubic-bezier(.34,1.56,.64,1)}
+#ai-chat{width:420px;height:580px;background:#fff;border-radius:12px;box-shadow:0 24px 80px rgba(0,0,0,0.3),0 0 0 1px rgba(201,151,58,0.15);display:flex;flex-direction:column;overflow:hidden;pointer-events:all;animation:chatPop .35s cubic-bezier(.34,1.56,.64,1)}
 @keyframes chatPop{from{opacity:0;transform:scale(0.85) translateY(20px)}}
 .chat-head{background:var(--navy);padding:1rem 1.3rem;display:flex;align-items:center;gap:.8rem;flex-shrink:0}
 .chat-avatar{width:38px;height:38px;background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
 .chat-info strong{display:block;font-size:.88rem;font-weight:600;color:#fff}
 .chat-info small{font-size:.72rem;color:var(--gold2)}
+.chat-status{display:flex;align-items:center;gap:.3rem;margin-top:.1rem}
+.chat-status .dot{width:6px;height:6px;border-radius:50%;background:var(--success);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
 .chat-close{margin-left:auto;background:none;border:none;color:rgba(255,255,255,.5);font-size:1.2rem;cursor:pointer;transition:color .2s;line-height:1}
 .chat-close:hover{color:#fff}
 .chat-msgs{flex:1;overflow-y:auto;padding:1.2rem;display:flex;flex-direction:column;gap:.8rem;scroll-behavior:smooth}
+.chat-msgs::-webkit-scrollbar{width:4px}
+.chat-msgs::-webkit-scrollbar-thumb{background:var(--mist);border-radius:2px}
 .msg{max-width:85%;animation:msgIn .3s ease}
 @keyframes msgIn{from{opacity:0;transform:translateY(8px)}}
 .msg-ai{align-self:flex-start}
@@ -221,24 +278,42 @@ footer{background:#070d17;padding:4rem 5rem 2rem;border-top:1px solid rgba(201,1
 .typing span:nth-child(2){animation-delay:.15s}
 .typing span:nth-child(3){animation-delay:.3s}
 @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-#ai-fab{position:fixed;bottom:2rem;right:2rem;z-index:4000;width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--navy2));border:2px solid var(--gold);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 8px 32px rgba(0,0,0,0.3);animation:fabPulse 3s infinite;transition:transform .2s}
+
+/* ── FAB ── */
+#ai-fab{position:fixed;bottom:2rem;right:2rem;z-index:4000;width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--navy2));border:2px solid var(--gold);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 8px 32px rgba(0,0,0,0.3),0 0 0 0 rgba(201,151,58,0.4);animation:fabPulse 3s infinite;transition:transform .2s}
 @keyframes fabPulse{0%,100%{box-shadow:0 8px 32px rgba(0,0,0,.3),0 0 0 0 rgba(201,151,58,.4)}50%{box-shadow:0 8px 32px rgba(0,0,0,.3),0 0 0 10px rgba(201,151,58,0)}}
 #ai-fab:hover{transform:scale(1.1)}
+#ai-fab-tooltip{position:fixed;bottom:5.5rem;right:2rem;z-index:4000;background:var(--navy);color:#fff;padding:.4rem .9rem;border-radius:6px;font-size:.75rem;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .3s;border:1px solid rgba(201,151,58,.2)}
+#ai-fab-tooltip::after{content:'';position:absolute;bottom:-5px;right:18px;border:5px solid transparent;border-top-color:var(--navy);border-bottom:none}
+#ai-fab:hover + #ai-fab-tooltip{opacity:1}
+
 @media(max-width:1100px){
-  #hero{grid-template-columns:1fr}.hero-right{display:none}
-  .compliance-layout,.matrix-section,.contato-grid{grid-template-columns:1fr;gap:2.5rem}
-  .charts-grid{grid-template-columns:1fr}.charts-grid2{grid-template-columns:1fr 1fr}
-  .pillars-grid,.cases-grid{grid-template-columns:1fr}.normas-grid{grid-template-columns:1fr 1fr}
-  section{padding:5rem 2.5rem}nav{padding:1rem 2rem}
+  #hero{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .compliance-layout{grid-template-columns:1fr;gap:2.5rem}
+  .matrix-section{grid-template-columns:1fr;gap:2.5rem}
+  .contato-grid{grid-template-columns:1fr;gap:3rem}
+  .charts-grid{grid-template-columns:1fr;gap:1.5rem}
+  .charts-grid2{grid-template-columns:1fr 1fr}
+  .pillars-grid{grid-template-columns:1fr}
+  .cases-grid{grid-template-columns:1fr 1fr}
+  .normas-grid{grid-template-columns:1fr 1fr}
+  section{padding:5rem 2.5rem}
+  nav{padding:1rem 2rem}
   .footer-top{grid-template-columns:1fr 1fr;gap:2rem}
   #ai-chat{width:94vw;height:500px}
 }
 @media(max-width:640px){
-  .cases-grid,.normas-grid,.charts-grid2{grid-template-columns:1fr}
+  .cases-grid{grid-template-columns:1fr}
+  .normas-grid{grid-template-columns:1fr}
   .dash-grid{grid-template-columns:1fr 1fr}
-  section{padding:4rem 1.3rem}nav{padding:.9rem 1.3rem}
-  .nav-links{display:none}.ham{display:flex}
-  footer{padding:3rem 1.3rem 1.5rem}.footer-top{grid-template-columns:1fr}
+  .charts-grid2{grid-template-columns:1fr}
+  section{padding:4rem 1.3rem}
+  nav{padding:.9rem 1.3rem}
+  .nav-links{display:none}
+  .ham{display:flex}
+  footer{padding:3rem 1.3rem 1.5rem}
+  .footer-top{grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr}
 }
 </style>
@@ -246,20 +321,15 @@ footer{background:#070d17;padding:4rem 5rem 2rem;border-top:1px solid rgba(201,1
 <body>
 
 <!-- NAV -->
-<nav>
+<nav id="main-nav">
   <div class="nav-brand">
-    <!-- LOGO SVG -->
-    <svg class="nav-logo-svg" width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="42" height="42" rx="7" fill="#c9973a"/>
-      <path d="M21 5.5 L34 10.5 L34 22 C34 29.5 28 35 21 37.5 C14 35 8 29.5 8 22 L8 10.5 Z" fill="#0b1f3a"/>
-      <path d="M21 5.5 L34 10.5 L34 22 C34 29.5 28 35 21 37.5 C14 35 8 29.5 8 22 L8 10.5 Z" stroke="#e8be6e" stroke-width="1.2" fill="none"/>
-      <circle cx="20" cy="21.5" r="6.5" stroke="#e8be6e" stroke-width="2" fill="none"/>
-      <line x1="24.6" y1="26" x2="29" y2="30.5" stroke="#e8be6e" stroke-width="2.5" stroke-linecap="round"/>
-      <polyline points="17,21.5 19.5,24 23.5,18.5" stroke="#c9973a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    </svg>
-    <div class="nav-brand-text">LC Consultoria, Auditoria e Compliance</div>
+    <div class="nav-logo-icon">LC</div>
+    <div class="nav-brand-text">
+      LC Consultoria e Auditorias
+      <small>Rio de Janeiro · Todo Brasil</small>
+    </div>
   </div>
-  <ul class="nav-links">
+  <ul class="nav-links" id="nav-links">
     <li><a href="#pillars">Pilares</a></li>
     <li><a href="#dashboard">Dashboard</a></li>
     <li><a href="#cases">Cases</a></li>
@@ -269,7 +339,7 @@ footer{background:#070d17;padding:4rem 5rem 2rem;border-top:1px solid rgba(201,1
     <li><a href="#contato">Contato</a></li>
   </ul>
   <button class="nav-ai-btn" onclick="openChat()">🤖 IA Consultora</button>
-  <button class="ham" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  <button class="ham" id="ham" onclick="toggleMenu()"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- HERO -->
@@ -277,7 +347,7 @@ footer{background:#070d17;padding:4rem 5rem 2rem;border-top:1px solid rgba(201,1
   <div class="hero-bg"></div>
   <div class="hero-lines"></div>
   <div class="hero-left">
-    <div class="hero-tag">Governança Corporativa · Todo Brasil</div>
+    <div class="hero-tag">Rio de Janeiro · Atuação Nacional</div>
     <h1 class="hero-title">Compliance,<br>Risco &amp; <em>Auditoria</em><br>com Precisão</h1>
     <p class="hero-desc">A LC Consultoria oferece soluções integradas de governança corporativa, gestão de riscos e auditoria interna para organizações que buscam excelência e conformidade.</p>
     <div class="hero-btns">
@@ -303,7 +373,7 @@ footer{background:#070d17;padding:4rem 5rem 2rem;border-top:1px solid rgba(201,1
 <!-- PILLARS -->
 <section id="pillars">
   <div class="sec-tag">Fundamentos</div>
-  <h2>Os Três <em>Pilares</em> da Governança</h2>
+  <h2 style="color:#fff">Os Três <em>Pilares</em> da Governança</h2>
   <p class="sec-sub">Abordagem integrada que une conformidade, gestão de riscos e controles internos em um único programa de governança corporativa.</p>
   <div class="pillars-grid">
     <div class="pillar reveal"><div class="pillar-num">01 — COMPLIANCE</div><h3>Conformidade</h3><p>Alinhamento com leis, regulamentos e padrões éticos. Criamos uma cultura de integridade desde a base até o topo da organização.</p><ul><li>Mapeamento regulatório contínuo</li><li>Políticas e código de conduta</li><li>Treinamentos e capacitação</li><li>Canal de denúncias</li><li>KPIs e dashboards executivos</li></ul></div>
@@ -315,28 +385,57 @@ footer{background:#070d17;padding:4rem 5rem 2rem;border-top:1px solid rgba(201,1
 <!-- DASHBOARD -->
 <section id="dashboard">
   <div class="dash-header">
-    <div><div class="sec-tag">Resultados</div><h2>Dashboard de <em>Governança</em></h2></div>
+    <div>
+      <div class="sec-tag">Resultados</div>
+      <h2>Dashboard de <em>Governança</em></h2>
+    </div>
     <div class="dash-tabs">
-      <button class="dash-tab active">Geral</button>
-      <button class="dash-tab">Compliance</button>
-      <button class="dash-tab">Riscos</button>
-      <button class="dash-tab">Auditoria</button>
+      <button class="dash-tab active" onclick="switchDash(this,'geral')">Geral</button>
+      <button class="dash-tab" onclick="switchDash(this,'compliance')">Compliance</button>
+      <button class="dash-tab" onclick="switchDash(this,'riscos')">Riscos</button>
+      <button class="dash-tab" onclick="switchDash(this,'auditoria')">Auditoria</button>
     </div>
   </div>
+
+  <!-- KPIs -->
   <div class="dash-grid">
     <div class="kpi reveal"><div class="kpi-val">97<sup>%</sup></div><div class="kpi-lbl">Efetividade dos Controles</div><div class="kpi-bar"><div class="kpi-fill" data-w="97"></div></div><div class="kpi-trend up">↑ +4% vs. ano anterior</div></div>
     <div class="kpi reveal"><div class="kpi-val">284</div><div class="kpi-lbl">Auditorias Realizadas</div><div class="kpi-bar"><div class="kpi-fill" data-w="71"></div></div><div class="kpi-trend up">↑ +32 no último ano</div></div>
     <div class="kpi reveal"><div class="kpi-val">93<sup>%</sup></div><div class="kpi-lbl">Planos de Ação Implementados</div><div class="kpi-bar"><div class="kpi-fill" data-w="93"></div></div><div class="kpi-trend up">↑ Acima da meta</div></div>
     <div class="kpi reveal"><div class="kpi-val">12<sup>x</sup></div><div class="kpi-lbl">ROI Médio em Compliance</div><div class="kpi-bar"><div class="kpi-fill" data-w="85"></div></div><div class="kpi-trend up">↑ Economia vs. multas</div></div>
   </div>
+
+  <!-- Chart Row 1 -->
   <div class="charts-grid reveal">
-    <div class="chart-box"><div class="chart-title">Evolução do Programa de Compliance</div><div class="chart-sub">Índice de Maturidade GRC — últimos 6 anos</div><canvas id="chartEvol" height="80"></canvas></div>
-    <div class="chart-box"><div class="chart-title">Distribuição de Riscos</div><div class="chart-sub">Por categoria — portfólio de clientes</div><canvas id="chartDist" height="160"></canvas></div>
+    <div class="chart-box">
+      <div class="chart-title">Evolução do Programa de Compliance</div>
+      <div class="chart-sub">Índice de Maturidade GRC — últimos 6 anos</div>
+      <canvas id="chartEvol" height="80"></canvas>
+    </div>
+    <div class="chart-box">
+      <div class="chart-title">Distribuição de Riscos</div>
+      <div class="chart-sub">Por categoria — portfólio de clientes</div>
+      <canvas id="chartDist" height="160"></canvas>
+    </div>
   </div>
+
+  <!-- Chart Row 2 -->
   <div class="charts-grid2 reveal">
-    <div class="chart-box"><div class="chart-title">Achados por Criticidade</div><div class="chart-sub">Auditorias internas 2024</div><canvas id="chartAchados" height="160"></canvas></div>
-    <div class="chart-box"><div class="chart-title">Compliance por Área</div><div class="chart-sub">Índice de aderência (%)</div><canvas id="chartRadar" height="160"></canvas></div>
-    <div class="chart-box"><div class="chart-title">Mitigações x Tempo</div><div class="chart-sub">Planos de ação implementados (mensal)</div><canvas id="chartMitig" height="160"></canvas></div>
+    <div class="chart-box">
+      <div class="chart-title">Achados por Criticidade</div>
+      <div class="chart-sub">Auditorias internas 2024</div>
+      <canvas id="chartAchados" height="160"></canvas>
+    </div>
+    <div class="chart-box">
+      <div class="chart-title">Compliance por Área</div>
+      <div class="chart-sub">Índice de aderência (%)</div>
+      <canvas id="chartRadar" height="160"></canvas>
+    </div>
+    <div class="chart-box">
+      <div class="chart-title">Mitigações x Tempo</div>
+      <div class="chart-sub">Planos de ação implementados (mensal)</div>
+      <canvas id="chartMitig" height="160"></canvas>
+    </div>
   </div>
 </section>
 
@@ -346,12 +445,61 @@ footer{background:#070d17;padding:4rem 5rem 2rem;border-top:1px solid rgba(201,1
   <h2>Exemplos de <em>Trabalhos</em> Realizados</h2>
   <p class="sec-sub">Projetos reais que geraram valor, reduziram exposição a riscos e aprimoraram a governança das organizações atendidas.</p>
   <div class="cases-grid">
-    <div class="case-card reveal"><div class="case-top"><div class="case-area">Compliance</div><h3>Programa de Integridade — Setor Industrial</h3><div class="case-emoji">⚖️</div></div><div class="case-body"><p>Implantação completa do Programa de Integridade em conformidade com a Lei Anticorrupção (12.846/2013), incluindo mapeamento de riscos, políticas, treinamentos e canal de denúncias.</p><div class="case-results"><span class="result-chip">Lei 12.846 ✓</span><span class="result-chip">Risco reduzido 68%</span><span class="result-chip">300+ treinados</span></div></div><div class="case-footer"><span class="case-sector">🏭 Indústria · 18 meses</span><span class="star">★★★★★</span></div></div>
-    <div class="case-card reveal"><div class="case-top"><div class="case-area">Gestão de Riscos</div><h3>Matriz ERM — Grupo Financeiro</h3><div class="case-emoji">🎯</div></div><div class="case-body"><p>Estruturação do Enterprise Risk Management para grupo financeiro com 5 empresas, incluindo mapeamento de +180 riscos e dashboard executivo em tempo real.</p><div class="case-results"><span class="result-chip">180+ riscos mapeados</span><span class="result-chip">5 empresas</span><span class="result-chip">ERM ISO 31000</span></div></div><div class="case-footer"><span class="case-sector">🏦 Financeiro · 12 meses</span><span class="star">★★★★★</span></div></div>
-    <div class="case-card reveal"><div class="case-top"><div class="case-area">Auditoria Interna</div><h3>Reestruturação da Auditoria — Saúde</h3><div class="case-emoji">🔍</div></div><div class="case-body"><p>Reestruturação completa da Auditoria Interna em rede hospitalar, com PAA baseado em riscos, metodologia IIA e dashboards para o Comitê de Auditoria.</p><div class="case-results"><span class="result-chip">Padrão IIA</span><span class="result-chip">PAA baseado em risco</span><span class="result-chip">24 auditorias/ano</span></div></div><div class="case-footer"><span class="case-sector">🏥 Saúde · 8 meses</span><span class="star">★★★★★</span></div></div>
-    <div class="case-card reveal"><div class="case-top"><div class="case-area">LGPD & Compliance</div><h3>Adequação à LGPD — Varejo Digital</h3><div class="case-emoji">🔒</div></div><div class="case-body"><p>Diagnóstico de lacunas, mapeamento de dados pessoais, Política de Privacidade e procedimentos de resposta a incidentes e exercício de direitos dos titulares.</p><div class="case-results"><span class="result-chip">LGPD art. 50 ✓</span><span class="result-chip">DPO designado</span><span class="result-chip">Zero notificações ANPD</span></div></div><div class="case-footer"><span class="case-sector">🛒 E-commerce · 6 meses</span><span class="star">★★★★★</span></div></div>
-    <div class="case-card reveal"><div class="case-top"><div class="case-area">Auditoria de Processos</div><h3>Auditoria de Contratos — Construtora</h3><div class="case-emoji">📋</div></div><div class="case-body"><p>Auditoria de contratos de fornecedores identificando sobrepreços e falhas de governança contratual. Plano de ação resultou em economia de R$ 3,2MM.</p><div class="case-results"><span class="result-chip">R$ 3,2MM recuperados</span><span class="result-chip">240 contratos</span><span class="result-chip">18 achados críticos</span></div></div><div class="case-footer"><span class="case-sector">🏗️ Construção · 4 meses</span><span class="star">★★★★★</span></div></div>
-    <div class="case-card reveal"><div class="case-top"><div class="case-area">Risco Cibernético</div><h3>Framework de Segurança da Informação</h3><div class="case-emoji">🌐</div></div><div class="case-body"><p>Avaliação de maturidade em segurança da informação com base no NIST CSF, mapeamento de ativos críticos, análise de gaps e roadmap de segurança.</p><div class="case-results"><span class="result-chip">NIST CSF</span><span class="result-chip">ISO 27001 roadmap</span><span class="result-chip">Maturidade +2 níveis</span></div></div><div class="case-footer"><span class="case-sector">💻 Tecnologia · 5 meses</span><span class="star">★★★★★</span></div></div>
+
+    <div class="case-card reveal">
+      <div class="case-top"><div class="case-area">Compliance</div><h3>Programa de Integridade — Setor Industrial</h3><div class="case-emoji">⚖️</div></div>
+      <div class="case-body">
+        <p>Implantação completa do Programa de Integridade em conformidade com a Lei Anticorrupção (12.846/2013) e Decreto 11.129/2022, incluindo mapeamento de riscos de corrupção, políticas, treinamentos e canal de denúncias.</p>
+        <div class="case-results"><span class="result-chip">Lei 12.846 ✓</span><span class="result-chip">Risco reduzido 68%</span><span class="result-chip">300+ treinados</span></div>
+      </div>
+      <div class="case-footer"><span class="case-sector">🏭 Indústria · 18 meses</span><div class="case-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div></div>
+    </div>
+
+    <div class="case-card reveal">
+      <div class="case-top"><div class="case-area">Gestão de Riscos</div><h3>Matriz ERM — Grupo Financeiro</h3><div class="case-emoji">🎯</div></div>
+      <div class="case-body">
+        <p>Estruturação do Enterprise Risk Management (ERM) para grupo financeiro com 5 empresas, incluindo mapeamento de +180 riscos, definição de apetite ao risco, planos de mitigação e dashboard executivo em tempo real.</p>
+        <div class="case-results"><span class="result-chip">180+ riscos mapeados</span><span class="result-chip">5 empresas</span><span class="result-chip">ERM ISO 31000</span></div>
+      </div>
+      <div class="case-footer"><span class="case-sector">🏦 Financeiro · 12 meses</span><div class="case-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div></div>
+    </div>
+
+    <div class="case-card reveal">
+      <div class="case-top"><div class="case-area">Auditoria Interna</div><h3>Reestruturação da Auditoria Interna — Saúde</h3><div class="case-emoji">🔍</div></div>
+      <div class="case-body">
+        <p>Reestruturação completa da função de Auditoria Interna em rede hospitalar, com implantação do PAA baseado em riscos, metodologia IIA, sistema de gestão de achados e dashboards para o Comitê de Auditoria.</p>
+        <div class="case-results"><span class="result-chip">Padrão IIA</span><span class="result-chip">PAA baseado em risco</span><span class="result-chip">24 auditorias/ano</span></div>
+      </div>
+      <div class="case-footer"><span class="case-sector">🏥 Saúde · 8 meses</span><div class="case-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div></div>
+    </div>
+
+    <div class="case-card reveal">
+      <div class="case-top"><div class="case-area">LGPD & Compliance</div><h3>Adequação à LGPD — Varejo Digital</h3><div class="case-emoji">🔒</div></div>
+      <div class="case-body">
+        <p>Diagnóstico de lacunas, mapeamento de dados pessoais, elaboração de Política de Privacidade, treinamentos para equipes e implementação de procedimentos de resposta a incidentes e exercício de direitos dos titulares.</p>
+        <div class="case-results"><span class="result-chip">LGPD art. 50 ✓</span><span class="result-chip">DPO designado</span><span class="result-chip">Zero notificações ANPD</span></div>
+      </div>
+      <div class="case-footer"><span class="case-sector">🛒 E-commerce · 6 meses</span><div class="case-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div></div>
+    </div>
+
+    <div class="case-card reveal">
+      <div class="case-top"><div class="case-area">Auditoria de Processos</div><h3>Auditoria de Contratos — Construtora</h3><div class="case-emoji">📋</div></div>
+      <div class="case-body">
+        <p>Auditoria abrangente de contratos de fornecedores e subcontratados, identificando sobrepreços, desvios de escopo e falhas de governança contratual. Plano de ação resultou em economia de R$ 3,2MM.</p>
+        <div class="case-results"><span class="result-chip">R$ 3,2MM recuperados</span><span class="result-chip">240 contratos analisados</span><span class="result-chip">18 achados críticos</span></div>
+      </div>
+      <div class="case-footer"><span class="case-sector">🏗️ Construção · 4 meses</span><div class="case-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div></div>
+    </div>
+
+    <div class="case-card reveal">
+      <div class="case-top"><div class="case-area">Risco Cibernético</div><h3>Framework de Segurança da Informação</h3><div class="case-emoji">🌐</div></div>
+      <div class="case-body">
+        <p>Avaliação de maturidade em segurança da informação com base no NIST CSF, mapeamento de ativos críticos, análise de gaps e elaboração de roadmap de segurança com priorização por impacto e viabilidade.</p>
+        <div class="case-results"><span class="result-chip">NIST CSF</span><span class="result-chip">ISO 27001 roadmap</span><span class="result-chip">Maturidade +2 níveis</span></div>
+      </div>
+      <div class="case-footer"><span class="case-sector">💻 Tecnologia · 5 meses</span><div class="case-rating"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div></div>
+    </div>
+
   </div>
 </section>
 
@@ -418,9 +566,9 @@ footer{background:#070d17;padding:4rem 5rem 2rem;border-top:1px solid rgba(201,1
   <div class="timeline">
     <div class="titem"><div class="tdot">01</div><div class="tbody"><h4>Planejamento</h4><p>Elaboração do Plano Anual de Auditoria (PAA) baseado em análise de riscos, escopo, recursos e cronograma detalhado de cada trabalho.</p><div class="tbody-tags"><span class="ttag">PAA</span><span class="ttag">Risk Based</span><span class="ttag">Scoping</span></div></div></div>
     <div class="titem"><div class="tdot">02</div><div class="tbody"><h4>Trabalho de Campo</h4><p>Execução com coleta de evidências, testes de controles, entrevistas com gestores e análise de documentação de suporte.</p><div class="tbody-tags"><span class="ttag">Testes de Controles</span><span class="ttag">Evidências</span><span class="ttag">Walkthrough</span></div></div></div>
-    <div class="titem"><div class="tdot">03</div><div class="tbody"><h4>Análise e Avaliação</h4><p>Avaliação crítica das evidências, efetividade dos controles e identificação de deficiências com Root Cause Analysis.</p><div class="tbody-tags"><span class="ttag">Findings</span><span class="ttag">Root Cause</span><span class="ttag">Benchmarking</span></div></div></div>
-    <div class="titem"><div class="tdot">04</div><div class="tbody"><h4>Relatório de Auditoria</h4><p>Relatório com achados classificados por criticidade, recomendações e planos de ação acordados com as áreas auditadas.</p><div class="tbody-tags"><span class="ttag">Executive Summary</span><span class="ttag">Recomendações</span><span class="ttag">Plano de Ação</span></div></div></div>
-    <div class="titem"><div class="tdot">05</div><div class="tbody"><h4>Monitoramento (Follow-up)</h4><p>Acompanhamento dos planos de ação, validação das melhorias implementadas e reporte ao Comitê de Auditoria.</p><div class="tbody-tags"><span class="ttag">Follow-up</span><span class="ttag">KPIs</span><span class="ttag">Dashboard</span></div></div></div>
+    <div class="titem"><div class="tdot">03</div><div class="tbody"><h4>Análise e Avaliação</h4><p>Avaliação crítica das evidências, efetividade dos controles, identificação de deficiências e oportunidades de melhoria com Root Cause Analysis.</p><div class="tbody-tags"><span class="ttag">Findings</span><span class="ttag">Root Cause</span><span class="ttag">Benchmarking</span></div></div></div>
+    <div class="titem"><div class="tdot">04</div><div class="tbody"><h4>Relatório de Auditoria</h4><p>Relatório com achados classificados por criticidade, recomendações e planos de ação acordados com as áreas auditadas e aprovados pelo comitê.</p><div class="tbody-tags"><span class="ttag">Executive Summary</span><span class="ttag">Recomendações</span><span class="ttag">Plano de Ação</span></div></div></div>
+    <div class="titem"><div class="tdot">05</div><div class="tbody"><h4>Monitoramento (Follow-up)</h4><p>Acompanhamento dos planos de ação, validação das melhorias implementadas e reporte de status ao Comitê de Auditoria e ao Conselho.</p><div class="tbody-tags"><span class="ttag">Follow-up</span><span class="ttag">KPIs</span><span class="ttag">Dashboard</span></div></div></div>
   </div>
 </section>
 
@@ -446,7 +594,7 @@ footer{background:#070d17;padding:4rem 5rem 2rem;border-top:1px solid rgba(201,1
   <div class="contato-grid">
     <div class="reveal">
       <div class="contact-info">
-        <h3>LC Consultoria, Auditoria e Compliance</h3>
+        <h3>LC Consultoria e Auditorias</h3>
         <p>Estamos prontos para avaliar o estado atual do seu programa de governança e propor soluções personalizadas para o seu negócio.</p>
       </div>
       <div class="contact-items">
@@ -476,25 +624,15 @@ footer{background:#070d17;padding:4rem 5rem 2rem;border-top:1px solid rgba(201,1
 <footer>
   <div class="footer-top">
     <div class="fb">
-      <div class="nav-brand" style="margin-bottom:.5rem">
-        <svg width="36" height="36" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="42" height="42" rx="7" fill="#c9973a"/>
-          <path d="M21 5.5 L34 10.5 L34 22 C34 29.5 28 35 21 37.5 C14 35 8 29.5 8 22 L8 10.5 Z" fill="#0b1f3a"/>
-          <path d="M21 5.5 L34 10.5 L34 22 C34 29.5 28 35 21 37.5 C14 35 8 29.5 8 22 L8 10.5 Z" stroke="#e8be6e" stroke-width="1.2" fill="none"/>
-          <circle cx="20" cy="21.5" r="6.5" stroke="#e8be6e" stroke-width="2" fill="none"/>
-          <line x1="24.6" y1="26" x2="29" y2="30.5" stroke="#e8be6e" stroke-width="2.5" stroke-linecap="round"/>
-          <polyline points="17,21.5 19.5,24 23.5,18.5" stroke="#c9973a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-        <div class="nav-brand-text" style="color:#fff">LC Consultoria, Auditoria e Compliance</div>
-      </div>
-      <p>Especialistas em governança corporativa, gestão de riscos e auditoria interna para organizações que buscam excelência e conformidade.</p>
+      <div class="nav-brand" style="margin-bottom:.2rem"><div class="nav-logo-icon">LC</div><div class="nav-brand-text" style="color:#fff">LC Consultoria e Auditorias<small>Rio de Janeiro · Todo Brasil</small></div></div>
+      <p>Especialistas em governança corporativa, gestão de riscos e auditoria interna para organizações que buscam excelência, integridade e conformidade.</p>
     </div>
     <div class="fcol"><h5>Serviços</h5><ul><li><a href="#">Compliance Regulatório</a></li><li><a href="#">Gestão de Riscos</a></li><li><a href="#">Auditoria Interna</a></li><li><a href="#">Diagnóstico GRC</a></li><li><a href="#">Treinamentos</a></li></ul></div>
     <div class="fcol"><h5>Normas</h5><ul><li><a href="#">ISO 31000</a></li><li><a href="#">COSO ERM</a></li><li><a href="#">LGPD</a></li><li><a href="#">Lei Anticorrupção</a></li><li><a href="#">ISO 37001</a></li></ul></div>
-    <div class="fcol"><h5>Contato</h5><ul><li><a href="mailto:contato@lcconsultoria.com.br">contato@lcconsultoria.com.br</a></li><li><a href="https://wa.me/5521984821444">(21) 98482-1444</a></li><li><a href="#">Rio de Janeiro, RJ</a></li></ul></div>
+    <div class="fcol"><h5>Contato</h5><ul><li><a href="mailto:contato@lcconsultoria.com.br">contato@lcconsultoria.com.br</a></li><li><a href="https://wa.me/5521984821444">(21) 98482-1444</a></li><li><a href="#">Rio de Janeiro, RJ</a></li><li><a href="#">Atendimento Online</a></li></ul></div>
   </div>
   <div class="footer-bot">
-    <p>© 2025 LC Consultoria, Auditoria e Compliance. Todos os direitos reservados.</p>
+    <p>© 2025 LC Consultoria e Auditorias. Todos os direitos reservados.</p>
     <p>Compliance · Risco · Auditoria · Rio de Janeiro</p>
   </div>
 </footer>
@@ -504,11 +642,17 @@ footer{background:#070d17;padding:4rem 5rem 2rem;border-top:1px solid rgba(201,1
   <div id="ai-chat">
     <div class="chat-head">
       <div class="chat-avatar">🤖</div>
-      <div class="chat-info"><strong>LC IA Consultora</strong><small>Online agora</small></div>
+      <div class="chat-info">
+        <strong>LC IA Consultora</strong>
+        <div class="chat-status"><span class="dot"></span><small style="font-size:.7rem;color:var(--gold2)">Online agora</small></div>
+      </div>
       <button class="chat-close" onclick="closeChat()">✕</button>
     </div>
     <div class="chat-msgs" id="chat-msgs">
-      <div class="msg msg-ai"><div class="msg-bubble">Olá! 👋 Sou a IA Consultora da <strong>LC Consultoria, Auditoria e Compliance</strong>. Estou aqui para tirar suas dúvidas sobre <strong>Compliance, Riscos e Auditoria</strong>.<br><br>Como posso te ajudar hoje?</div><div class="msg-time">agora</div></div>
+      <div class="msg msg-ai">
+        <div class="msg-bubble">Olá! 👋 Sou a IA Consultora da <strong>LC Consultoria e Auditorias</strong>. Estou aqui para tirar suas dúvidas sobre <strong>Compliance, Riscos e Auditoria</strong>.<br><br>Como posso te ajudar hoje?</div>
+        <div class="msg-time">agora</div>
+      </div>
     </div>
     <div class="chat-suggestions" id="chat-sugs">
       <button class="sug" onclick="sendSug(this)">O que é compliance?</button>
@@ -522,42 +666,255 @@ footer{background:#070d17;padding:4rem 5rem 2rem;border-top:1px solid rgba(201,1
     </div>
   </div>
 </div>
-<button id="ai-fab" onclick="openChat()">🤖</button>
 
-<style>
-.risk-cat-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem}
-.risk-cat-head h4{font-size:0.9rem;font-weight:600;color:#fff}
-.risk-level{padding:0.2rem 0.6rem;border-radius:20px;font-family:'JetBrains Mono',monospace;font-size:0.62rem}
-.rl-high{background:rgba(239,68,68,0.2);color:#f87171;border:1px solid rgba(239,68,68,0.3)}
-.rl-med{background:rgba(245,158,11,0.2);color:#fcd34d;border:1px solid rgba(245,158,11,0.3)}
-.risk-cat{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:1.3rem;transition:all .3s}
-.risk-cat:hover{background:rgba(201,151,58,0.08);border-color:rgba(201,151,58,0.3)}
-.risk-cat p{font-size:0.8rem;color:rgba(255,255,255,0.45);line-height:1.6}
-.risk-categories{display:flex;flex-direction:column;gap:1.2rem}
-</style>
+<button id="ai-fab" onclick="openChat()">🤖</button>
+<div id="ai-fab-tooltip">IA Consultora — Pergunte agora!</div>
 
 <script>
-const gold='rgba(201,151,58,1)';
-new Chart(document.getElementById('chartEvol'),{type:'line',data:{labels:['2019','2020','2021','2022','2023','2024'],datasets:[{label:'Compliance',data:[42,55,63,72,84,93],borderColor:gold,backgroundColor:'rgba(201,151,58,0.08)',fill:true,tension:0.4,pointRadius:5,pointBackgroundColor:gold},{label:'Riscos',data:[38,48,57,68,78,90],borderColor:'rgba(59,130,246,1)',backgroundColor:'rgba(59,130,246,0.05)',fill:true,tension:0.4,pointRadius:5},{label:'Auditoria',data:[35,50,60,70,82,94],borderColor:'rgba(34,197,94,1)',backgroundColor:'rgba(34,197,94,0.05)',fill:true,tension:0.4,pointRadius:5}]},options:{responsive:true,plugins:{legend:{position:'top',labels:{font:{family:'JetBrains Mono',size:10},color:'#4a5568'}}},scales:{y:{min:0,max:100,ticks:{font:{family:'JetBrains Mono',size:10},color:'#4a5568',callback:v=>v+'%'},grid:{color:'rgba(0,0,0,0.04)'}},x:{ticks:{font:{family:'JetBrains Mono',size:10},color:'#4a5568'},grid:{display:false}}}}});
-new Chart(document.getElementById('chartDist'),{type:'doughnut',data:{labels:['Operacional','Financeiro','Legal/Reg.','Cibernético','ESG','Reputacional'],datasets:[{data:[28,22,18,15,10,7],backgroundColor:['rgba(201,151,58,0.85)','rgba(59,130,246,0.85)','rgba(239,68,68,0.8)','rgba(139,92,246,0.8)','rgba(34,197,94,0.8)','rgba(245,158,11,0.8)'],borderWidth:0,hoverOffset:6}]},options:{responsive:true,cutout:'65%',plugins:{legend:{position:'bottom',labels:{font:{family:'JetBrains Mono',size:9},color:'#4a5568',padding:8}}}}});
-new Chart(document.getElementById('chartAchados'),{type:'bar',data:{labels:['Q1','Q2','Q3','Q4'],datasets:[{label:'Crítico',data:[3,2,4,2],backgroundColor:'rgba(239,68,68,0.8)'},{label:'Alto',data:[8,6,9,5],backgroundColor:'rgba(245,158,11,0.8)'},{label:'Médio',data:[14,12,16,11],backgroundColor:gold},{label:'Baixo',data:[20,18,22,15],backgroundColor:'rgba(34,197,94,0.6)'}]},options:{responsive:true,scales:{x:{stacked:true,ticks:{font:{family:'JetBrains Mono',size:9},color:'#4a5568'},grid:{display:false}},y:{stacked:true,ticks:{font:{family:'JetBrains Mono',size:9},color:'#4a5568'},grid:{color:'rgba(0,0,0,0.04)'}}},plugins:{legend:{position:'bottom',labels:{font:{family:'JetBrains Mono',size:9},color:'#4a5568',padding:8}}}}});
-new Chart(document.getElementById('chartRadar'),{type:'radar',data:{labels:['Trabalhista','Tributário','LGPD','Anticorrupção','PLD/FT','Ambiental'],datasets:[{label:'Atual',data:[88,75,70,92,65,80],borderColor:gold,backgroundColor:'rgba(201,151,58,0.1)',pointBackgroundColor:gold},{label:'Meta',data:[95,90,90,95,85,90],borderColor:'rgba(34,197,94,0.6)',backgroundColor:'rgba(34,197,94,0.05)',borderDash:[5,3],pointBackgroundColor:'rgba(34,197,94,0.8)'}]},options:{responsive:true,scales:{r:{min:0,max:100,ticks:{font:{size:8},color:'#aaa',stepSize:25},grid:{color:'rgba(0,0,0,0.06)'},pointLabels:{font:{family:'JetBrains Mono',size:9},color:'#4a5568'}}},plugins:{legend:{position:'bottom',labels:{font:{family:'JetBrains Mono',size:9},color:'#4a5568'}}}}});
-new Chart(document.getElementById('chartMitig'),{type:'bar',data:{labels:['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],datasets:[{label:'Implementados',data:[12,18,15,22,19,25,21,28,24,30,26,32],backgroundColor:gold,borderRadius:3},{label:'Pendentes',data:[5,4,6,3,5,2,4,3,4,2,3,2],backgroundColor:'rgba(239,68,68,0.5)',borderRadius:3}]},options:{responsive:true,scales:{x:{ticks:{font:{family:'JetBrains Mono',size:8},color:'#4a5568'},grid:{display:false}},y:{ticks:{font:{family:'JetBrains Mono',size:9},color:'#4a5568'},grid:{color:'rgba(0,0,0,0.04)'}}},plugins:{legend:{position:'bottom',labels:{font:{family:'JetBrains Mono',size:9},color:'#4a5568',padding:8}}}}});
-setTimeout(()=>{document.querySelectorAll('.kpi-fill[data-w]').forEach(el=>el.style.width=el.dataset.w+'%')},600);
-const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target)}})},{threshold:0.1});
-document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
-function toggleMenu(){const nl=document.querySelector('.nav-links');nl.style.cssText=nl.style.display==='flex'?'':'display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(11,31,58,0.99);padding:1.5rem 2rem;gap:1.2rem;z-index:999;border-bottom:1px solid rgba(201,151,58,.2)'}
-function openChat(){document.getElementById('ai-overlay').classList.add('open');document.getElementById('chat-inp').focus()}
-function closeChat(){document.getElementById('ai-overlay').classList.remove('open')}
-document.getElementById('ai-overlay').addEventListener('click',e=>{if(e.target===document.getElementById('ai-overlay'))closeChat()});
-function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,80)+'px'}
-function handleKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg()}}
-function sendSug(btn){const q=btn.textContent;btn.parentElement.style.display='none';addMsg(q,'user');askAI(q)}
-function sendMsg(){const inp=document.getElementById('chat-inp');const txt=inp.value.trim();if(!txt)return;inp.value='';inp.style.height='auto';document.getElementById('chat-sugs').style.display='none';addMsg(txt,'user');askAI(txt)}
-function addMsg(text,role){const msgs=document.getElementById('chat-msgs');const div=document.createElement('div');div.className='msg msg-'+role;const now=new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});div.innerHTML=`<div class="msg-bubble">${text}</div><div class="msg-time">${now}</div>`;msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight}
-function showTyping(){const msgs=document.getElementById('chat-msgs');const div=document.createElement('div');div.className='msg msg-ai';div.id='typing-ind';div.innerHTML='<div class="msg-bubble"><div class="typing"><span></span><span></span><span></span></div></div>';msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight}
-function removeTyping(){const t=document.getElementById('typing-ind');if(t)t.remove()}
-async function askAI(question){showTyping();try{const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:`Você é a IA Consultora da LC Consultoria, Auditoria e Compliance, empresa especializada em Compliance, Gestão de Riscos e Auditoria Interna. Contatos: E-mail: contato@lcconsultoria.com.br | WhatsApp: (21) 98482-1444. Responda em português brasileiro de forma clara e profissional. Máximo 200 palavras.`,messages:[{role:'user',content:question}]})});const data=await res.json();removeTyping();const txt=data.content?.map(b=>b.text||'').join('')||'Desculpe, tente novamente!';addMsg(txt.replace(/\n/g,'<br>'),'ai')}catch(e){removeTyping();addMsg('Erro de conexão. Entre em contato pelo WhatsApp <strong>(21) 98482-1444</strong>!','ai')}}
+// ── CHARTS ──
+const chartColors = {
+  gold: 'rgba(201,151,58,1)',
+  gold2: 'rgba(232,190,110,1)',
+  goldA: 'rgba(201,151,58,0.15)',
+  navy: 'rgba(11,31,58,1)',
+  danger: 'rgba(239,68,68,0.8)',
+  warn: 'rgba(245,158,11,0.8)',
+  ok: 'rgba(34,197,94,0.8)',
+  blue: 'rgba(59,130,246,0.8)',
+};
+
+// Evolução
+new Chart(document.getElementById('chartEvol'), {
+  type: 'line',
+  data: {
+    labels: ['2019','2020','2021','2022','2023','2024'],
+    datasets: [{
+      label: 'Compliance',
+      data: [42,55,63,72,84,93],
+      borderColor: chartColors.gold,
+      backgroundColor: 'rgba(201,151,58,0.08)',
+      fill: true, tension: 0.4, pointRadius: 5, pointBackgroundColor: chartColors.gold
+    },{
+      label: 'Riscos',
+      data: [38,48,57,68,78,90],
+      borderColor: chartColors.blue,
+      backgroundColor: 'rgba(59,130,246,0.05)',
+      fill: true, tension: 0.4, pointRadius: 5, pointBackgroundColor: chartColors.blue
+    },{
+      label: 'Auditoria',
+      data: [35,50,60,70,82,94],
+      borderColor: chartColors.ok,
+      backgroundColor: 'rgba(34,197,94,0.05)',
+      fill: true, tension: 0.4, pointRadius: 5, pointBackgroundColor: chartColors.ok
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { position: 'top', labels: { font: { family: 'JetBrains Mono', size: 10 }, color: '#4a5568' } } },
+    scales: {
+      y: { min: 0, max: 100, ticks: { font: { family: 'JetBrains Mono', size: 10 }, color: '#4a5568', callback: v => v+'%' }, grid: { color: 'rgba(0,0,0,0.04)' } },
+      x: { ticks: { font: { family: 'JetBrains Mono', size: 10 }, color: '#4a5568' }, grid: { display: false } }
+    }
+  }
+});
+
+// Distribuição
+new Chart(document.getElementById('chartDist'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Operacional','Financeiro','Legal/Reg.','Cibernético','ESG','Reputacional'],
+    datasets: [{ data: [28,22,18,15,10,7], backgroundColor: ['rgba(201,151,58,0.85)','rgba(59,130,246,0.85)','rgba(239,68,68,0.8)','rgba(139,92,246,0.8)','rgba(34,197,94,0.8)','rgba(245,158,11,0.8)'], borderWidth: 0, hoverOffset: 6 }]
+  },
+  options: {
+    responsive: true, cutout: '65%',
+    plugins: { legend: { position: 'bottom', labels: { font: { family: 'JetBrains Mono', size: 9 }, color: '#4a5568', padding: 8 } } }
+  }
+});
+
+// Achados
+new Chart(document.getElementById('chartAchados'), {
+  type: 'bar',
+  data: {
+    labels: ['Q1','Q2','Q3','Q4'],
+    datasets: [
+      { label: 'Crítico', data: [3,2,4,2], backgroundColor: chartColors.danger },
+      { label: 'Alto', data: [8,6,9,5], backgroundColor: chartColors.warn },
+      { label: 'Médio', data: [14,12,16,11], backgroundColor: chartColors.gold },
+      { label: 'Baixo', data: [20,18,22,15], backgroundColor: 'rgba(34,197,94,0.6)' }
+    ]
+  },
+  options: {
+    responsive: true, scales: {
+      x: { stacked: true, ticks: { font: { family: 'JetBrains Mono', size: 9 }, color: '#4a5568' }, grid: { display: false } },
+      y: { stacked: true, ticks: { font: { family: 'JetBrains Mono', size: 9 }, color: '#4a5568' }, grid: { color: 'rgba(0,0,0,0.04)' } }
+    },
+    plugins: { legend: { position: 'bottom', labels: { font: { family: 'JetBrains Mono', size: 9 }, color: '#4a5568', padding: 8 } } }
+  }
+});
+
+// Radar
+new Chart(document.getElementById('chartRadar'), {
+  type: 'radar',
+  data: {
+    labels: ['Trabalhista','Tributário','LGPD','Anticorrupção','PLD/FT','Ambiental'],
+    datasets: [
+      { label: 'Atual', data: [88,75,70,92,65,80], borderColor: chartColors.gold, backgroundColor: 'rgba(201,151,58,0.1)', pointBackgroundColor: chartColors.gold },
+      { label: 'Meta', data: [95,90,90,95,85,90], borderColor: 'rgba(34,197,94,0.6)', backgroundColor: 'rgba(34,197,94,0.05)', borderDash: [5,3], pointBackgroundColor: 'rgba(34,197,94,0.8)' }
+    ]
+  },
+  options: {
+    responsive: true,
+    scales: { r: { min: 0, max: 100, ticks: { font: { size: 8 }, color: '#aaa', stepSize: 25 }, grid: { color: 'rgba(0,0,0,0.06)' }, pointLabels: { font: { family: 'JetBrains Mono', size: 9 }, color: '#4a5568' } } },
+    plugins: { legend: { position: 'bottom', labels: { font: { family: 'JetBrains Mono', size: 9 }, color: '#4a5568' } } }
+  }
+});
+
+// Mitigações
+new Chart(document.getElementById('chartMitig'), {
+  type: 'bar',
+  data: {
+    labels: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+    datasets: [{
+      label: 'Implementados',
+      data: [12,18,15,22,19,25,21,28,24,30,26,32],
+      backgroundColor: chartColors.gold,
+      borderRadius: 3,
+    },{
+      label: 'Pendentes',
+      data: [5,4,6,3,5,2,4,3,4,2,3,2],
+      backgroundColor: 'rgba(239,68,68,0.5)',
+      borderRadius: 3,
+    }]
+  },
+  options: {
+    responsive: true,
+    scales: {
+      x: { ticks: { font: { family: 'JetBrains Mono', size: 8 }, color: '#4a5568' }, grid: { display: false } },
+      y: { ticks: { font: { family: 'JetBrains Mono', size: 9 }, color: '#4a5568' }, grid: { color: 'rgba(0,0,0,0.04)' } }
+    },
+    plugins: { legend: { position: 'bottom', labels: { font: { family: 'JetBrains Mono', size: 9 }, color: '#4a5568', padding: 8 } } }
+  }
+});
+
+// ── KPI BARS ──
+const fillBars = () => {
+  document.querySelectorAll('.kpi-fill[data-w]').forEach(el => {
+    el.style.width = el.dataset.w + '%';
+  });
+};
+setTimeout(fillBars, 600);
+
+// ── SCROLL REVEAL ──
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); ro.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+// ── DASH TABS ──
+function switchDash(btn, area) {
+  document.querySelectorAll('.dash-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// ── MOBILE NAV ──
+function toggleMenu() {
+  const nl = document.getElementById('nav-links');
+  nl.style.cssText = nl.style.display === 'flex' ? '' : 'display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(11,31,58,0.99);padding:1.5rem 2rem;gap:1.2rem;z-index:999;border-bottom:1px solid rgba(201,151,58,.2)';
+}
+
+// ── AI CHAT ──
+function openChat() {
+  document.getElementById('ai-overlay').classList.add('open');
+  document.getElementById('chat-inp').focus();
+}
+function closeChat() {
+  document.getElementById('ai-overlay').classList.remove('open');
+}
+document.getElementById('ai-overlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('ai-overlay')) closeChat();
+});
+
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 80) + 'px';
+}
+function handleKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMsg(); }
+}
+function sendSug(btn) {
+  const q = btn.textContent;
+  btn.parentElement.style.display = 'none';
+  addMsg(q, 'user');
+  askAI(q);
+}
+function sendMsg() {
+  const inp = document.getElementById('chat-inp');
+  const txt = inp.value.trim();
+  if (!txt) return;
+  inp.value = ''; inp.style.height = 'auto';
+  document.getElementById('chat-sugs').style.display = 'none';
+  addMsg(txt, 'user');
+  askAI(txt);
+}
+function addMsg(text, role) {
+  const msgs = document.getElementById('chat-msgs');
+  const div = document.createElement('div');
+  div.className = 'msg msg-' + role;
+  const now = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+  div.innerHTML = `<div class="msg-bubble">${text}</div><div class="msg-time">${now}</div>`;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+function showTyping() {
+  const msgs = document.getElementById('chat-msgs');
+  const div = document.createElement('div');
+  div.className = 'msg msg-ai'; div.id = 'typing-ind';
+  div.innerHTML = '<div class="msg-bubble"><div class="typing"><span></span><span></span><span></span></div></div>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+function removeTyping() {
+  const t = document.getElementById('typing-ind');
+  if (t) t.remove();
+}
+
+async function askAI(question) {
+  showTyping();
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 1000,
+        system: `Você é a IA Consultora da LC Consultoria e Auditorias, empresa especializada em Compliance, Gestão de Riscos e Auditoria Interna, sediada no Rio de Janeiro com atendimento em todo o Brasil.
+
+Contatos da empresa:
+- E-mail: contato@lcconsultoria.com.br
+- WhatsApp: (21) 98482-1444
+- Local: Rio de Janeiro, RJ — Atendimento online em todo o Brasil
+
+Seu papel é responder dúvidas sobre:
+1. Compliance (Lei Anticorrupção, LGPD, normas regulatórias, programas de integridade, código de conduta, canal de denúncias)
+2. Gestão de Riscos (ISO 31000, COSO ERM, matriz de riscos, apetite ao risco, KRIs, tratamento de riscos)
+3. Auditoria Interna (IIA, PAA, testes de controles, achados, relatórios, follow-up, auditorias de conformidade)
+
+Responda de forma clara, objetiva e profissional, mas com tom acolhedor. Use exemplos práticos quando útil.
+Quando relevante, mencione que a LC Consultoria pode ajudar e sugira entrar em contato pelo WhatsApp ou e-mail.
+Responda em português brasileiro. Seja conciso (máximo 200 palavras por resposta, a menos que necessário).
+Formate com quebras de linha quando listar itens para facilitar a leitura.`,
+        messages: [{ role: 'user', content: question }]
+      })
+    });
+    const data = await res.json();
+    removeTyping();
+    const txt = data.content?.map(b => b.text || '').join('') || 'Desculpe, não consegui processar. Tente novamente!';
+    addMsg(txt.replace(/\n/g, '<br>'), 'ai');
+  } catch (e) {
+    removeTyping();
+    addMsg('Desculpe, houve um erro na conexão. Entre em contato diretamente pelo WhatsApp <strong>(21) 98482-1444</strong> ou e-mail <strong>contato@lcconsultoria.com.br</strong>!', 'ai');
+  }
+}
 </script>
 </body>
 </html>
