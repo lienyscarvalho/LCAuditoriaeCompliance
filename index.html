@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LC Consultoria e Auditorias — Rio de Janeiro</title>
+<title>LC Consultoria, Auditoria e Compliance</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 42 42' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='42' height='42' rx='6' fill='%23c9973a'/%3E%3Cpath d='M21 6 L33 11 L33 22 C33 28.5 27.5 33.5 21 36 C14.5 33.5 9 28.5 9 22 L9 11 Z' fill='%230b1f3a' stroke='%23e8be6e' stroke-width='1'/%3E%3Ccircle cx='20' cy='21' r='6' stroke='%23e8be6e' stroke-width='2' fill='none'/%3E%3Cline x1='24.2' y1='25.2' x2='28' y2='29' stroke='%23e8be6e' stroke-width='2.2' stroke-linecap='round'/%3E%3Cpolyline points='17,21 19.2,23.2 23,19' stroke='%23c9973a' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <style>
@@ -28,9 +29,8 @@ body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);ov
 ::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:1rem 4rem;background:rgba(11,31,58,0.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(201,151,58,0.2)}
 .nav-brand{display:flex;align-items:center;gap:0.8rem}
-.nav-logo-icon{width:42px;height:42px;flex-shrink:0}
-.nav-brand-text{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:#fff;line-height:1.2}
-.nav-brand-text small{display:block;font-size:0.65rem;font-family:'JetBrains Mono',monospace;letter-spacing:0.1em;color:var(--gold2);font-weight:400;text-transform:uppercase}
+.nav-logo-svg{width:42px;height:42px;flex-shrink:0}
+.nav-brand-text{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:#fff;line-height:1.2}
 .nav-links{display:flex;gap:2rem;list-style:none}
 .nav-links a{font-size:0.8rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.6);text-decoration:none;transition:color .2s}
 .nav-links a:hover{color:var(--gold2)}
@@ -145,16 +145,6 @@ h2 em{font-style:italic;color:var(--gold)}
 .mc-m{background:rgba(245,158,11,0.25);border:1px solid rgba(245,158,11,0.3)}
 .mc-h{background:rgba(239,68,68,0.25);border:1px solid rgba(239,68,68,0.3)}
 .mc-dot{position:absolute;width:8px;height:8px;border-radius:50%;background:#fff;border:2px solid rgba(0,0,0,0.4);box-shadow:0 2px 8px rgba(0,0,0,0.5)}
-.matrix-xlabel{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:rgba(255,255,255,0.4);text-align:center;letter-spacing:0.12em;text-transform:uppercase;margin-top:0.6rem}
-.risk-categories{display:flex;flex-direction:column;gap:1.2rem}
-.risk-cat{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:1.3rem;transition:all .3s}
-.risk-cat:hover{background:rgba(201,151,58,0.08);border-color:rgba(201,151,58,0.3)}
-.risk-cat-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem}
-.risk-cat-head h4{font-size:0.9rem;font-weight:600;color:#fff}
-.risk-level{padding:0.2rem 0.6rem;border-radius:20px;font-family:'JetBrains Mono',monospace;font-size:0.62rem}
-.rl-high{background:rgba(239,68,68,0.2);color:#f87171;border:1px solid rgba(239,68,68,0.3)}
-.rl-med{background:rgba(245,158,11,0.2);color:#fcd34d;border:1px solid rgba(245,158,11,0.3)}
-.risk-cat p{font-size:0.8rem;color:rgba(255,255,255,0.45);line-height:1.6}
 #auditoria{background:var(--cream)}
 .timeline{margin-top:3.5rem;position:relative}
 .timeline::before{content:'';position:absolute;left:20px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--gold),rgba(201,151,58,0.1))}
@@ -235,42 +225,39 @@ footer{background:#070d17;padding:4rem 5rem 2rem;border-top:1px solid rgba(201,1
 @keyframes fabPulse{0%,100%{box-shadow:0 8px 32px rgba(0,0,0,.3),0 0 0 0 rgba(201,151,58,.4)}50%{box-shadow:0 8px 32px rgba(0,0,0,.3),0 0 0 10px rgba(201,151,58,0)}}
 #ai-fab:hover{transform:scale(1.1)}
 @media(max-width:1100px){
-  #hero{grid-template-columns:1fr}
-  .hero-right{display:none}
-  .compliance-layout{grid-template-columns:1fr;gap:2.5rem}
-  .matrix-section{grid-template-columns:1fr;gap:2.5rem}
-  .contato-grid{grid-template-columns:1fr;gap:3rem}
-  .charts-grid{grid-template-columns:1fr}
-  .charts-grid2{grid-template-columns:1fr 1fr}
-  .pillars-grid{grid-template-columns:1fr}
-  .cases-grid{grid-template-columns:1fr 1fr}
-  .normas-grid{grid-template-columns:1fr 1fr}
-  section{padding:5rem 2.5rem}
-  nav{padding:1rem 2rem}
+  #hero{grid-template-columns:1fr}.hero-right{display:none}
+  .compliance-layout,.matrix-section,.contato-grid{grid-template-columns:1fr;gap:2.5rem}
+  .charts-grid{grid-template-columns:1fr}.charts-grid2{grid-template-columns:1fr 1fr}
+  .pillars-grid,.cases-grid{grid-template-columns:1fr}.normas-grid{grid-template-columns:1fr 1fr}
+  section{padding:5rem 2.5rem}nav{padding:1rem 2rem}
   .footer-top{grid-template-columns:1fr 1fr;gap:2rem}
   #ai-chat{width:94vw;height:500px}
 }
 @media(max-width:640px){
-  .cases-grid{grid-template-columns:1fr}
-  .normas-grid{grid-template-columns:1fr}
+  .cases-grid,.normas-grid,.charts-grid2{grid-template-columns:1fr}
   .dash-grid{grid-template-columns:1fr 1fr}
-  .charts-grid2{grid-template-columns:1fr}
-  section{padding:4rem 1.3rem}
-  nav{padding:.9rem 1.3rem}
-  .nav-links{display:none}
-  .ham{display:flex}
-  footer{padding:3rem 1.3rem 1.5rem}
-  .footer-top{grid-template-columns:1fr}
+  section{padding:4rem 1.3rem}nav{padding:.9rem 1.3rem}
+  .nav-links{display:none}.ham{display:flex}
+  footer{padding:3rem 1.3rem 1.5rem}.footer-top{grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <div class="nav-brand">
-    <div class="nav-logo-icon">LC</div>
-    <div class="nav-brand-text">LC Consultoria e Auditorias<small>Rio de Janeiro · Todo Brasil</small></div>
+    <!-- LOGO SVG -->
+    <svg class="nav-logo-svg" width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="42" height="42" rx="7" fill="#c9973a"/>
+      <path d="M21 5.5 L34 10.5 L34 22 C34 29.5 28 35 21 37.5 C14 35 8 29.5 8 22 L8 10.5 Z" fill="#0b1f3a"/>
+      <path d="M21 5.5 L34 10.5 L34 22 C34 29.5 28 35 21 37.5 C14 35 8 29.5 8 22 L8 10.5 Z" stroke="#e8be6e" stroke-width="1.2" fill="none"/>
+      <circle cx="20" cy="21.5" r="6.5" stroke="#e8be6e" stroke-width="2" fill="none"/>
+      <line x1="24.6" y1="26" x2="29" y2="30.5" stroke="#e8be6e" stroke-width="2.5" stroke-linecap="round"/>
+      <polyline points="17,21.5 19.5,24 23.5,18.5" stroke="#c9973a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </svg>
+    <div class="nav-brand-text">LC Consultoria, Auditoria e Compliance</div>
   </div>
   <ul class="nav-links">
     <li><a href="#pillars">Pilares</a></li>
@@ -282,13 +269,15 @@ footer{background:#070d17;padding:4rem 5rem 2rem;border-top:1px solid rgba(201,1
     <li><a href="#contato">Contato</a></li>
   </ul>
   <button class="nav-ai-btn" onclick="openChat()">🤖 IA Consultora</button>
+  <button class="ham" onclick="toggleMenu()"><span></span><span></span><span></span></button>
 </nav>
 
+<!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-lines"></div>
   <div class="hero-left">
-    <div class="hero-tag">Rio de Janeiro · Atuação Nacional</div>
+    <div class="hero-tag">Governança Corporativa · Todo Brasil</div>
     <h1 class="hero-title">Compliance,<br>Risco &amp; <em>Auditoria</em><br>com Precisão</h1>
     <p class="hero-desc">A LC Consultoria oferece soluções integradas de governança corporativa, gestão de riscos e auditoria interna para organizações que buscam excelência e conformidade.</p>
     <div class="hero-btns">
@@ -311,6 +300,7 @@ footer{background:#070d17;padding:4rem 5rem 2rem;border-top:1px solid rgba(201,1
   </div>
 </section>
 
+<!-- PILLARS -->
 <section id="pillars">
   <div class="sec-tag">Fundamentos</div>
   <h2>Os Três <em>Pilares</em> da Governança</h2>
@@ -322,6 +312,7 @@ footer{background:#070d17;padding:4rem 5rem 2rem;border-top:1px solid rgba(201,1
   </div>
 </section>
 
+<!-- DASHBOARD -->
 <section id="dashboard">
   <div class="dash-header">
     <div><div class="sec-tag">Resultados</div><h2>Dashboard de <em>Governança</em></h2></div>
@@ -349,20 +340,22 @@ footer{background:#070d17;padding:4rem 5rem 2rem;border-top:1px solid rgba(201,1
   </div>
 </section>
 
+<!-- CASES -->
 <section id="cases">
   <div class="sec-tag">Casos de Sucesso</div>
   <h2>Exemplos de <em>Trabalhos</em> Realizados</h2>
   <p class="sec-sub">Projetos reais que geraram valor, reduziram exposição a riscos e aprimoraram a governança das organizações atendidas.</p>
   <div class="cases-grid">
-    <div class="case-card reveal"><div class="case-top"><div class="case-area">Compliance</div><h3>Programa de Integridade — Setor Industrial</h3><div class="case-emoji">⚖️</div></div><div class="case-body"><p>Implantação completa do Programa de Integridade em conformidade com a Lei Anticorrupção (12.846/2013), incluindo mapeamento de riscos de corrupção, políticas, treinamentos e canal de denúncias.</p><div class="case-results"><span class="result-chip">Lei 12.846 ✓</span><span class="result-chip">Risco reduzido 68%</span><span class="result-chip">300+ treinados</span></div></div><div class="case-footer"><span class="case-sector">🏭 Indústria · 18 meses</span><div><span class="star">★★★★★</span></div></div></div>
-    <div class="case-card reveal"><div class="case-top"><div class="case-area">Gestão de Riscos</div><h3>Matriz ERM — Grupo Financeiro</h3><div class="case-emoji">🎯</div></div><div class="case-body"><p>Estruturação do Enterprise Risk Management para grupo financeiro com 5 empresas, incluindo mapeamento de +180 riscos, definição de apetite ao risco e dashboard executivo em tempo real.</p><div class="case-results"><span class="result-chip">180+ riscos mapeados</span><span class="result-chip">5 empresas</span><span class="result-chip">ERM ISO 31000</span></div></div><div class="case-footer"><span class="case-sector">🏦 Financeiro · 12 meses</span><div><span class="star">★★★★★</span></div></div></div>
-    <div class="case-card reveal"><div class="case-top"><div class="case-area">Auditoria Interna</div><h3>Reestruturação da Auditoria — Saúde</h3><div class="case-emoji">🔍</div></div><div class="case-body"><p>Reestruturação completa da função de Auditoria Interna em rede hospitalar, com implantação do PAA baseado em riscos, metodologia IIA e dashboards para o Comitê de Auditoria.</p><div class="case-results"><span class="result-chip">Padrão IIA</span><span class="result-chip">PAA baseado em risco</span><span class="result-chip">24 auditorias/ano</span></div></div><div class="case-footer"><span class="case-sector">🏥 Saúde · 8 meses</span><div><span class="star">★★★★★</span></div></div></div>
-    <div class="case-card reveal"><div class="case-top"><div class="case-area">LGPD & Compliance</div><h3>Adequação à LGPD — Varejo Digital</h3><div class="case-emoji">🔒</div></div><div class="case-body"><p>Diagnóstico de lacunas, mapeamento de dados pessoais, elaboração de Política de Privacidade e implementação de procedimentos de resposta a incidentes e exercício de direitos dos titulares.</p><div class="case-results"><span class="result-chip">LGPD art. 50 ✓</span><span class="result-chip">DPO designado</span><span class="result-chip">Zero notificações ANPD</span></div></div><div class="case-footer"><span class="case-sector">🛒 E-commerce · 6 meses</span><div><span class="star">★★★★★</span></div></div></div>
-    <div class="case-card reveal"><div class="case-top"><div class="case-area">Auditoria de Processos</div><h3>Auditoria de Contratos — Construtora</h3><div class="case-emoji">📋</div></div><div class="case-body"><p>Auditoria de contratos de fornecedores e subcontratados, identificando sobrepreços e falhas de governança contratual. Plano de ação resultou em economia de R$ 3,2MM.</p><div class="case-results"><span class="result-chip">R$ 3,2MM recuperados</span><span class="result-chip">240 contratos</span><span class="result-chip">18 achados críticos</span></div></div><div class="case-footer"><span class="case-sector">🏗️ Construção · 4 meses</span><div><span class="star">★★★★★</span></div></div></div>
-    <div class="case-card reveal"><div class="case-top"><div class="case-area">Risco Cibernético</div><h3>Framework de Segurança da Informação</h3><div class="case-emoji">🌐</div></div><div class="case-body"><p>Avaliação de maturidade em segurança da informação com base no NIST CSF, mapeamento de ativos críticos, análise de gaps e elaboração de roadmap com priorização por impacto.</p><div class="case-results"><span class="result-chip">NIST CSF</span><span class="result-chip">ISO 27001 roadmap</span><span class="result-chip">Maturidade +2 níveis</span></div></div><div class="case-footer"><span class="case-sector">💻 Tecnologia · 5 meses</span><div><span class="star">★★★★★</span></div></div></div>
+    <div class="case-card reveal"><div class="case-top"><div class="case-area">Compliance</div><h3>Programa de Integridade — Setor Industrial</h3><div class="case-emoji">⚖️</div></div><div class="case-body"><p>Implantação completa do Programa de Integridade em conformidade com a Lei Anticorrupção (12.846/2013), incluindo mapeamento de riscos, políticas, treinamentos e canal de denúncias.</p><div class="case-results"><span class="result-chip">Lei 12.846 ✓</span><span class="result-chip">Risco reduzido 68%</span><span class="result-chip">300+ treinados</span></div></div><div class="case-footer"><span class="case-sector">🏭 Indústria · 18 meses</span><span class="star">★★★★★</span></div></div>
+    <div class="case-card reveal"><div class="case-top"><div class="case-area">Gestão de Riscos</div><h3>Matriz ERM — Grupo Financeiro</h3><div class="case-emoji">🎯</div></div><div class="case-body"><p>Estruturação do Enterprise Risk Management para grupo financeiro com 5 empresas, incluindo mapeamento de +180 riscos e dashboard executivo em tempo real.</p><div class="case-results"><span class="result-chip">180+ riscos mapeados</span><span class="result-chip">5 empresas</span><span class="result-chip">ERM ISO 31000</span></div></div><div class="case-footer"><span class="case-sector">🏦 Financeiro · 12 meses</span><span class="star">★★★★★</span></div></div>
+    <div class="case-card reveal"><div class="case-top"><div class="case-area">Auditoria Interna</div><h3>Reestruturação da Auditoria — Saúde</h3><div class="case-emoji">🔍</div></div><div class="case-body"><p>Reestruturação completa da Auditoria Interna em rede hospitalar, com PAA baseado em riscos, metodologia IIA e dashboards para o Comitê de Auditoria.</p><div class="case-results"><span class="result-chip">Padrão IIA</span><span class="result-chip">PAA baseado em risco</span><span class="result-chip">24 auditorias/ano</span></div></div><div class="case-footer"><span class="case-sector">🏥 Saúde · 8 meses</span><span class="star">★★★★★</span></div></div>
+    <div class="case-card reveal"><div class="case-top"><div class="case-area">LGPD & Compliance</div><h3>Adequação à LGPD — Varejo Digital</h3><div class="case-emoji">🔒</div></div><div class="case-body"><p>Diagnóstico de lacunas, mapeamento de dados pessoais, Política de Privacidade e procedimentos de resposta a incidentes e exercício de direitos dos titulares.</p><div class="case-results"><span class="result-chip">LGPD art. 50 ✓</span><span class="result-chip">DPO designado</span><span class="result-chip">Zero notificações ANPD</span></div></div><div class="case-footer"><span class="case-sector">🛒 E-commerce · 6 meses</span><span class="star">★★★★★</span></div></div>
+    <div class="case-card reveal"><div class="case-top"><div class="case-area">Auditoria de Processos</div><h3>Auditoria de Contratos — Construtora</h3><div class="case-emoji">📋</div></div><div class="case-body"><p>Auditoria de contratos de fornecedores identificando sobrepreços e falhas de governança contratual. Plano de ação resultou em economia de R$ 3,2MM.</p><div class="case-results"><span class="result-chip">R$ 3,2MM recuperados</span><span class="result-chip">240 contratos</span><span class="result-chip">18 achados críticos</span></div></div><div class="case-footer"><span class="case-sector">🏗️ Construção · 4 meses</span><span class="star">★★★★★</span></div></div>
+    <div class="case-card reveal"><div class="case-top"><div class="case-area">Risco Cibernético</div><h3>Framework de Segurança da Informação</h3><div class="case-emoji">🌐</div></div><div class="case-body"><p>Avaliação de maturidade em segurança da informação com base no NIST CSF, mapeamento de ativos críticos, análise de gaps e roadmap de segurança.</p><div class="case-results"><span class="result-chip">NIST CSF</span><span class="result-chip">ISO 27001 roadmap</span><span class="result-chip">Maturidade +2 níveis</span></div></div><div class="case-footer"><span class="case-sector">💻 Tecnologia · 5 meses</span><span class="star">★★★★★</span></div></div>
   </div>
 </section>
 
+<!-- COMPLIANCE -->
 <section id="compliance">
   <div class="sec-tag">Conformidade</div>
   <h2>Programa de <em>Compliance</em></h2>
@@ -390,6 +383,7 @@ footer{background:#070d17;padding:4rem 5rem 2rem;border-top:1px solid rgba(201,1
   </div>
 </section>
 
+<!-- RISCO -->
 <section id="risco">
   <div class="sec-tag">Exposição</div>
   <h2>Gestão de <em>Riscos</em></h2>
@@ -416,6 +410,7 @@ footer{background:#070d17;padding:4rem 5rem 2rem;border-top:1px solid rgba(201,1
   </div>
 </section>
 
+<!-- AUDITORIA -->
 <section id="auditoria">
   <div class="sec-tag">Controles Internos</div>
   <h2>Ciclo de <em>Auditoria</em></h2>
@@ -429,6 +424,7 @@ footer{background:#070d17;padding:4rem 5rem 2rem;border-top:1px solid rgba(201,1
   </div>
 </section>
 
+<!-- NORMAS -->
 <section id="normas">
   <div class="sec-tag">Referências</div>
   <h2>Normas &amp; <em>Frameworks</em></h2>
@@ -443,13 +439,14 @@ footer{background:#070d17;padding:4rem 5rem 2rem;border-top:1px solid rgba(201,1
   </div>
 </section>
 
+<!-- CONTATO -->
 <section id="contato">
   <div class="sec-tag">Fale Conosco</div>
   <h2>Entre em <em>Contato</em></h2>
   <div class="contato-grid">
     <div class="reveal">
       <div class="contact-info">
-        <h3>LC Consultoria e Auditorias</h3>
+        <h3>LC Consultoria, Auditoria e Compliance</h3>
         <p>Estamos prontos para avaliar o estado atual do seu programa de governança e propor soluções personalizadas para o seu negócio.</p>
       </div>
       <div class="contact-items">
@@ -475,10 +472,21 @@ footer{background:#070d17;padding:4rem 5rem 2rem;border-top:1px solid rgba(201,1
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div class="fb">
-      <div class="nav-brand"><div class="nav-logo-icon">LC</div><div class="nav-brand-text" style="color:#fff">LC Consultoria e Auditorias<small>Rio de Janeiro · Todo Brasil</small></div></div>
+      <div class="nav-brand" style="margin-bottom:.5rem">
+        <svg width="36" height="36" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="42" height="42" rx="7" fill="#c9973a"/>
+          <path d="M21 5.5 L34 10.5 L34 22 C34 29.5 28 35 21 37.5 C14 35 8 29.5 8 22 L8 10.5 Z" fill="#0b1f3a"/>
+          <path d="M21 5.5 L34 10.5 L34 22 C34 29.5 28 35 21 37.5 C14 35 8 29.5 8 22 L8 10.5 Z" stroke="#e8be6e" stroke-width="1.2" fill="none"/>
+          <circle cx="20" cy="21.5" r="6.5" stroke="#e8be6e" stroke-width="2" fill="none"/>
+          <line x1="24.6" y1="26" x2="29" y2="30.5" stroke="#e8be6e" stroke-width="2.5" stroke-linecap="round"/>
+          <polyline points="17,21.5 19.5,24 23.5,18.5" stroke="#c9973a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        <div class="nav-brand-text" style="color:#fff">LC Consultoria, Auditoria e Compliance</div>
+      </div>
       <p>Especialistas em governança corporativa, gestão de riscos e auditoria interna para organizações que buscam excelência e conformidade.</p>
     </div>
     <div class="fcol"><h5>Serviços</h5><ul><li><a href="#">Compliance Regulatório</a></li><li><a href="#">Gestão de Riscos</a></li><li><a href="#">Auditoria Interna</a></li><li><a href="#">Diagnóstico GRC</a></li><li><a href="#">Treinamentos</a></li></ul></div>
@@ -486,20 +494,21 @@ footer{background:#070d17;padding:4rem 5rem 2rem;border-top:1px solid rgba(201,1
     <div class="fcol"><h5>Contato</h5><ul><li><a href="mailto:contato@lcconsultoria.com.br">contato@lcconsultoria.com.br</a></li><li><a href="https://wa.me/5521984821444">(21) 98482-1444</a></li><li><a href="#">Rio de Janeiro, RJ</a></li></ul></div>
   </div>
   <div class="footer-bot">
-    <p>© 2025 LC Consultoria e Auditorias. Todos os direitos reservados.</p>
+    <p>© 2025 LC Consultoria, Auditoria e Compliance. Todos os direitos reservados.</p>
     <p>Compliance · Risco · Auditoria · Rio de Janeiro</p>
   </div>
 </footer>
 
+<!-- AI CHAT -->
 <div id="ai-overlay">
   <div id="ai-chat">
     <div class="chat-head">
       <div class="chat-avatar">🤖</div>
-      <div class="chat-info"><strong>LC IA Consultora</strong><small style="color:var(--gold2)">Online agora</small></div>
+      <div class="chat-info"><strong>LC IA Consultora</strong><small>Online agora</small></div>
       <button class="chat-close" onclick="closeChat()">✕</button>
     </div>
     <div class="chat-msgs" id="chat-msgs">
-      <div class="msg msg-ai"><div class="msg-bubble">Olá! 👋 Sou a IA Consultora da <strong>LC Consultoria e Auditorias</strong>. Estou aqui para tirar suas dúvidas sobre <strong>Compliance, Riscos e Auditoria</strong>.<br><br>Como posso te ajudar hoje?</div><div class="msg-time">agora</div></div>
+      <div class="msg msg-ai"><div class="msg-bubble">Olá! 👋 Sou a IA Consultora da <strong>LC Consultoria, Auditoria e Compliance</strong>. Estou aqui para tirar suas dúvidas sobre <strong>Compliance, Riscos e Auditoria</strong>.<br><br>Como posso te ajudar hoje?</div><div class="msg-time">agora</div></div>
     </div>
     <div class="chat-suggestions" id="chat-sugs">
       <button class="sug" onclick="sendSug(this)">O que é compliance?</button>
@@ -513,21 +522,31 @@ footer{background:#070d17;padding:4rem 5rem 2rem;border-top:1px solid rgba(201,1
     </div>
   </div>
 </div>
-
 <button id="ai-fab" onclick="openChat()">🤖</button>
 
+<style>
+.risk-cat-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem}
+.risk-cat-head h4{font-size:0.9rem;font-weight:600;color:#fff}
+.risk-level{padding:0.2rem 0.6rem;border-radius:20px;font-family:'JetBrains Mono',monospace;font-size:0.62rem}
+.rl-high{background:rgba(239,68,68,0.2);color:#f87171;border:1px solid rgba(239,68,68,0.3)}
+.rl-med{background:rgba(245,158,11,0.2);color:#fcd34d;border:1px solid rgba(245,158,11,0.3)}
+.risk-cat{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:1.3rem;transition:all .3s}
+.risk-cat:hover{background:rgba(201,151,58,0.08);border-color:rgba(201,151,58,0.3)}
+.risk-cat p{font-size:0.8rem;color:rgba(255,255,255,0.45);line-height:1.6}
+.risk-categories{display:flex;flex-direction:column;gap:1.2rem}
+</style>
+
 <script>
-const gold='rgba(201,151,58,1)',gold2='rgba(232,190,110,1)',navy='rgba(11,31,58,1)';
+const gold='rgba(201,151,58,1)';
 new Chart(document.getElementById('chartEvol'),{type:'line',data:{labels:['2019','2020','2021','2022','2023','2024'],datasets:[{label:'Compliance',data:[42,55,63,72,84,93],borderColor:gold,backgroundColor:'rgba(201,151,58,0.08)',fill:true,tension:0.4,pointRadius:5,pointBackgroundColor:gold},{label:'Riscos',data:[38,48,57,68,78,90],borderColor:'rgba(59,130,246,1)',backgroundColor:'rgba(59,130,246,0.05)',fill:true,tension:0.4,pointRadius:5},{label:'Auditoria',data:[35,50,60,70,82,94],borderColor:'rgba(34,197,94,1)',backgroundColor:'rgba(34,197,94,0.05)',fill:true,tension:0.4,pointRadius:5}]},options:{responsive:true,plugins:{legend:{position:'top',labels:{font:{family:'JetBrains Mono',size:10},color:'#4a5568'}}},scales:{y:{min:0,max:100,ticks:{font:{family:'JetBrains Mono',size:10},color:'#4a5568',callback:v=>v+'%'},grid:{color:'rgba(0,0,0,0.04)'}},x:{ticks:{font:{family:'JetBrains Mono',size:10},color:'#4a5568'},grid:{display:false}}}}});
 new Chart(document.getElementById('chartDist'),{type:'doughnut',data:{labels:['Operacional','Financeiro','Legal/Reg.','Cibernético','ESG','Reputacional'],datasets:[{data:[28,22,18,15,10,7],backgroundColor:['rgba(201,151,58,0.85)','rgba(59,130,246,0.85)','rgba(239,68,68,0.8)','rgba(139,92,246,0.8)','rgba(34,197,94,0.8)','rgba(245,158,11,0.8)'],borderWidth:0,hoverOffset:6}]},options:{responsive:true,cutout:'65%',plugins:{legend:{position:'bottom',labels:{font:{family:'JetBrains Mono',size:9},color:'#4a5568',padding:8}}}}});
 new Chart(document.getElementById('chartAchados'),{type:'bar',data:{labels:['Q1','Q2','Q3','Q4'],datasets:[{label:'Crítico',data:[3,2,4,2],backgroundColor:'rgba(239,68,68,0.8)'},{label:'Alto',data:[8,6,9,5],backgroundColor:'rgba(245,158,11,0.8)'},{label:'Médio',data:[14,12,16,11],backgroundColor:gold},{label:'Baixo',data:[20,18,22,15],backgroundColor:'rgba(34,197,94,0.6)'}]},options:{responsive:true,scales:{x:{stacked:true,ticks:{font:{family:'JetBrains Mono',size:9},color:'#4a5568'},grid:{display:false}},y:{stacked:true,ticks:{font:{family:'JetBrains Mono',size:9},color:'#4a5568'},grid:{color:'rgba(0,0,0,0.04)'}}},plugins:{legend:{position:'bottom',labels:{font:{family:'JetBrains Mono',size:9},color:'#4a5568',padding:8}}}}});
 new Chart(document.getElementById('chartRadar'),{type:'radar',data:{labels:['Trabalhista','Tributário','LGPD','Anticorrupção','PLD/FT','Ambiental'],datasets:[{label:'Atual',data:[88,75,70,92,65,80],borderColor:gold,backgroundColor:'rgba(201,151,58,0.1)',pointBackgroundColor:gold},{label:'Meta',data:[95,90,90,95,85,90],borderColor:'rgba(34,197,94,0.6)',backgroundColor:'rgba(34,197,94,0.05)',borderDash:[5,3],pointBackgroundColor:'rgba(34,197,94,0.8)'}]},options:{responsive:true,scales:{r:{min:0,max:100,ticks:{font:{size:8},color:'#aaa',stepSize:25},grid:{color:'rgba(0,0,0,0.06)'},pointLabels:{font:{family:'JetBrains Mono',size:9},color:'#4a5568'}}},plugins:{legend:{position:'bottom',labels:{font:{family:'JetBrains Mono',size:9},color:'#4a5568'}}}}});
 new Chart(document.getElementById('chartMitig'),{type:'bar',data:{labels:['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],datasets:[{label:'Implementados',data:[12,18,15,22,19,25,21,28,24,30,26,32],backgroundColor:gold,borderRadius:3},{label:'Pendentes',data:[5,4,6,3,5,2,4,3,4,2,3,2],backgroundColor:'rgba(239,68,68,0.5)',borderRadius:3}]},options:{responsive:true,scales:{x:{ticks:{font:{family:'JetBrains Mono',size:8},color:'#4a5568'},grid:{display:false}},y:{ticks:{font:{family:'JetBrains Mono',size:9},color:'#4a5568'},grid:{color:'rgba(0,0,0,0.04)'}}},plugins:{legend:{position:'bottom',labels:{font:{family:'JetBrains Mono',size:9},color:'#4a5568',padding:8}}}}});
-
 setTimeout(()=>{document.querySelectorAll('.kpi-fill[data-w]').forEach(el=>el.style.width=el.dataset.w+'%')},600);
 const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target)}})},{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
-
+function toggleMenu(){const nl=document.querySelector('.nav-links');nl.style.cssText=nl.style.display==='flex'?'':'display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(11,31,58,0.99);padding:1.5rem 2rem;gap:1.2rem;z-index:999;border-bottom:1px solid rgba(201,151,58,.2)'}
 function openChat(){document.getElementById('ai-overlay').classList.add('open');document.getElementById('chat-inp').focus()}
 function closeChat(){document.getElementById('ai-overlay').classList.remove('open')}
 document.getElementById('ai-overlay').addEventListener('click',e=>{if(e.target===document.getElementById('ai-overlay'))closeChat()});
@@ -538,7 +557,7 @@ function sendMsg(){const inp=document.getElementById('chat-inp');const txt=inp.v
 function addMsg(text,role){const msgs=document.getElementById('chat-msgs');const div=document.createElement('div');div.className='msg msg-'+role;const now=new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});div.innerHTML=`<div class="msg-bubble">${text}</div><div class="msg-time">${now}</div>`;msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight}
 function showTyping(){const msgs=document.getElementById('chat-msgs');const div=document.createElement('div');div.className='msg msg-ai';div.id='typing-ind';div.innerHTML='<div class="msg-bubble"><div class="typing"><span></span><span></span><span></span></div></div>';msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight}
 function removeTyping(){const t=document.getElementById('typing-ind');if(t)t.remove()}
-async function askAI(question){showTyping();try{const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:`Você é a IA Consultora da LC Consultoria e Auditorias, empresa especializada em Compliance, Gestão de Riscos e Auditoria Interna, sediada no Rio de Janeiro. Contatos: E-mail: contato@lcconsultoria.com.br | WhatsApp: (21) 98482-1444. Responda dúvidas sobre Compliance, Riscos e Auditoria de forma clara e profissional em português brasileiro. Máximo 200 palavras.`,messages:[{role:'user',content:question}]})});const data=await res.json();removeTyping();const txt=data.content?.map(b=>b.text||'').join('')||'Desculpe, tente novamente!';addMsg(txt.replace(/\n/g,'<br>'),'ai')}catch(e){removeTyping();addMsg('Erro de conexão. Entre em contato pelo WhatsApp <strong>(21) 98482-1444</strong>!','ai')}}
+async function askAI(question){showTyping();try{const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:`Você é a IA Consultora da LC Consultoria, Auditoria e Compliance, empresa especializada em Compliance, Gestão de Riscos e Auditoria Interna. Contatos: E-mail: contato@lcconsultoria.com.br | WhatsApp: (21) 98482-1444. Responda em português brasileiro de forma clara e profissional. Máximo 200 palavras.`,messages:[{role:'user',content:question}]})});const data=await res.json();removeTyping();const txt=data.content?.map(b=>b.text||'').join('')||'Desculpe, tente novamente!';addMsg(txt.replace(/\n/g,'<br>'),'ai')}catch(e){removeTyping();addMsg('Erro de conexão. Entre em contato pelo WhatsApp <strong>(21) 98482-1444</strong>!','ai')}}
 </script>
 </body>
 </html>
