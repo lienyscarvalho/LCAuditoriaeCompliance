@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LC Consultoria e Auditorias — Rio de Janeiro</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+:root{--navy:#0b1f3a;--navy2:#122848;--gold:#c9973a;--gold2:#e8be6e;--cream:#f7f4ee;--mist:#eceae3;--slate:#4a5568;--ink:#0d1117;--success:#22c55e;--danger:#ef4444;--warn:#f59e0b}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--navy)}::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:2000;display:flex;align-items:center;justify-content:space-between;padding:0.85rem 3.5rem;background:rgba(11,31,58,0.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(201,151,58,0.2)}
+.nav-brand{display:flex;align-items:center;gap:0.7rem;text-decoration:none;cursor:pointer}
+.nav-logo-icon{width:36px;height:36px;background:var(--gold);border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--navy);flex-shrink:0}
+.nav-brand-text{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:#fff;line-height:1.2}
+.nav-brand-text small{display:block;font-size:0.6rem;font-family:'JetBrains Mono',monospace;letter-spacing:0.1em;color:var(--gold2);font-weight:400;text-transform:uppercase}
+.nav-links{display:flex;gap:1.6rem;list-style:none;align-items:center}
+.nav-links a{font-size:0.75rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.6);text-decoration:none;transition:color .2s;cursor:pointer}
+.nav-links a:hover{color:var(--gold2)}
+.nav-ai-btn{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy);padding:0.45rem 1rem;border:none;border-radius:20px;font-family:'JetBrains Mono',monospace;font-size:0.68rem;font-weight:500;cursor:pointer;letter-spacing:0.05em;transition:transform .2s,box-shadow .2s;display:flex;align-items:center;gap:0.4rem;white-space:nowrap}
+.nav-ai-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(201,151,58,0.4)}
+.ham{display:none;flex-direction:column;gap:4px;cursor:pointer;background:none;border:none;padding:4px}
+.ham span{width:22px;height:2px;background:var(--gold2);display:block}
+
+/* PAGE SYSTEM */
+.page{display:none}
+.page.active{display:block}
+
+/* COMMON STYLES */
+.btn-gold{background:var(--gold);color:var(--navy);padding:0.8rem 1.8rem;border:none;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:all .25s;border-radius:2px}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:rgba(255,255,255,0.7);padding:0.8rem 1.8rem;border:1px solid rgba(255,255,255,0.2);cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:all .25s;border-radius:2px}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn-navy{background:var(--navy);color:var(--gold2);padding:0.7rem 1.5rem;border:none;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;display:inline-block;transition:all .25s;border-radius:2px}
+.btn-navy:hover{background:var(--navy2);transform:translateY(-2px)}
+.sec-tag{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.7rem}
+h2.sec-h{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3vw,3rem);font-weight:700;line-height:1.15;letter-spacing:-0.02em}
+h2.sec-h em{font-style:italic;color:var(--gold)}
+.sec-sub{font-size:0.95rem;line-height:1.8;color:var(--slate);max-width:600px;margin-top:0.7rem}
+section.pad{padding:5.5rem 4rem}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .65s,transform .65s}
+.reveal.on{opacity:1;transform:none}
+
+/* MODAL OVERLAY */
+.modal-overlay{position:fixed;inset:0;z-index:9000;background:rgba(7,13,23,0.85);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:1rem}
+.modal-overlay.open{display:flex}
+.modal-box{background:#fff;border-radius:10px;max-width:780px;width:100%;max-height:88vh;overflow-y:auto;box-shadow:0 32px 80px rgba(0,0,0,0.4);animation:mPop .3s cubic-bezier(.34,1.56,.64,1)}
+@keyframes mPop{from{opacity:0;transform:scale(0.9) translateY(20px)}}
+.modal-box::-webkit-scrollbar{width:4px}
+.modal-box::-webkit-scrollbar-thumb{background:var(--mist);border-radius:2px}
+.modal-head{background:var(--navy);padding:2rem 2.5rem 1.5rem;position:relative;border-radius:10px 10px 0 0}
+.modal-head h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:#fff}
+.modal-head p{font-size:0.82rem;color:rgba(255,255,255,0.5);margin-top:0.3rem}
+.modal-close{position:absolute;top:1.2rem;right:1.5rem;background:rgba(255,255,255,0.1);border:none;color:#fff;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.modal-close:hover{background:rgba(255,255,255,0.2)}
+.modal-body{padding:2rem 2.5rem 2.5rem}
+.modal-body h4{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:700;color:var(--navy);margin:1.5rem 0 0.5rem}
+.modal-body h4:first-child{margin-top:0}
+.modal-body p{font-size:0.9rem;line-height:1.8;color:var(--slate);margin-bottom:0.8rem}
+.modal-body ul{list-style:none;margin:0.5rem 0 1rem;display:flex;flex-direction:column;gap:0.4rem}
+.modal-body ul li{font-size:0.88rem;line-height:1.7;color:var(--slate);padding-left:1.2rem;position:relative}
+.modal-body ul li::before{content:'▸';position:absolute;left:0;color:var(--gold)}
+.modal-tag{display:inline-block;background:rgba(201,151,58,0.12);border:1px solid rgba(201,151,58,0.25);color:var(--gold);padding:0.2rem 0.7rem;border-radius:20px;font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.06em;margin:0.2rem}
+.modal-alert{background:rgba(201,151,58,0.08);border-left:3px solid var(--gold);padding:1rem 1.2rem;border-radius:2px;margin:1rem 0;font-size:0.87rem;color:var(--slate);line-height:1.7}
+
+/* EXPANDABLE BLOCKS */
+.expand-card{background:#fff;border:1.5px solid var(--mist);border-radius:8px;overflow:hidden;transition:border-color .3s,box-shadow .3s;margin-bottom:1rem}
+.expand-card:hover{border-color:rgba(201,151,58,0.4);box-shadow:0 4px 20px rgba(201,151,58,0.08)}
+.expand-card.open{border-color:var(--gold)}
+.expand-trigger{display:flex;align-items:center;justify-content:space-between;padding:1.4rem 1.8rem;cursor:pointer;gap:1rem;background:#fff;transition:background .2s}
+.expand-trigger:hover{background:rgba(201,151,58,0.03)}
+.expand-trigger-left{display:flex;align-items:center;gap:1rem}
+.expand-icon-wrap{width:42px;height:42px;border-radius:8px;background:rgba(201,151,58,0.1);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.expand-trigger h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:0.15rem}
+.expand-trigger p{font-size:0.8rem;color:var(--slate)}
+.expand-arrow{width:28px;height:28px;border-radius:50%;background:var(--mist);display:flex;align-items:center;justify-content:center;font-size:0.8rem;transition:transform .3s,background .2s;flex-shrink:0;color:var(--slate)}
+.expand-card.open .expand-arrow{transform:rotate(180deg);background:var(--gold);color:var(--navy)}
+.expand-body{max-height:0;overflow:hidden;transition:max-height .45s ease}
+.expand-card.open .expand-body{max-height:1200px}
+.expand-inner{padding:0 1.8rem 1.8rem;border-top:1px solid var(--mist)}
+.expand-inner p{font-size:0.88rem;line-height:1.8;color:var(--slate);margin-top:1rem}
+.expand-inner ul{list-style:none;margin:0.8rem 0;display:flex;flex-direction:column;gap:0.4rem}
+.expand-inner ul li{font-size:0.86rem;line-height:1.7;color:var(--slate);padding-left:1.2rem;position:relative}
+.expand-inner ul li::before{content:'▸';position:absolute;left:0;color:var(--gold)}
+.expand-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
+.expand-stat{background:var(--mist);border-radius:6px;padding:1rem;text-align:center}
+.expand-stat .num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:700;color:var(--navy)}
+.expand-stat .lbl{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--slate);margin-top:0.2rem}
+
+/* HERO */
+#pg-home #hero{min-height:100vh;background:var(--navy);display:grid;grid-template-columns:1fr 1fr;padding-top:68px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:radial-gradient(ellipse 80% 60% at 70% 50%,rgba(201,151,58,0.07) 0%,transparent 70%)}
+.hero-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(201,151,58,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,151,58,0.04) 1px,transparent 1px);background-size:48px 48px}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:4rem 2.5rem 4rem 4.5rem;position:relative;z-index:2}
+.hero-tag{font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.4rem;display:flex;align-items:center;gap:0.7rem}
+.hero-tag::before{content:'';width:24px;height:1px;background:var(--gold)}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,4vw,4.8rem);font-weight:700;line-height:1.08;color:#fff;letter-spacing:-0.02em;margin-bottom:1.3rem}
+.hero-title em{font-style:italic;color:var(--gold2)}
+.hero-desc{font-size:0.97rem;line-height:1.8;color:rgba(255,255,255,0.55);max-width:440px;margin-bottom:2.2rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.hero-badges{display:flex;gap:0.8rem;flex-wrap:wrap}
+.badge{display:flex;align-items:center;gap:0.4rem;padding:0.35rem 0.8rem;border:1px solid rgba(201,151,58,0.25);border-radius:20px;font-size:0.72rem;color:rgba(255,255,255,0.5)}
+.badge .dot{width:5px;height:5px;border-radius:50%;background:var(--gold)}
+.hero-right{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;padding:3.5rem 3.5rem 3.5rem 1.5rem}
+.hero-cards{display:flex;flex-direction:column;gap:1rem;width:100%;max-width:400px}
+.hcard{background:rgba(255,255,255,0.04);border:1px solid rgba(201,151,58,0.2);border-radius:6px;padding:1.2rem 1.6rem;display:flex;align-items:center;gap:1rem;opacity:0;transform:translateX(30px);animation:slideR .6s forwards}
+.hcard:nth-child(1){animation-delay:.2s}.hcard:nth-child(2){animation-delay:.4s}.hcard:nth-child(3){animation-delay:.6s}.hcard:nth-child(4){animation-delay:.8s}
+@keyframes slideR{to{opacity:1;transform:translateX(0)}}
+.hcard-icon{width:40px;height:40px;border-radius:8px;background:rgba(201,151,58,0.15);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.hcard-text strong{display:block;font-size:0.87rem;font-weight:600;color:#fff;margin-bottom:0.15rem}
+.hcard-text span{font-size:0.75rem;color:rgba(255,255,255,0.45)}
+
+/* PILLARS */
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:3rem}
+.pillar{background:rgba(255,255,255,0.03);padding:2.2rem 1.8rem;border-top:3px solid transparent;transition:all .3s;cursor:pointer}
+.pillar:hover{background:rgba(255,255,255,0.06);border-color:var(--gold)}
+.pillar-num{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.15em;color:var(--gold);margin-bottom:1rem}
+.pillar h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:#fff;margin-bottom:0.7rem}
+.pillar p{font-size:0.85rem;line-height:1.75;color:rgba(255,255,255,0.5)}
+.pillar ul{margin-top:1rem;list-style:none;display:flex;flex-direction:column;gap:0.4rem}
+.pillar ul li{font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:var(--gold2);padding-left:1rem;position:relative}
+.pillar ul li::before{content:'▸';position:absolute;left:0;color:var(--gold)}
+.pillar-more{margin-top:1.2rem;font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--gold);display:flex;align-items:center;gap:0.4rem;text-transform:uppercase;letter-spacing:0.08em}
+
+/* DASHBOARD */
+.dash-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-bottom:1.8rem}
+.kpi{background:#fff;border-radius:6px;padding:1.4rem;border-top:3px solid var(--gold);transition:transform .25s,box-shadow .25s}
+.kpi:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.08)}
+.kpi-val{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;color:var(--navy);line-height:1}
+.kpi-val sup{font-size:1rem}
+.kpi-lbl{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--slate);margin:.35rem 0 .7rem}
+.kpi-bar{height:4px;background:var(--mist);border-radius:2px;overflow:hidden}
+.kpi-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:2px;transition:width 1.5s ease;width:0}
+.kpi-trend{font-size:0.73rem;margin-top:.45rem}
+.kpi-trend.up{color:var(--success)}.kpi-trend.dn{color:var(--danger)}
+.charts-grid{display:grid;grid-template-columns:2fr 1fr;gap:1.4rem;margin-bottom:1.4rem}
+.chart-box{background:#fff;border-radius:6px;padding:1.6rem}
+.chart-title{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin-bottom:0.25rem}
+.chart-sub{font-size:0.75rem;color:var(--slate);margin-bottom:1rem}
+.charts-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.dash-tabs{display:flex;gap:0.4rem;flex-wrap:wrap}
+.dash-tab{padding:0.45rem 1.1rem;border:1px solid rgba(0,0,0,0.12);background:transparent;border-radius:20px;font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.06em;cursor:pointer;transition:all .2s;color:var(--slate)}
+.dash-tab.active{background:var(--navy);color:var(--gold2);border-color:var(--navy)}
+
+/* CASES */
+.cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;margin-top:3rem}
+.case-card{border:1px solid var(--mist);border-radius:8px;overflow:hidden;transition:all .3s;cursor:pointer}
+.case-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,0.1);border-color:var(--gold)}
+.case-top{padding:1.6rem;background:var(--navy);position:relative}
+.case-area{font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.7rem}
+.case-top h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:#fff;line-height:1.3}
+.case-emoji{position:absolute;top:1.3rem;right:1.3rem;font-size:1.7rem;opacity:.6}
+.case-body{padding:1.3rem}
+.case-body p{font-size:0.83rem;line-height:1.7;color:var(--slate);margin-bottom:1rem}
+.case-results{display:flex;gap:0.5rem;flex-wrap:wrap}
+.result-chip{padding:0.25rem 0.7rem;background:rgba(201,151,58,0.1);border-radius:20px;font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--gold);border:1px solid rgba(201,151,58,0.25)}
+.case-footer{padding:0.9rem 1.3rem;border-top:1px solid var(--mist);display:flex;justify-content:space-between;align-items:center}
+.case-sector{font-size:0.72rem;color:var(--slate)}
+.case-rating{display:flex;gap:2px}.star{color:var(--gold);font-size:0.75rem}
+
+/* COMPLIANCE / RISK sections */
+.compliance-layout{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:start;margin-top:3.5rem}
+.cd-diagram{background:var(--navy);border-radius:8px;padding:2.5rem;position:relative;overflow:hidden}
+.cd-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(201,151,58,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,151,58,0.05) 1px,transparent 1px);background-size:28px 28px}
+.cd-inner{position:relative;z-index:1}
+.cd-center{width:84px;height:84px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.3rem;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:0.8rem;color:var(--navy);text-align:center;line-height:1.3;box-shadow:0 0 50px rgba(201,151,58,0.4)}
+.cd-nodes{display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center}
+.cd-node{padding:0.3rem 0.7rem;background:rgba(255,255,255,0.06);border:1px solid rgba(201,151,58,0.2);border-radius:3px;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.06em;color:rgba(255,255,255,0.65);transition:all .2s;cursor:default}
+.cd-node:hover{border-color:var(--gold);color:var(--gold)}
+
+/* MATRIX */
+.matrix-section{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;margin-top:3rem;align-items:start}
+.matrix{display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(5,50px);gap:2px}
+.mc{border-radius:3px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:0.58rem;color:rgba(255,255,255,0.7);transition:transform .2s;cursor:default;position:relative}
+.mc:hover{transform:scale(1.08);z-index:5}
+.mc-l{background:rgba(34,197,94,0.22);border:1px solid rgba(34,197,94,0.28)}
+.mc-m{background:rgba(245,158,11,0.22);border:1px solid rgba(245,158,11,0.28)}
+.mc-h{background:rgba(239,68,68,0.22);border:1px solid rgba(239,68,68,0.28)}
+.mc-dot{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.rdot{width:8px;height:8px;border-radius:50%;background:#fff;border:2px solid rgba(0,0,0,0.4);box-shadow:0 2px 8px rgba(0,0,0,0.4)}
+.risk-categories{display:flex;flex-direction:column;gap:1rem}
+.risk-cat{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;padding:1.2rem;transition:all .3s;cursor:pointer}
+.risk-cat:hover{background:rgba(201,151,58,0.08);border-color:rgba(201,151,58,0.3)}
+.risk-cat-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.4rem}
+.risk-cat-head h4{font-size:0.87rem;font-weight:600;color:#fff;display:flex;align-items:center;gap:0.4rem}
+.risk-level{padding:0.18rem 0.55rem;border-radius:20px;font-family:'JetBrains Mono',monospace;font-size:0.6rem}
+.rl-high{background:rgba(239,68,68,0.2);color:#f87171;border:1px solid rgba(239,68,68,0.3)}
+.rl-med{background:rgba(245,158,11,0.2);color:#fcd34d;border:1px solid rgba(245,158,11,0.3)}
+.rl-low{background:rgba(34,197,94,0.2);color:#6ee7b7;border:1px solid rgba(34,197,94,0.3)}
+.risk-cat p{font-size:0.78rem;color:rgba(255,255,255,0.45);line-height:1.6}
+
+/* TIMELINE */
+.timeline{margin-top:3rem;position:relative}
+.timeline::before{content:'';position:absolute;left:20px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--gold),rgba(201,151,58,0.1))}
+.titem{display:flex;gap:2rem;margin-bottom:1.8rem;cursor:pointer}
+.tdot{width:42px;height:42px;flex-shrink:0;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:0.68rem;font-weight:500;color:var(--navy);z-index:1;box-shadow:0 0 0 4px rgba(201,151,58,0.2);margin-top:3px}
+.tbody{background:#fff;border-radius:6px;padding:1.2rem 1.6rem;flex:1;border:1px solid var(--mist);transition:all .3s}
+.titem:hover .tbody{border-color:var(--gold);box-shadow:0 4px 20px rgba(201,151,58,0.08)}
+.tbody h4{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--navy);margin-bottom:0.35rem}
+.tbody p{font-size:0.83rem;line-height:1.7;color:var(--slate)}
+.tbody-tags{margin-top:.6rem;display:flex;gap:.4rem;flex-wrap:wrap}
+.ttag{font-family:'JetBrains Mono',monospace;font-size:0.6rem;letter-spacing:.05em;padding:.18rem .55rem;background:rgba(201,151,58,0.1);color:var(--gold);border:1px solid rgba(201,151,58,0.2);border-radius:2px}
+
+/* NORMAS */
+.normas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3rem}
+.norma{border:1.5px solid var(--mist);border-radius:6px;padding:1.6rem;transition:all .3s;cursor:pointer}
+.norma:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 8px 28px rgba(201,151,58,0.1)}
+.norma-badge{display:inline-block;background:var(--navy);color:var(--gold2);padding:.25rem .7rem;border-radius:2px;font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:.05em;margin-bottom:.9rem}
+.norma h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:.5rem}
+.norma p{font-size:0.82rem;line-height:1.7;color:var(--slate)}
+
+/* CONTATO */
+.contato-grid{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;margin-top:3rem;align-items:start}
+.ci{display:flex;align-items:center;gap:1rem;padding:.9rem 1.2rem;background:#fff;border-radius:4px;border-left:3px solid var(--gold);text-decoration:none;transition:all .2s;margin-bottom:.8rem;display:flex}
+.ci:hover{transform:translateX(4px);box-shadow:4px 0 16px rgba(201,151,58,0.1)}
+.ci .ico{font-size:1rem;flex-shrink:0}
+.ci strong{display:block;font-size:0.8rem;font-weight:600;color:var(--navy)}
+.ci span{font-size:0.8rem;color:var(--slate)}
+.form-group{margin-bottom:1.2rem}
+.form-group label{display:block;font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-bottom:.4rem}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:.75rem .95rem;border:1.5px solid rgba(0,0,0,0.1);background:#fff;color:var(--ink);font-family:'Outfit',sans-serif;font-size:.88rem;border-radius:3px;outline:none;transition:border-color .2s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--gold)}
+.form-group textarea{min-height:100px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+
+/* FOOTER */
+footer{background:#070d17;padding:3.5rem 4rem 1.8rem;border-top:1px solid rgba(201,151,58,0.15)}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:2.2rem;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:1.8rem}
+.fb p{margin-top:.7rem;font-size:.8rem;line-height:1.7;color:rgba(255,255,255,0.35);max-width:230px}
+.fcol h5{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem}
+.fcol ul{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.fcol ul li a{font-size:.8rem;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s;cursor:pointer}
+.fcol ul li a:hover{color:#fff}
+.footer-bot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem}
+.footer-bot p{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:rgba(255,255,255,.2);letter-spacing:.04em}
+
+/* AI CHAT */
+#ai-overlay{position:fixed;inset:0;z-index:5000;display:none;align-items:flex-end;justify-content:flex-end;padding:1.5rem;pointer-events:none}
+#ai-overlay.open{display:flex}
+#ai-chat{width:400px;height:560px;background:#fff;border-radius:12px;box-shadow:0 24px 80px rgba(0,0,0,0.3),0 0 0 1px rgba(201,151,58,0.15);display:flex;flex-direction:column;overflow:hidden;pointer-events:all;animation:chatPop .35s cubic-bezier(.34,1.56,.64,1)}
+@keyframes chatPop{from{opacity:0;transform:scale(0.85) translateY(20px)}}
+.chat-head{background:var(--navy);padding:.9rem 1.2rem;display:flex;align-items:center;gap:.7rem;flex-shrink:0}
+.chat-avatar{width:36px;height:36px;background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+.chat-info strong{display:block;font-size:.85rem;font-weight:600;color:#fff}
+.chat-status{display:flex;align-items:center;gap:.3rem;margin-top:.05rem}
+.chat-status .dot{width:5px;height:5px;border-radius:50%;background:var(--success);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.chat-close{margin-left:auto;background:none;border:none;color:rgba(255,255,255,.5);font-size:1.1rem;cursor:pointer;transition:color .2s}
+.chat-close:hover{color:#fff}
+.chat-msgs{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.7rem;scroll-behavior:smooth}
+.msg{max-width:86%;animation:msgIn .3s ease}
+@keyframes msgIn{from{opacity:0;transform:translateY(8px)}}
+.msg-ai{align-self:flex-start}.msg-user{align-self:flex-end}
+.msg-bubble{padding:.65rem .95rem;border-radius:10px;font-size:.82rem;line-height:1.6}
+.msg-ai .msg-bubble{background:var(--mist);color:var(--ink);border-bottom-left-radius:3px}
+.msg-user .msg-bubble{background:var(--navy);color:#fff;border-bottom-right-radius:3px}
+.msg-time{font-size:.6rem;color:#aaa;margin-top:.2rem;padding:0 .3rem}
+.msg-user .msg-time{text-align:right}
+.chat-sugs{padding:.5rem .9rem;display:flex;gap:.4rem;flex-wrap:wrap;border-top:1px solid var(--mist);background:#fafaf8}
+.sug{background:rgba(201,151,58,0.1);border:1px solid rgba(201,151,58,0.2);border-radius:20px;padding:.22rem .7rem;font-size:.68rem;color:var(--gold);cursor:pointer;transition:all .2s;font-family:'JetBrains Mono',monospace;white-space:nowrap}
+.sug:hover{background:var(--gold);color:var(--navy)}
+.chat-inp-row{padding:.7rem .9rem;border-top:1px solid var(--mist);display:flex;gap:.5rem;align-items:flex-end;background:#fff}
+.chat-inp-row textarea{flex:1;resize:none;border:1.5px solid var(--mist);border-radius:8px;padding:.55rem .85rem;font-family:'Outfit',sans-serif;font-size:.82rem;outline:none;max-height:76px;transition:border-color .2s;line-height:1.5}
+.chat-inp-row textarea:focus{border-color:var(--gold)}
+.chat-send{width:36px;height:36px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:all .2s;flex-shrink:0}
+.chat-send:hover{background:var(--navy)}
+.typing{display:flex;gap:4px;align-items:center;padding:.4rem .2rem}
+.typing span{width:5px;height:5px;border-radius:50%;background:var(--slate);animation:bounce .8s infinite}
+.typing span:nth-child(2){animation-delay:.15s}.typing span:nth-child(3){animation-delay:.3s}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+#ai-fab{position:fixed;bottom:2rem;right:2rem;z-index:4000;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--navy2));border:2px solid var(--gold);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 8px 32px rgba(0,0,0,0.3);animation:fabPulse 3s infinite;transition:transform .2s}
+@keyframes fabPulse{0%,100%{box-shadow:0 8px 32px rgba(0,0,0,.3),0 0 0 0 rgba(201,151,58,.4)}50%{box-shadow:0 8px 32px rgba(0,0,0,.3),0 0 0 10px rgba(201,151,58,0)}}
+#ai-fab:hover{transform:scale(1.1)}
+
+/* PAGE HERO BANNER */
+.page-hero{background:var(--navy);padding:6rem 4rem 4rem;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(201,151,58,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,151,58,0.04) 1px,transparent 1px);background-size:40px 40px}
+.page-hero-inner{position:relative;z-index:1;max-width:700px}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.8rem);font-weight:700;color:#fff;letter-spacing:-0.02em;line-height:1.1;margin-bottom:1rem}
+.page-hero h1 em{font-style:italic;color:var(--gold2)}
+.page-hero p{font-size:0.97rem;line-height:1.8;color:rgba(255,255,255,0.55);max-width:580px}
+.breadcrumb{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;display:flex;align-items:center;gap:0.6rem}
+.breadcrumb span{color:rgba(255,255,255,0.3)}
+
+/* LEGAL PAGES */
+.legal-content{max-width:820px;margin:0 auto;padding:4rem 2rem}
+.legal-content h2{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;color:var(--navy);margin:2.5rem 0 0.8rem}
+.legal-content h2:first-child{margin-top:0}
+.legal-content h3{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:700;color:var(--navy);margin:1.8rem 0 0.5rem}
+.legal-content p{font-size:0.92rem;line-height:1.85;color:var(--slate);margin-bottom:0.8rem}
+.legal-content ul{list-style:none;margin:0.5rem 0 1.2rem;display:flex;flex-direction:column;gap:0.4rem}
+.legal-content ul li{font-size:0.9rem;line-height:1.75;color:var(--slate);padding-left:1.2rem;position:relative}
+.legal-content ul li::before{content:'▸';position:absolute;left:0;color:var(--gold)}
+.legal-alert{background:rgba(201,151,58,0.08);border:1px solid rgba(201,151,58,0.2);border-left:4px solid var(--gold);padding:1.2rem 1.5rem;border-radius:4px;margin:1.5rem 0}
+.legal-alert p{margin:0;font-size:0.88rem;color:var(--slate)}
+.legal-divider{height:1px;background:var(--mist);margin:2.5rem 0}
+
+/* SOBRE PAGE */
+.sobre-team{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
+.team-card{background:#fff;border-radius:8px;overflow:hidden;border:1px solid var(--mist);transition:all .3s}
+.team-card:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.08)}
+.team-photo{height:160px;display:flex;align-items:center;justify-content:center;font-size:4rem;background:var(--navy)}
+.team-info{padding:1.4rem}
+.team-info h4{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--navy);margin-bottom:0.2rem}
+.team-info .role{font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);margin-bottom:0.6rem}
+.team-info p{font-size:0.82rem;line-height:1.65;color:var(--slate)}
+.values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2.5rem}
+.value-card{background:#fff;border-radius:8px;padding:1.8rem;text-align:center;border:1px solid var(--mist);transition:all .3s}
+.value-card:hover{border-color:var(--gold);transform:translateY(-3px)}
+.value-icon{font-size:2.2rem;margin-bottom:1rem}
+.value-card h4{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:0.5rem}
+.value-card p{font-size:0.8rem;line-height:1.65;color:var(--slate)}
+
+/* BLOG PAGE */
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
+.blog-card{background:#fff;border-radius:8px;overflow:hidden;border:1px solid var(--mist);transition:all .3s;cursor:pointer}
+.blog-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,0.1)}
+.blog-img{height:170px;display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative;overflow:hidden}
+.blog-img-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:.15}
+.blog-cat{position:absolute;top:.8rem;left:.8rem;background:var(--gold);color:var(--navy);padding:.2rem .7rem;border-radius:20px;font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.06em;font-weight:500}
+.blog-body{padding:1.3rem}
+.blog-meta{display:flex;align-items:center;gap:.8rem;margin-bottom:.7rem;flex-wrap:wrap}
+.blog-date{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--slate);letter-spacing:.05em}
+.blog-read{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--gold)}
+.blog-body h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:.5rem;line-height:1.3}
+.blog-body p{font-size:.82rem;line-height:1.7;color:var(--slate)}
+.blog-footer{padding:.8rem 1.3rem;border-top:1px solid var(--mist);font-size:.75rem;color:var(--slate);display:flex;justify-content:space-between}
+
+/* ARTICLE VIEW */
+.article-content{max-width:780px;margin:0 auto;padding:3rem 2rem 5rem}
+.article-content h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--navy);margin:2rem 0 .7rem}
+.article-content p{font-size:.93rem;line-height:1.9;color:var(--slate);margin-bottom:1rem}
+.article-content ul{list-style:none;margin:.5rem 0 1.2rem;display:flex;flex-direction:column;gap:.4rem}
+.article-content ul li{font-size:.9rem;line-height:1.75;color:var(--slate);padding-left:1.2rem;position:relative}
+.article-content ul li::before{content:'▸';position:absolute;left:0;color:var(--gold)}
+.article-img-hero{width:100%;height:280px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:7rem;margin-bottom:2rem;position:relative;overflow:hidden}
+.article-highlight{background:rgba(201,151,58,0.07);border-left:4px solid var(--gold);padding:1.2rem 1.5rem;border-radius:4px;margin:1.5rem 0;font-style:italic;font-size:.93rem;color:var(--slate);line-height:1.8}
+.back-btn{display:inline-flex;align-items:center;gap:.5rem;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);cursor:pointer;margin-bottom:2rem;transition:gap .2s}
+.back-btn:hover{gap:.8rem}
+
+@media(max-width:1100px){
+  #pg-home #hero{grid-template-columns:1fr}.hero-right{display:none}
+  .compliance-layout,.matrix-section,.contato-grid{grid-template-columns:1fr;gap:2.5rem}
+  .charts-grid{grid-template-columns:1fr}.charts-grid3{grid-template-columns:1fr 1fr}
+  .pillars-grid,.cases-grid,.normas-grid,.sobre-team,.values-grid,.blog-grid{grid-template-columns:1fr 1fr}
+  .dash-grid{grid-template-columns:1fr 1fr}
+  section.pad{padding:4rem 2.5rem}.page-hero{padding:5rem 2.5rem 3.5rem}
+  .footer-top{grid-template-columns:1fr 1fr;gap:2rem}
+  nav{padding:.85rem 1.8rem}
+  .legal-content{padding:3rem 1.5rem}
+}
+@media(max-width:680px){
+  .cases-grid,.normas-grid,.sobre-team,.values-grid,.blog-grid,.charts-grid3,.pillars-grid{grid-template-columns:1fr}
+  .dash-grid{grid-template-columns:1fr 1fr}
+  section.pad{padding:3.5rem 1.2rem}.page-hero{padding:4.5rem 1.2rem 3rem}
+  nav{padding:.8rem 1.2rem}.nav-links{display:none}.ham{display:flex}
+  footer{padding:3rem 1.2rem 1.5rem}.footer-top{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}.expand-grid{grid-template-columns:1fr}
+  #ai-chat{width:95vw;height:500px}
+  .contato-grid{gap:2rem}.article-img-hero{height:200px;font-size:5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-brand" onclick="goPage('home')">
+    <div class="nav-logo-icon">LC</div>
+    <div class="nav-brand-text">LC Consultoria e Auditorias<small>Rio de Janeiro · Todo Brasil</small></div>
+  </div>
+  <ul class="nav-links" id="nav-links">
+    <li><a onclick="goPage('home');scrollToSection('#pillars')">Serviços</a></li>
+    <li><a onclick="goPage('home');scrollToSection('#dashboard')">Dashboard</a></li>
+    <li><a onclick="goPage('home');scrollToSection('#cases')">Cases</a></li>
+    <li><a onclick="goPage('sobre')">Sobre</a></li>
+    <li><a onclick="goPage('blog')">Blog</a></li>
+    <li><a onclick="goPage('home');scrollToSection('#contato')">Contato</a></li>
+  </ul>
+  <button class="nav-ai-btn" onclick="openChat()">🤖 IA Consultora</button>
+  <button class="ham" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- ═══════════════════════════════════════════ PAGE: HOME ═══ -->
+<div id="pg-home" class="page active">
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-bg"></div><div class="hero-lines"></div>
+  <div class="hero-left">
+    <div class="hero-tag">Rio de Janeiro · Atuação Nacional</div>
+    <h1 class="hero-title">Compliance,<br>Risco &amp; <em>Auditoria</em><br>com Precisão</h1>
+    <p class="hero-desc">A LC Consultoria oferece soluções integradas de governança corporativa, gestão de riscos e auditoria interna para organizações que buscam excelência e conformidade.</p>
+    <div class="hero-btns">
+      <a href="javascript:void(0)" class="btn-gold" onclick="scrollToSection('#contato')">Solicitar Diagnóstico</a>
+      <a href="javascript:void(0)" class="btn-ghost" onclick="scrollToSection('#dashboard')">Ver Dashboard →</a>
+    </div>
+    <div class="hero-badges">
+      <div class="badge"><span class="dot"></span>ISO 31000</div>
+      <div class="badge"><span class="dot"></span>LGPD</div>
+      <div class="badge"><span class="dot"></span>Lei Anticorrupção</div>
+      <div class="badge"><span class="dot"></span>IIA Standards</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-cards">
+      <div class="hcard"><div class="hcard-icon">⚖️</div><div class="hcard-text"><strong>Compliance Regulatório</strong><span>Mapeamento e adequação normativa</span></div></div>
+      <div class="hcard"><div class="hcard-icon">🎯</div><div class="hcard-text"><strong>Gestão de Riscos</strong><span>Matriz GRC e planos de mitigação</span></div></div>
+      <div class="hcard"><div class="hcard-icon">🔍</div><div class="hcard-text"><strong>Auditoria Interna</strong><span>Avaliação independente de controles</span></div></div>
+      <div class="hcard"><div class="hcard-icon">🤖</div><div class="hcard-text"><strong>IA Consultora 24h</strong><span>Tire dúvidas instantaneamente</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PILLARS -->
+<section id="pillars" class="pad" style="background:var(--ink)">
+  <div class="sec-tag">Fundamentos</div>
+  <h2 class="sec-h" style="color:#fff">Os Três <em>Pilares</em> da Governança</h2>
+  <p class="sec-sub">Clique em cada pilar para conhecer detalhes da nossa metodologia.</p>
+  <div class="pillars-grid">
+    <div class="pillar reveal" onclick="openModal('m-compliance')">
+      <div class="pillar-num">01 — COMPLIANCE</div><h3>Conformidade</h3>
+      <p>Alinhamento com leis, regulamentos e padrões éticos. Criamos uma cultura de integridade desde a base até o topo.</p>
+      <ul><li>Mapeamento regulatório contínuo</li><li>Políticas e código de conduta</li><li>Treinamentos e capacitação</li><li>Canal de denúncias</li><li>KPIs executivos</li></ul>
+      <div class="pillar-more">Saiba mais →</div>
+    </div>
+    <div class="pillar reveal" onclick="openModal('m-riscos')">
+      <div class="pillar-num">02 — RISCOS</div><h3>Gestão de Riscos</h3>
+      <p>Identificamos, avaliamos e tratamos riscos estratégicos, operacionais, legais e cibernéticos com metodologia robusta.</p>
+      <ul><li>Matriz de riscos 5×5</li><li>Apetite e tolerância ao risco</li><li>Planos de mitigação (4Ts)</li><li>Indicadores de risco (KRIs)</li><li>ERM corporativo</li></ul>
+      <div class="pillar-more">Saiba mais →</div>
+    </div>
+    <div class="pillar reveal" onclick="openModal('m-auditoria')">
+      <div class="pillar-num">03 — AUDITORIA</div><h3>Auditoria Interna</h3>
+      <p>Avaliação independente e objetiva que fortalece controles, aprimora processos e gera valor para a organização.</p>
+      <ul><li>Plano anual baseado em riscos</li><li>Testes de controles internos</li><li>Auditorias de conformidade</li><li>Relatórios executivos</li><li>Follow-up de recomendações</li></ul>
+      <div class="pillar-more">Saiba mais →</div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="pad" style="background:var(--mist)">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem">
+    <div><div class="sec-tag">Resultados</div><h2 class="sec-h">Dashboard de <em>Governança</em></h2></div>
+    <div class="dash-tabs">
+      <button class="dash-tab active" onclick="switchTab(this)">Geral</button>
+      <button class="dash-tab" onclick="switchTab(this)">Compliance</button>
+      <button class="dash-tab" onclick="switchTab(this)">Riscos</button>
+      <button class="dash-tab" onclick="switchTab(this)">Auditoria</button>
+    </div>
+  </div>
+  <div class="dash-grid">
+    <div class="kpi reveal" onclick="openModal('m-kpi1')" style="cursor:pointer"><div class="kpi-val">97<sup>%</sup></div><div class="kpi-lbl">Efetividade dos Controles</div><div class="kpi-bar"><div class="kpi-fill" data-w="97"></div></div><div class="kpi-trend up">↑ +4% vs. ano anterior</div></div>
+    <div class="kpi reveal" onclick="openModal('m-kpi2')" style="cursor:pointer"><div class="kpi-val">284</div><div class="kpi-lbl">Auditorias Realizadas</div><div class="kpi-bar"><div class="kpi-fill" data-w="71"></div></div><div class="kpi-trend up">↑ +32 no último ano</div></div>
+    <div class="kpi reveal" onclick="openModal('m-kpi3')" style="cursor:pointer"><div class="kpi-val">93<sup>%</sup></div><div class="kpi-lbl">Planos de Ação Implementados</div><div class="kpi-bar"><div class="kpi-fill" data-w="93"></div></div><div class="kpi-trend up">↑ Acima da meta</div></div>
+    <div class="kpi reveal" onclick="openModal('m-kpi4')" style="cursor:pointer"><div class="kpi-val">12<sup>x</sup></div><div class="kpi-lbl">ROI Médio em Compliance</div><div class="kpi-bar"><div class="kpi-fill" data-w="85"></div></div><div class="kpi-trend up">↑ Economia vs. multas</div></div>
+  </div>
+  <div class="charts-grid reveal">
+    <div class="chart-box"><div class="chart-title">Evolução da Maturidade GRC</div><div class="chart-sub">Índice por área — últimos 6 anos</div><canvas id="cEvol" height="85"></canvas></div>
+    <div class="chart-box"><div class="chart-title">Distribuição de Riscos</div><div class="chart-sub">Por categoria</div><canvas id="cDist" height="160"></canvas></div>
+  </div>
+  <div class="charts-grid3 reveal">
+    <div class="chart-box"><div class="chart-title">Achados por Criticidade</div><div class="chart-sub">Auditorias internas 2024</div><canvas id="cAchados" height="160"></canvas></div>
+    <div class="chart-box"><div class="chart-title">Compliance por Área</div><div class="chart-sub">Índice de aderência (%)</div><canvas id="cRadar" height="160"></canvas></div>
+    <div class="chart-box"><div class="chart-title">Planos de Ação</div><div class="chart-sub">Implementados vs. pendentes (mensal)</div><canvas id="cMitig" height="160"></canvas></div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section id="cases" class="pad" style="background:#fff">
+  <div class="sec-tag">Portfólio</div>
+  <h2 class="sec-h">Casos de <em>Sucesso</em></h2>
+  <p class="sec-sub">Clique em um caso para conhecer os detalhes do projeto.</p>
+  <div class="cases-grid">
+    <div class="case-card reveal" onclick="openModal('m-case1')"><div class="case-top"><div class="case-area">Compliance</div><h3>Programa de Integridade — Setor Industrial</h3><div class="case-emoji">⚖️</div></div><div class="case-body"><p>Implantação completa do Programa de Integridade conforme Lei Anticorrupção.</p><div class="case-results"><span class="result-chip">Lei 12.846 ✓</span><span class="result-chip">Risco −68%</span><span class="result-chip">300+ treinados</span></div></div><div class="case-footer"><span class="case-sector">🏭 Indústria · 18 meses</span><div class="case-rating"><span class="star">★★★★★</span></div></div></div>
+    <div class="case-card reveal" onclick="openModal('m-case2')"><div class="case-top"><div class="case-area">Gestão de Riscos</div><h3>Matriz ERM — Grupo Financeiro</h3><div class="case-emoji">🎯</div></div><div class="case-body"><p>Estruturação do Enterprise Risk Management para grupo com 5 empresas.</p><div class="case-results"><span class="result-chip">180+ riscos mapeados</span><span class="result-chip">5 empresas</span><span class="result-chip">ISO 31000</span></div></div><div class="case-footer"><span class="case-sector">🏦 Financeiro · 12 meses</span><div class="case-rating"><span class="star">★★★★★</span></div></div></div>
+    <div class="case-card reveal" onclick="openModal('m-case3')"><div class="case-top"><div class="case-area">Auditoria Interna</div><h3>Reestruturação da Auditoria — Saúde</h3><div class="case-emoji">🔍</div></div><div class="case-body"><p>Reestruturação completa da função de Auditoria Interna em rede hospitalar.</p><div class="case-results"><span class="result-chip">Padrão IIA</span><span class="result-chip">PAA risk-based</span><span class="result-chip">24 auditorias/ano</span></div></div><div class="case-footer"><span class="case-sector">🏥 Saúde · 8 meses</span><div class="case-rating"><span class="star">★★★★★</span></div></div></div>
+    <div class="case-card reveal" onclick="openModal('m-case4')"><div class="case-top"><div class="case-area">LGPD & Compliance</div><h3>Adequação à LGPD — Varejo Digital</h3><div class="case-emoji">🔒</div></div><div class="case-body"><p>Diagnóstico, mapeamento de dados pessoais e implementação de governança de privacidade.</p><div class="case-results"><span class="result-chip">LGPD art.50 ✓</span><span class="result-chip">DPO designado</span><span class="result-chip">Zero notificações ANPD</span></div></div><div class="case-footer"><span class="case-sector">🛒 E-commerce · 6 meses</span><div class="case-rating"><span class="star">★★★★★</span></div></div></div>
+    <div class="case-card reveal" onclick="openModal('m-case5')"><div class="case-top"><div class="case-area">Auditoria de Contratos</div><h3>Auditoria Contratual — Construtora</h3><div class="case-emoji">📋</div></div><div class="case-body"><p>Auditoria de contratos de fornecedores identificando sobrepreços e falhas de governança.</p><div class="case-results"><span class="result-chip">R$ 3,2MM recuperados</span><span class="result-chip">240 contratos</span><span class="result-chip">18 achados críticos</span></div></div><div class="case-footer"><span class="case-sector">🏗️ Construção · 4 meses</span><div class="case-rating"><span class="star">★★★★★</span></div></div></div>
+    <div class="case-card reveal" onclick="openModal('m-case6')"><div class="case-top"><div class="case-area">Segurança da Informação</div><h3>Framework de Cibersegurança</h3><div class="case-emoji">🌐</div></div><div class="case-body"><p>Avaliação de maturidade em segurança e roadmap ISO 27001 com base no NIST CSF.</p><div class="case-results"><span class="result-chip">NIST CSF</span><span class="result-chip">ISO 27001 roadmap</span><span class="result-chip">Maturidade +2 níveis</span></div></div><div class="case-footer"><span class="case-sector">💻 Tecnologia · 5 meses</span><div class="case-rating"><span class="star">★★★★★</span></div></div></div>
+  </div>
+</section>
+
+<!-- COMPLIANCE SECTION -->
+<section id="compliance-sec" class="pad" style="background:var(--cream)">
+  <div class="sec-tag">Conformidade</div>
+  <h2 class="sec-h">Programa de <em>Compliance</em></h2>
+  <div class="compliance-layout">
+    <div class="cd-diagram reveal">
+      <div class="cd-bg"></div>
+      <div class="cd-inner">
+        <div class="cd-center">Programa<br>Compliance<br>LC</div>
+        <div class="cd-nodes">
+          <div class="cd-node">LGPD</div><div class="cd-node">Lei 12.846</div><div class="cd-node">Anticorrupção</div><div class="cd-node">Trabalhista</div><div class="cd-node">Tributário</div><div class="cd-node">Ambiental</div><div class="cd-node">BACEN</div><div class="cd-node">CVM</div><div class="cd-node">ANVISA</div><div class="cd-node">SOX</div><div class="cd-node">ESG</div><div class="cd-node">PLD/FT</div><div class="cd-node">KYC</div><div class="cd-node">COAF</div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:var(--navy);margin-bottom:.8rem">Estrutura Detalhada</h3>
+      <p style="font-size:.92rem;line-height:1.8;color:var(--slate);margin-bottom:1.5rem">Clique em cada componente para conhecer nossa metodologia em detalhe.</p>
+      <div id="compliance-expand">
+        <div class="expand-card" id="ec1"><div class="expand-trigger" onclick="toggleExpand('ec1')"><div class="expand-trigger-left"><div class="expand-icon-wrap">📋</div><div><h4>Diagnóstico Regulatório</h4><p>Mapeamento completo das obrigações legais</p></div></div><div class="expand-arrow">▾</div></div><div class="expand-body"><div class="expand-inner"><p>Realizamos o levantamento exaustivo de todas as normas, leis e regulamentos aplicáveis ao negócio do cliente, considerando o setor de atuação, porte da empresa, localização geográfica e natureza das operações.</p><ul><li>Identificação de todas as obrigações legais e regulatórias vigentes</li><li>Análise de gaps entre a situação atual e o estado requerido</li><li>Priorização por criticidade e impacto potencial de não conformidade</li><li>Cronograma de adequação com responsáveis e prazos</li><li>Revisão periódica do mapa regulatório (monitoramento de mudanças)</li></ul><div class="expand-grid"><div class="expand-stat"><div class="num">360°</div><div class="lbl">Visão regulatória</div></div><div class="expand-stat"><div class="num">48h</div><div class="lbl">Tempo de resposta a novas normas</div></div></div></div></div></div>
+        <div class="expand-card" id="ec2"><div class="expand-trigger" onclick="toggleExpand('ec2')"><div class="expand-trigger-left"><div class="expand-icon-wrap">📜</div><div><h4>Políticas e Código de Conduta</h4><p>Documentação normativa corporativa</p></div></div><div class="expand-arrow">▾</div></div><div class="expand-body"><div class="expand-inner"><p>Elaboramos políticas corporativas, código de ética e conduta e procedimentos internos alinhados à estratégia, valores organizacionais e melhores práticas de governança.</p><ul><li>Código de ética e conduta empresarial</li><li>Política anticorrupção e antissuborno</li><li>Política de relacionamento com terceiros e fornecedores</li><li>Política de privacidade e proteção de dados (LGPD)</li><li>Procedimentos de Due Diligence de parceiros</li></ul></div></div></div>
+        <div class="expand-card" id="ec3"><div class="expand-trigger" onclick="toggleExpand('ec3')"><div class="expand-trigger-left"><div class="expand-icon-wrap">🎓</div><div><h4>Treinamento e Capacitação</h4><p>Programas educativos em conformidade</p></div></div><div class="expand-arrow">▾</div></div><div class="expand-body"><div class="expand-inner"><p>Desenvolvemos trilhas de aprendizagem customizadas para cada nível hierárquico, garantindo que toda a organização compreenda suas responsabilidades no programa de compliance.</p><ul><li>Treinamentos presenciais e e-learning</li><li>Workshops de dilemas éticos e situações práticas</li><li>Certificações internas de compliance</li><li>Campanhas de comunicação interna e intranet</li><li>Avaliação de aprendizagem e métricas de engajamento</li></ul></div></div></div>
+        <div class="expand-card" id="ec4"><div class="expand-trigger" onclick="toggleExpand('ec4')"><div class="expand-trigger-left"><div class="expand-icon-wrap">📞</div><div><h4>Canal de Denúncias</h4><p>Sistema seguro de reporte de irregularidades</p></div></div><div class="expand-arrow">▾</div></div><div class="expand-body"><div class="expand-inner"><p>Implantamos canal de denúncias robusto, anônimo e seguro, com gestão independente, fluxo de investigação estruturado e garantias de não retaliação ao denunciante.</p><ul><li>Canal 24h via telefone, e-mail e plataforma web</li><li>Anonimato garantido e proteção ao denunciante</li><li>Procedimento formal de investigação e resposta</li><li>Relatórios trimestrais ao conselho e diretoria</li><li>Conformidade com a Lei de Proteção ao Denunciante</li></ul></div></div></div>
+        <div class="expand-card" id="ec5"><div class="expand-trigger" onclick="toggleExpand('ec5')"><div class="expand-trigger-left"><div class="expand-icon-wrap">📊</div><div><h4>Monitoramento e KPIs</h4><p>Métricas de performance do programa</p></div></div><div class="expand-arrow">▾</div></div><div class="expand-body"><div class="expand-inner"><p>Implementamos dashboards executivos com indicadores-chave do programa de compliance, permitindo tomada de decisão baseada em dados e reporte estruturado à alta gestão.</p><ul><li>Dashboard executivo em tempo real</li><li>KPIs: taxa de treinamentos concluídos, denúncias recebidas/resolvidas</li><li>Relatórios mensais para diretoria e trimestrais para o conselho</li><li>Benchmarking com melhores práticas do setor</li><li>Plano de melhoria contínua do programa</li></ul></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RISCO -->
+<section id="risco" class="pad" style="background:var(--navy)">
+  <div class="sec-tag">Exposição</div>
+  <h2 class="sec-h" style="color:#fff">Gestão de <em>Riscos</em></h2>
+  <p class="sec-sub" style="color:rgba(255,255,255,0.5)">Clique nas categorias de risco para ver detalhes da metodologia de avaliação.</p>
+  <div class="matrix-section">
+    <div class="reveal">
+      <p style="font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.5rem">Probabilidade ↑</p>
+      <div class="matrix">
+        <div class="mc mc-m">Médio</div><div class="mc mc-h">Alto</div><div class="mc mc-h">Crítico<div class="mc-dot"><div class="rdot"></div></div></div><div class="mc mc-h">Crítico</div><div class="mc mc-h">Crítico</div>
+        <div class="mc mc-l">Baixo</div><div class="mc mc-m">Médio</div><div class="mc mc-h">Alto<div class="mc-dot"><div class="rdot"></div></div></div><div class="mc mc-h">Crítico</div><div class="mc mc-h">Crítico</div>
+        <div class="mc mc-l">Baixo</div><div class="mc mc-l">Baixo</div><div class="mc mc-m">Médio</div><div class="mc mc-h">Alto</div><div class="mc mc-h">Crítico</div>
+        <div class="mc mc-l">Baixo</div><div class="mc mc-l">Baixo</div><div class="mc mc-l">Baixo</div><div class="mc mc-m">Médio<div class="mc-dot"><div class="rdot"></div></div></div><div class="mc mc-h">Alto</div>
+        <div class="mc mc-l">Mínimo</div><div class="mc mc-l">Mínimo</div><div class="mc mc-l">Baixo</div><div class="mc mc-l">Baixo</div><div class="mc mc-m">Médio</div>
+      </div>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);text-align:center;margin-top:.5rem">Impacto →</p>
+    </div>
+    <div class="risk-categories reveal">
+      <div class="risk-cat" onclick="openModal('m-risco-fin')"><div class="risk-cat-head"><h4>🏦 Risco Financeiro</h4><span class="risk-level rl-high">Alto</span></div><p>Perdas por mercado, crédito, liquidez ou câmbio · <span style="color:var(--gold)">Ver detalhes →</span></p></div>
+      <div class="risk-cat" onclick="openModal('m-risco-op')"><div class="risk-cat-head"><h4>⚙️ Risco Operacional</h4><span class="risk-level rl-high">Alto</span></div><p>Falhas em processos, sistemas ou pessoas · <span style="color:var(--gold)">Ver detalhes →</span></p></div>
+      <div class="risk-cat" onclick="openModal('m-risco-leg')"><div class="risk-cat-head"><h4>⚖️ Risco Legal</h4><span class="risk-level rl-med">Médio</span></div><p>Sanções, multas e litígios regulatórios · <span style="color:var(--gold)">Ver detalhes →</span></p></div>
+      <div class="risk-cat" onclick="openModal('m-risco-cib')"><div class="risk-cat-head"><h4>🌐 Risco Cibernético</h4><span class="risk-level rl-high">Crítico</span></div><p>Vazamentos, ransomware e ataques digitais · <span style="color:var(--gold)">Ver detalhes →</span></p></div>
+      <div class="risk-cat" onclick="openModal('m-risco-esg')"><div class="risk-cat-head"><h4>🌿 Risco ESG</h4><span class="risk-level rl-med">Médio</span></div><p>Exposição ambiental, social e de governança · <span style="color:var(--gold)">Ver detalhes →</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- AUDITORIA -->
+<section id="auditoria" class="pad" style="background:var(--cream)">
+  <div class="sec-tag">Controles Internos</div>
+  <h2 class="sec-h">Ciclo de <em>Auditoria</em></h2>
+  <p class="sec-sub">Clique em cada fase para conhecer os detalhes da metodologia.</p>
+  <div class="timeline">
+    <div class="titem" onclick="openModal('m-aud1')"><div class="tdot">01</div><div class="tbody"><h4>Planejamento</h4><p>Elaboração do PAA baseado em análise de riscos, escopo, recursos e cronograma de cada trabalho.</p><div class="tbody-tags"><span class="ttag">PAA</span><span class="ttag">Risk Based</span><span class="ttag">Ver detalhes →</span></div></div></div>
+    <div class="titem" onclick="openModal('m-aud2')"><div class="tdot">02</div><div class="tbody"><h4>Trabalho de Campo</h4><p>Execução com coleta de evidências, testes de controles e entrevistas com gestores.</p><div class="tbody-tags"><span class="ttag">Testes</span><span class="ttag">Evidências</span><span class="ttag">Ver detalhes →</span></div></div></div>
+    <div class="titem" onclick="openModal('m-aud3')"><div class="tdot">03</div><div class="tbody"><h4>Análise e Avaliação</h4><p>Avaliação crítica das evidências, efetividade dos controles e identificação de deficiências.</p><div class="tbody-tags"><span class="ttag">Root Cause</span><span class="ttag">Findings</span><span class="ttag">Ver detalhes →</span></div></div></div>
+    <div class="titem" onclick="openModal('m-aud4')"><div class="tdot">04</div><div class="tbody"><h4>Relatório de Auditoria</h4><p>Relatório com achados classificados por criticidade, recomendações e planos de ação.</p><div class="tbody-tags"><span class="ttag">Executive Summary</span><span class="ttag">Recomendações</span><span class="ttag">Ver detalhes →</span></div></div></div>
+    <div class="titem" onclick="openModal('m-aud5')"><div class="tdot">05</div><div class="tbody"><h4>Monitoramento (Follow-up)</h4><p>Acompanhamento dos planos de ação, validação de melhorias e reporte ao Comitê.</p><div class="tbody-tags"><span class="ttag">Follow-up</span><span class="ttag">KPIs</span><span class="ttag">Ver detalhes →</span></div></div></div>
+  </div>
+</section>
+
+<!-- NORMAS -->
+<section id="normas" class="pad" style="background:#fff">
+  <div class="sec-tag">Referências</div>
+  <h2 class="sec-h">Normas &amp; <em>Frameworks</em></h2>
+  <p class="sec-sub">Clique para conhecer cada framework em profundidade.</p>
+  <div class="normas-grid">
+    <div class="norma reveal" onclick="goPage('iso31000')"><div class="norma-badge">ISO 31000</div><h3>Gestão de Riscos</h3><p>Framework internacional para gestão de riscos — princípios, estrutura e processo. <span style="color:var(--gold)">Leia mais →</span></p></div>
+    <div class="norma reveal" onclick="openModal('m-coso')"><div class="norma-badge">COSO ERM</div><h3>Controles Internos</h3><p>Modelo integrado de controles internos e gestão de riscos corporativos. <span style="color:var(--gold)">Leia mais →</span></p></div>
+    <div class="norma reveal" onclick="goPage('iso37001')"><div class="norma-badge">ISO 37001</div><h3>Antissuborno</h3><p>Sistema de gestão antissuborno para prevenção e combate à corrupção. <span style="color:var(--gold)">Leia mais →</span></p></div>
+    <div class="norma reveal" onclick="goPage('lgpd-page')"><div class="norma-badge">LGPD</div><h3>Proteção de Dados</h3><p>Lei 13.709/2018 — tratamento de dados pessoais e governança de privacidade. <span style="color:var(--gold)">Leia mais →</span></p></div>
+    <div class="norma reveal" onclick="openModal('m-iia')"><div class="norma-badge">IIA Standards</div><h3>Auditoria Interna</h3><p>Padrões internacionais do Institute of Internal Auditors para auditoria interna. <span style="color:var(--gold)">Leia mais →</span></p></div>
+    <div class="norma reveal" onclick="goPage('anticorrupcao')"><div class="norma-badge">Lei 12.846</div><h3>Lei Anticorrupção</h3><p>Responsabilidade objetiva de pessoas jurídicas por atos lesivos à administração. <span style="color:var(--gold)">Leia mais →</span></p></div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato" class="pad" style="background:var(--mist)">
+  <div class="sec-tag">Fale Conosco</div>
+  <h2 class="sec-h">Entre em <em>Contato</em></h2>
+  <div class="contato-grid">
+    <div class="reveal">
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--navy);margin-bottom:.8rem">LC Consultoria e Auditorias</h3>
+      <p style="font-size:.92rem;line-height:1.8;color:var(--slate);margin-bottom:1.5rem">Estamos prontos para avaliar o estado atual do seu programa de governança e propor soluções personalizadas.</p>
+      <a class="ci" href="mailto:contato@lcconsultoria.com.br"><span class="ico">📧</span><div><strong>E-mail</strong><span>contato@lcconsultoria.com.br</span></div></a>
+      <a class="ci" href="https://wa.me/5521984821444" target="_blank"><span class="ico">💬</span><div><strong>WhatsApp</strong><span>(21) 98482-1444</span></div></a>
+      <div class="ci"><span class="ico">📍</span><div><strong>Sede</strong><span>Rio de Janeiro, RJ</span></div></div>
+      <div class="ci"><span class="ico">🌎</span><div><strong>Atendimento</strong><span>Online em Todo o Brasil</span></div></div>
+    </div>
+    <div class="reveal">
+      <div class="form-row">
+        <div class="form-group"><label>Nome</label><input type="text" placeholder="Seu nome completo"></div>
+        <div class="form-group"><label>Empresa</label><input type="text" placeholder="Razão social"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>E-mail</label><input type="email" placeholder="nome@empresa.com"></div>
+        <div class="form-group"><label>WhatsApp</label><input type="tel" placeholder="(21) 9xxxx-xxxx"></div>
+      </div>
+      <div class="form-group"><label>Serviço</label><select><option value="">Selecione...</option><option>Compliance Regulatório</option><option>Gestão de Riscos (ERM)</option><option>Auditoria Interna</option><option>LGPD / Proteção de Dados</option><option>Programa de Integridade</option><option>Diagnóstico GRC Completo</option><option>Treinamento e Capacitação</option></select></div>
+      <div class="form-group"><label>Mensagem</label><textarea placeholder="Descreva o desafio da sua organização..."></textarea></div>
+      <button class="btn-gold" style="width:100%;padding:1rem;text-align:center" onclick="alert('Mensagem enviada! Retornaremos em breve.')">Enviar Solicitação →</button>
+    </div>
+  </div>
+</section>
+
+</div><!-- /pg-home -->
+
+<!-- ═══════════════════════════ PAGE: SOBRE ═══ -->
+<div id="pg-sobre" class="page">
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><span onclick="goPage('home')" style="cursor:pointer;color:var(--gold)">Início</span><span>/</span>Sobre Nós</div>
+    <h1>Sobre a <em>LC Consultoria</em></h1>
+    <p>Especialistas em governança corporativa com atuação em todo o Brasil, comprometidos com integridade, resultados e excelência técnica.</p>
+  </div>
+</div>
+<section class="pad" style="background:#fff">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-bottom:5rem" class="sobre-intro-grid">
+    <div>
+      <div class="sec-tag">Nossa História</div>
+      <h2 class="sec-h">Mais de uma <em>Década</em> de Expertise</h2>
+      <p class="sec-sub" style="max-width:none;margin-top:1rem">Fundada no Rio de Janeiro, a LC Consultoria e Auditorias nasceu da visão de que pequenas e médias empresas merecem o mesmo nível de excelência em governança corporativa que grandes corporações. Ao longo dos anos, expandimos nossa atuação para todo o Brasil, mantendo o atendimento personalizado e a profundidade técnica como marcas do nosso trabalho.</p>
+      <p style="font-size:.92rem;line-height:1.8;color:var(--slate);margin-top:1rem">Nossos consultores combinam formação acadêmica de alto nível com ampla experiência prática em auditorias, compliance regulatório e gestão de riscos, atuando em setores como financeiro, saúde, indústria, varejo, construção e tecnologia.</p>
+      <div style="display:flex;gap:1.5rem;margin-top:2rem;flex-wrap:wrap">
+        <div style="text-align:center"><div style="font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;color:var(--navy)">12+</div><div style="font-family:'JetBrains Mono',monospace;font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--slate)">Anos de experiência</div></div>
+        <div style="text-align:center"><div style="font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;color:var(--navy)">150+</div><div style="font-family:'JetBrains Mono',monospace;font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--slate)">Clientes atendidos</div></div>
+        <div style="text-align:center"><div style="font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;color:var(--navy)">284</div><div style="font-family:'JetBrains Mono',monospace;font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--slate)">Auditorias realizadas</div></div>
+      </div>
+    </div>
+    <div style="background:var(--navy);border-radius:10px;padding:3rem;position:relative;overflow:hidden">
+      <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(201,151,58,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,151,58,0.05) 1px,transparent 1px);background-size:30px 30px"></div>
+      <div style="position:relative;z-index:1">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-style:italic;color:rgba(255,255,255,.85);line-height:1.6;margin-bottom:1.5rem">"Governança não é burocracia — é a base sobre a qual organizações sustentáveis são construídas."</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--gold);letter-spacing:.1em">— LC CONSULTORIA E AUDITORIAS</div>
+      </div>
+    </div>
+  </div>
+  <div class="sec-tag">Nossa Equipe</div>
+  <h2 class="sec-h">Especialistas em <em>Governança</em></h2>
+  <div class="sobre-team" style="margin-top:2.5rem">
+    <div class="team-card"><div class="team-photo" style="background:linear-gradient(135deg,var(--navy),#1a3a6c)">👩‍💼</div><div class="team-info"><h4>Dra. Letícia Carvalho</h4><div class="role">Sócia-Diretora · Compliance</div><p>Especialista em programas de integridade e Lei Anticorrupção. Mestre em Direito Empresarial pela FGV com mais de 15 anos de experiência.</p></div></div>
+    <div class="team-card"><div class="team-photo" style="background:linear-gradient(135deg,#1a3a6c,var(--navy))">👨‍💼</div><div class="team-info"><h4>Dr. Carlos Augusto Lima</h4><div class="role">Sócio-Diretor · Gestão de Riscos</div><p>Certificado CRM e ISO 31000. Especialista em ERM com experiência em grupos financeiros e industriais de grande porte.</p></div></div>
+    <div class="team-card"><div class="team-photo" style="background:linear-gradient(135deg,var(--navy),#0d2e52)">👩‍💻</div><div class="team-info"><h4>Ana Paula Ferreira</h4><div class="role">Gerente · Auditoria Interna</div><p>CIA (Certified Internal Auditor) pelo IIA. Mais de 12 anos conduzindo auditorias baseadas em risco em setores regulados.</p></div></div>
+    <div class="team-card"><div class="team-photo" style="background:linear-gradient(135deg,#12355b,var(--navy))">👨‍🔬</div><div class="team-info"><h4>Rafael Mendonça</h4><div class="role">Especialista · LGPD & Dados</div><p>DPO certificado e especialista em LGPD. Experiência em adequação de empresas de varejo, saúde e tecnologia à Lei Geral de Proteção de Dados.</p></div></div>
+    <div class="team-card"><div class="team-photo" style="background:linear-gradient(135deg,var(--navy),#0f2847)">👩‍⚖️</div><div class="team-info"><h4>Mariana Costa</h4><div class="role">Consultora Sênior · Compliance</div><p>Especialista em compliance trabalhista e ambiental. Formação em Direito com pós em ESG e sustentabilidade corporativa.</p></div></div>
+    <div class="team-card"><div class="team-photo" style="background:linear-gradient(135deg,#152d50,var(--navy))">👨‍💻</div><div class="team-info"><h4>Thiago Rocha</h4><div class="role">Especialista · Cibersegurança</div><p>CISM e CISSP certificado. Especialista em riscos cibernéticos, frameworks NIST e ISO 27001 com experiência em setores financeiro e de tecnologia.</p></div></div>
+  </div>
+</section>
+<section class="pad" style="background:var(--mist)">
+  <div class="sec-tag">Nossos Valores</div>
+  <h2 class="sec-h">O que nos <em>Guia</em></h2>
+  <div class="values-grid">
+    <div class="value-card"><div class="value-icon">🎯</div><h4>Independência</h4><p>Atuamos com total independência e objetividade, garantindo avaliações imparciais e confiáveis.</p></div>
+    <div class="value-card"><div class="value-icon">🔍</div><h4>Rigor Técnico</h4><p>Aplicamos as melhores metodologias e padrões internacionais em todos os nossos trabalhos.</p></div>
+    <div class="value-card"><div class="value-icon">🤝</div><h4>Parceria</h4><p>Construímos relacionamentos de longo prazo, atuando como parceiros estratégicos dos nossos clientes.</p></div>
+    <div class="value-card"><div class="value-icon">⚖️</div><h4>Integridade</h4><p>Praticamos o que pregamos: ética, transparência e responsabilidade em todas as nossas ações.</p></div>
+  </div>
+</section>
+</div><!-- /pg-sobre -->
+
+<!-- ═══════════════════════════ PAGE: BLOG ═══ -->
+<div id="pg-blog" class="page">
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><span onclick="goPage('home')" style="cursor:pointer;color:var(--gold)">Início</span><span>/</span>Blog</div>
+    <h1>Blog de <em>Governança</em></h1>
+    <p>Artigos, análises e insights sobre Compliance, Gestão de Riscos e Auditoria Interna.</p>
+  </div>
+</div>
+<section class="pad" style="background:var(--cream)">
+  <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2rem">
+    <button class="dash-tab active" onclick="filterBlog(this,'all')">Todos</button>
+    <button class="dash-tab" onclick="filterBlog(this,'compliance')">Compliance</button>
+    <button class="dash-tab" onclick="filterBlog(this,'riscos')">Riscos</button>
+    <button class="dash-tab" onclick="filterBlog(this,'auditoria')">Auditoria</button>
+    <button class="dash-tab" onclick="filterBlog(this,'lgpd')">LGPD</button>
+  </div>
+  <div class="blog-grid" id="blog-grid">
+    <!-- Articles injected by JS -->
+  </div>
+</section>
+</div><!-- /pg-blog -->
+
+<!-- ═══════════ ARTICLE VIEW PAGE ═══ -->
+<div id="pg-article" class="page">
+<div id="article-render"></div>
+</div>
+
+
+<!-- ═══════════ LEGAL PAGES ═══ -->
+<!-- POLÍTICA DE PRIVACIDADE -->
+<div id="pg-privacidade" class="page">
+<div class="page-hero"><div class="page-hero-inner"><div class="breadcrumb"><span onclick="goPage('home')" style="cursor:pointer;color:var(--gold)">Início</span><span>/</span>Política de Privacidade</div><h1>Política de <em>Privacidade</em></h1><p>Como coletamos, usamos e protegemos seus dados pessoais — em conformidade com a LGPD.</p></div></div>
+<div class="legal-content">
+<div class="legal-alert"><p><strong>Última atualização:</strong> Janeiro de 2025 | <strong>Vigência:</strong> Indeterminada | <strong>Responsável:</strong> LC Consultoria e Auditorias</p></div>
+<h2>1. Introdução e Identificação do Controlador</h2>
+<p>A <strong>LC Consultoria e Auditorias</strong> ("LC", "nós", "nosso"), pessoa jurídica de direito privado com sede no Rio de Janeiro/RJ, é o controlador de dados pessoais tratados em razão da prestação de serviços de consultoria em compliance, gestão de riscos e auditoria interna.</p>
+<p>Esta Política de Privacidade descreve como coletamos, usamos, armazenamos, compartilhamos e protegemos seus dados pessoais, em conformidade com a Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018 — LGPD), o Marco Civil da Internet (Lei nº 12.965/2014) e demais legislações aplicáveis.</p>
+<h2>2. Dados Pessoais Coletados</h2>
+<h3>2.1 Dados fornecidos diretamente</h3>
+<ul><li>Nome completo, cargo e empresa</li><li>Endereço de e-mail corporativo e telefone</li><li>Informações sobre necessidades e projetos da organização</li><li>Documentos e informações compartilhados no contexto da prestação de serviços</li></ul>
+<h3>2.2 Dados coletados automaticamente</h3>
+<ul><li>Endereço IP e informações do dispositivo de acesso</li><li>Dados de navegação no site (páginas visitadas, tempo de permanência)</li><li>Cookies técnicos necessários ao funcionamento do site</li></ul>
+<h2>3. Finalidades e Bases Legais do Tratamento</h2>
+<p>Tratamos seus dados pessoais para as seguintes finalidades, com as respectivas bases legais previstas no art. 7º da LGPD:</p>
+<ul><li><strong>Execução de contrato:</strong> prestação dos serviços contratados de consultoria, auditoria e compliance</li><li><strong>Cumprimento de obrigação legal:</strong> atendimento de obrigações fiscais, trabalhistas e regulatórias</li><li><strong>Legítimo interesse:</strong> envio de comunicações sobre nossos serviços, eventos e publicações relevantes</li><li><strong>Consentimento:</strong> newsletter, materiais educativos e campanhas de marketing direto</li></ul>
+<h2>4. Compartilhamento de Dados</h2>
+<p>Não vendemos, alugamos ou cedemos seus dados pessoais a terceiros para fins comerciais. Podemos compartilhar dados com:</p>
+<ul><li>Fornecedores de tecnologia (hospedagem, CRM, e-mail marketing) — mediante acordos de processamento de dados</li><li>Autoridades públicas — quando exigido por lei, ordem judicial ou regulação aplicável</li><li>Parceiros técnicos — somente com seu consentimento expresso e para finalidades específicas</li></ul>
+<h2>5. Segurança dos Dados</h2>
+<p>Adotamos medidas técnicas e organizacionais compatíveis com os riscos de tratamento, incluindo:</p>
+<ul><li>Criptografia de dados em trânsito (TLS 1.3) e em repouso</li><li>Controle de acesso baseado em funções (RBAC)</li><li>Autenticação multifator para sistemas internos</li><li>Auditorias periódicas de segurança da informação</li><li>Treinamentos anuais de conscientização sobre proteção de dados</li></ul>
+<div class="legal-alert"><p>Em caso de incidente de segurança que possa acarretar risco ou dano relevante aos titulares, notificaremos a ANPD e os titulares afetados no prazo máximo de 72 horas, conforme art. 48 da LGPD.</p></div>
+<h2>6. Direitos dos Titulares</h2>
+<p>Nos termos dos arts. 18 e 19 da LGPD, você possui os seguintes direitos:</p>
+<ul><li><strong>Confirmação e acesso:</strong> saber se tratamos seus dados e obter cópia deles</li><li><strong>Correção:</strong> retificar dados incompletos, inexatos ou desatualizados</li><li><strong>Anonimização, bloqueio ou eliminação:</strong> para dados desnecessários ou tratados em desconformidade</li><li><strong>Portabilidade:</strong> receber seus dados em formato interoperável</li><li><strong>Eliminação:</strong> excluir dados tratados com base no consentimento</li><li><strong>Revogação do consentimento:</strong> a qualquer tempo, mediante pedido gratuito</li><li><strong>Oposição:</strong> opor-se a tratamentos realizados com base em outras bases legais</li></ul>
+<p>Para exercer seus direitos, entre em contato pelo e-mail <strong>contato@lcconsultoria.com.br</strong> ou pelo WhatsApp <strong>(21) 98482-1444</strong>. Responderemos em até 15 dias úteis.</p>
+<h2>7. Retenção de Dados</h2>
+<p>Mantemos seus dados pelo tempo necessário para cumprir as finalidades para as quais foram coletados, respeitando prazos legais de guarda (ex.: 5 anos para documentos fiscais, 2 anos para dados de prestação de serviços após o término do contrato).</p>
+<h2>8. Transferência Internacional</h2>
+<p>Eventualmente, dados podem ser transferidos a países que garantam nível adequado de proteção reconhecido pela ANPD, ou com salvaguardas contratuais (cláusulas-padrão) conforme art. 33 da LGPD.</p>
+<h2>9. Cookies</h2>
+<p>Utilizamos exclusivamente cookies técnicos e funcionais, estritamente necessários ao funcionamento do site. Não utilizamos cookies de rastreamento ou publicidade comportamental sem consentimento explícito.</p>
+<h2>10. Encarregado de Dados (DPO)</h2>
+<p>O Encarregado pelo Tratamento de Dados Pessoais da LC Consultoria pode ser contatado pelo e-mail <strong>privacidade@lcconsultoria.com.br</strong>.</p>
+<h2>11. Alterações nesta Política</h2>
+<p>Esta Política pode ser atualizada periodicamente. Notificaremos mudanças relevantes por e-mail ou aviso destacado no site. O uso continuado dos serviços após a publicação de alterações constitui aceitação das novas condições.</p>
+<div class="legal-divider"></div>
+<p style="font-size:.82rem;color:var(--slate)">LC Consultoria e Auditorias · contato@lcconsultoria.com.br · (21) 98482-1444 · Rio de Janeiro, RJ</p>
+</div></div>
+
+<!-- TERMOS DE USO -->
+<div id="pg-termos" class="page">
+<div class="page-hero"><div class="page-hero-inner"><div class="breadcrumb"><span onclick="goPage('home')" style="cursor:pointer;color:var(--gold)">Início</span><span>/</span>Termos de Uso</div><h1>Termos de <em>Uso</em></h1><p>Condições gerais de uso dos serviços da LC Consultoria e Auditorias.</p></div></div>
+<div class="legal-content">
+<div class="legal-alert"><p><strong>Última atualização:</strong> Janeiro de 2025 | Ao utilizar nossos serviços, você concorda com estes Termos.</p></div>
+<h2>1. Aceitação dos Termos</h2>
+<p>Ao acessar e utilizar este website ou contratar os serviços da <strong>LC Consultoria e Auditorias</strong>, você declara ter lido, compreendido e aceito estes Termos de Uso em sua integralidade. Caso não concorde com alguma disposição, abstanha-se de utilizar os serviços.</p>
+<h2>2. Descrição dos Serviços</h2>
+<p>A LC Consultoria e Auditorias presta serviços profissionais de:</p>
+<ul><li>Consultoria em compliance regulatório e programas de integridade</li><li>Gestão de riscos corporativos (ERM) baseada em ISO 31000 e COSO</li><li>Auditoria interna baseada nos padrões do IIA</li><li>Adequação à LGPD e proteção de dados pessoais</li><li>Treinamentos e capacitações em governança corporativa</li><li>Diagnósticos GRC (Governança, Risco e Compliance)</li></ul>
+<h2>3. Propriedade Intelectual</h2>
+<p>Todo o conteúdo disponível neste website — incluindo textos, metodologias, templates, dashboards, apresentações e materiais educativos — é de propriedade exclusiva da LC Consultoria e Auditorias ou de seus licenciadores, protegido pela Lei nº 9.610/98 (Lei de Direitos Autorais).</p>
+<p>É vedado copiar, reproduzir, distribuir, modificar ou comercializar qualquer conteúdo sem autorização prévia e expressa por escrito.</p>
+<h2>4. Responsabilidades do Usuário</h2>
+<p>O usuário se compromete a:</p>
+<ul><li>Utilizar os serviços de forma lícita e em conformidade com a legislação vigente</li><li>Fornecer informações verídicas, precisas e atualizadas nos formulários e contatos</li><li>Não utilizar os serviços para fins fraudulentos, ilegais ou que violem direitos de terceiros</li><li>Manter sigilo sobre informações confidenciais compartilhadas durante a prestação de serviços</li></ul>
+<h2>5. Limitação de Responsabilidade</h2>
+<p>A LC Consultoria e Auditorias não se responsabiliza por:</p>
+<ul><li>Decisões tomadas com base em informações contidas neste site sem contratação formal de serviços</li><li>Danos indiretos, incidentais ou consequentes decorrentes do uso dos serviços</li><li>Conteúdo de websites de terceiros eventualmente referenciados</li><li>Interrupções técnicas temporárias do website</li></ul>
+<div class="legal-alert"><p>Os pareceres, relatórios e recomendações emitidos pela LC Consultoria têm natureza de opinião técnica especializada e não constituem aconselhamento jurídico formal. Para questões que exijam parecer jurídico, recomendamos a contratação de advogado habilitado na OAB.</p></div>
+<h2>6. Confidencialidade</h2>
+<p>As partes comprometem-se a manter em estrita confidencialidade todas as informações, documentos e dados trocados no contexto da prestação de serviços, pelo prazo de 5 (cinco) anos após o encerramento do contrato, salvo quando a divulgação for exigida por autoridade competente.</p>
+<h2>7. Rescisão</h2>
+<p>A LC Consultoria reserva-se o direito de encerrar o acesso aos serviços em caso de violação destes Termos, sem necessidade de aviso prévio e sem direito a indenização.</p>
+<h2>8. Foro e Lei Aplicável</h2>
+<p>Estes Termos são regidos pela legislação brasileira. Fica eleito o foro da Comarca do Rio de Janeiro/RJ para dirimir quaisquer litígios, com renúncia expressa a qualquer outro, por mais privilegiado que seja.</p>
+<div class="legal-divider"></div>
+<p style="font-size:.82rem;color:var(--slate)">LC Consultoria e Auditorias · contato@lcconsultoria.com.br · Rio de Janeiro, RJ</p>
+</div></div>
+
+<!-- LGPD PAGE -->
+<div id="pg-lgpd-page" class="page">
+<div class="page-hero"><div class="page-hero-inner"><div class="breadcrumb"><span onclick="goPage('home')" style="cursor:pointer;color:var(--gold)">Início</span><span>/</span>LGPD</div><h1><em>LGPD</em> na Prática</h1><p>Guia completo sobre a Lei Geral de Proteção de Dados e como adequar sua empresa.</p></div></div>
+<div class="legal-content">
+<div class="legal-alert"><p><strong>Lei nº 13.709/2018</strong> — Em vigor desde setembro de 2020. Sanções administrativas aplicáveis desde agosto de 2021. Autoridade reguladora: <strong>ANPD</strong> (Autoridade Nacional de Proteção de Dados).</p></div>
+<h2>O que é a LGPD?</h2>
+<p>A Lei Geral de Proteção de Dados Pessoais (LGPD) é a legislação brasileira que regula o tratamento de dados pessoais — qualquer informação relacionada a uma pessoa natural identificada ou identificável. A lei se aplica a qualquer organização, pública ou privada, que realize tratamento de dados pessoais de pessoas naturais localizadas no Brasil.</p>
+<h2>Conceitos Fundamentais</h2>
+<h3>Dados Pessoais vs. Dados Sensíveis</h3>
+<ul><li><strong>Dados Pessoais:</strong> nome, CPF, e-mail, telefone, endereço, IP, dados de localização</li><li><strong>Dados Pessoais Sensíveis (art. 5º, II):</strong> origem racial/étnica, convicção religiosa, opinião política, filiação sindical, saúde, vida sexual, dados genéticos ou biométricos</li></ul>
+<h3>Agentes de Tratamento</h3>
+<ul><li><strong>Controlador:</strong> decide sobre o tratamento dos dados (ex.: empresa que coleta dados dos seus clientes)</li><li><strong>Operador:</strong> trata dados por conta do controlador (ex.: empresa de TI que hospeda a base de dados)</li><li><strong>Encarregado (DPO):</strong> canal de comunicação entre controlador, titulares e ANPD</li></ul>
+<h2>Bases Legais para Tratamento (Art. 7º)</h2>
+<p>Todo tratamento de dados pessoais deve estar fundamentado em ao menos uma das 10 bases legais da LGPD:</p>
+<ul><li>Consentimento do titular</li><li>Cumprimento de obrigação legal ou regulatória</li><li>Execução de políticas públicas</li><li>Realização de estudos por órgão de pesquisa</li><li>Execução de contrato ou procedimentos preliminares</li><li>Exercício regular de direitos em processo judicial, administrativo ou arbitral</li><li>Proteção da vida ou incolumidade física do titular ou terceiro</li><li>Tutela da saúde em procedimento realizado por profissionais de saúde</li><li>Legítimo interesse do controlador ou de terceiros</li><li>Proteção do crédito</li></ul>
+<h2>Direitos dos Titulares (Art. 18)</h2>
+<ul><li>Confirmação da existência de tratamento</li><li>Acesso aos dados</li><li>Correção de dados incompletos, inexatos ou desatualizados</li><li>Anonimização, bloqueio ou eliminação de dados desnecessários</li><li>Portabilidade dos dados</li><li>Eliminação de dados tratados com consentimento</li><li>Informação sobre compartilhamento com terceiros</li><li>Informação sobre possibilidade de não consentir</li><li>Revogação do consentimento</li><li>Revisão de decisões automatizadas</li></ul>
+<h2>Sanções Administrativas (Art. 52)</h2>
+<p>A ANPD pode aplicar as seguintes sanções:</p>
+<ul><li>Advertência com prazo para adoção de medidas corretivas</li><li>Multa simples de até 2% do faturamento, limitada a R$ 50 milhões por infração</li><li>Multa diária para compelir a cessação da violação</li><li>Publicização da infração</li><li>Bloqueio ou eliminação dos dados pessoais</li><li>Suspensão parcial ou total do banco de dados</li><li>Proibição parcial ou total do exercício de atividades de tratamento</li></ul>
+<h2>Como a LC Consultoria pode ajudar</h2>
+<ul><li>Diagnóstico de maturidade em proteção de dados (gap analysis)</li><li>Inventário e mapeamento de dados pessoais (Data Mapping)</li><li>Designação e suporte ao DPO (Data Protection Officer)</li><li>Elaboração de Política de Privacidade e Política de Retenção de Dados</li><li>Implementação de gestão de consentimento</li><li>Elaboração de procedimentos de resposta a incidentes (DPIA)</li><li>Treinamentos para equipes sobre proteção de dados</li><li>Suporte em casos de incidente e notificação à ANPD</li></ul>
+<div style="margin-top:2rem;text-align:center"><button class="btn-gold" onclick="goPage('home');scrollToSection('#contato')">Solicitar Adequação LGPD →</button></div>
+</div></div>
+
+<!-- LEI ANTICORRUPÇÃO -->
+<div id="pg-anticorrupcao" class="page">
+<div class="page-hero"><div class="page-hero-inner"><div class="breadcrumb"><span onclick="goPage('home')" style="cursor:pointer;color:var(--gold)">Início</span><span>/</span>Lei Anticorrupção</div><h1>Lei <em>Anticorrupção</em></h1><p>Lei nº 12.846/2013 e Decreto nº 11.129/2022 — O guia completo para Programas de Integridade.</p></div></div>
+<div class="legal-content">
+<div class="legal-alert"><p><strong>Lei nº 12.846/2013</strong> (Lei Anticorrupção) + <strong>Decreto nº 11.129/2022</strong> (regulamenta os Programas de Integridade). Aplicável a todas as pessoas jurídicas que praticam atos lesivos contra a administração pública, nacional ou estrangeira.</p></div>
+<h2>O que é a Lei Anticorrupção?</h2>
+<p>A Lei nº 12.846/2013 instituiu a responsabilidade objetiva administrativa e civil de pessoas jurídicas pela prática de atos contra a administração pública, nacional ou estrangeira. Pela primeira vez no Brasil, a empresa pode ser punida independentemente de dolo ou culpa, e mesmo sem a condenação de seus dirigentes.</p>
+<h2>Atos Lesivos Previstos (Art. 5º)</h2>
+<ul><li>Prometer, oferecer ou dar vantagem indevida a agente público</li><li>Financiar, custear ou patrocinar a prática de atos ilícitos</li><li>Usar interposta pessoa para ocultar ou dissimular interesses ou identidade dos beneficiários</li><li>Dificultar atividade de investigação ou fiscalização de órgãos públicos</li><li>Manipular licitações e contratos públicos</li><li>Fraudar balanços ou relatórios obrigatórios</li></ul>
+<h2>Sanções Administrativas</h2>
+<ul><li>Multa de 0,1% a 20% do faturamento bruto do último exercício (mínimo de R$ 6 mil)</li><li>Publicação extraordinária da decisão condenatória</li><li>Dissolução compulsória da pessoa jurídica (casos graves)</li><li>Proibição de receber incentivos, subsídios, subvenções, doações ou empréstimos de órgãos públicos</li></ul>
+<h2>O Programa de Integridade como Atenuante</h2>
+<p>O Decreto nº 11.129/2022 regulamenta detalhadamente o Programa de Integridade, estabelecendo os parâmetros para avaliação e atenuação de penalidades. Um programa robusto pode reduzir a multa em até <strong>5%</strong> e demonstra boa-fé da organização.</p>
+<h3>Componentes Obrigatórios (Art. 57 do Decreto)</h3>
+<ul><li>Comprometimento da alta direção e governança do programa</li><li>Padrões de conduta e código de ética aplicáveis a todos os colaboradores</li><li>Treinamentos periódicos sobre o programa de integridade</li><li>Análise periódica de riscos para adaptações necessárias</li><li>Registros contábeis precisos e completos</li><li>Controles internos que assegurem elaboração de demonstrações financeiras fidedignas</li><li>Procedimentos de integridade aplicáveis a terceiros, fornecedores e parceiros</li><li>Canal de denúncias com proteção ao denunciante</li><li>Medidas disciplinares em caso de violações</li><li>Procedimentos que assegurem suspensão imediata de irregularidades</li><li>Due Diligence de fusões, aquisições e reestruturações societárias</li><li>Monitoramento contínuo do programa</li></ul>
+<h2>Acordos de Leniência</h2>
+<p>A Lei Anticorrupção prevê a celebração de Acordos de Leniência entre o poder público e empresas que confessem a prática de ilícitos, desde que cooperem efetivamente com as investigações. Em troca, podem obter isenção ou redução das sanções.</p>
+<h2>Como a LC Consultoria pode ajudar</h2>
+<ul><li>Implantação completa do Programa de Integridade conforme o Decreto 11.129/2022</li><li>Mapeamento e avaliação de riscos de corrupção</li><li>Elaboração de código de ética e políticas anticorrupção</li><li>Implementação de canal de denúncias independente</li><li>Due Diligence de terceiros e parceiros de negócios</li><li>Treinamentos de integridade para todos os níveis hierárquicos</li><li>Suporte em investigações internas e acordos de leniência</li></ul>
+<div style="margin-top:2rem;text-align:center"><button class="btn-gold" onclick="goPage('home');scrollToSection('#contato')">Implantar Programa de Integridade →</button></div>
+</div></div>
+
+<!-- ISO 31000 -->
+<div id="pg-iso31000" class="page">
+<div class="page-hero"><div class="page-hero-inner"><div class="breadcrumb"><span onclick="goPage('home')" style="cursor:pointer;color:var(--gold)">Início</span><span>/</span>ISO 31000</div><h1><em>ISO 31000</em>:2018</h1><p>Gestão de Riscos — Princípios, Estrutura e Processo. O padrão internacional para ERM.</p></div></div>
+<div class="legal-content">
+<div class="legal-alert"><p><strong>ISO 31000:2018</strong> — Gestão de Riscos: Diretrizes. Segunda edição, publicada em fevereiro de 2018. Aplicável a qualquer organização, independentemente do setor, porte ou tipo.</p></div>
+<h2>O que é a ISO 31000?</h2>
+<p>A ISO 31000:2018 fornece diretrizes sobre gestão de riscos, substituindo a primeira versão de 2009. Diferentemente de outras normas ISO, não é certificável — funciona como framework de referência para implementação de sistemas de gestão de riscos customizados à realidade de cada organização.</p>
+<h2>Estrutura da Norma</h2>
+<h3>Princípios (Cláusula 4)</h3>
+<p>A gestão de riscos deve ser:</p>
+<ul><li><strong>Integrada:</strong> parte integrante de todos os processos organizacionais</li><li><strong>Estruturada e abrangente:</strong> abordagem sistemática e tempestiva</li><li><strong>Customizada:</strong> proporcional ao contexto interno e externo da organização</li><li><strong>Inclusiva:</strong> envolvimento de partes interessadas internas e externas</li><li><strong>Dinâmica:</strong> capaz de antecipar, detectar e responder a mudanças</li><li><strong>Baseada nas melhores informações disponíveis:</strong> dados históricos, previsões e pareceres de especialistas</li><li><strong>Considerando fatores humanos e culturais</strong></li><li><strong>Orientada para a melhoria contínua</strong></li></ul>
+<h3>Estrutura (Cláusula 5)</h3>
+<ul><li>5.1 Liderança e comprometimento</li><li>5.2 Integração — embedding risk management</li><li>5.3 Concepção da estrutura</li><li>5.4 Implementação</li><li>5.5 Avaliação</li><li>5.6 Melhoria</li></ul>
+<h3>Processo (Cláusula 6)</h3>
+<ul><li>6.1 Comunicação e consulta</li><li>6.2 Escopo, contexto e critérios</li><li>6.3 Avaliação de riscos (identificação → análise → avaliação)</li><li>6.4 Tratamento de riscos (4Ts: Tolerar, Tratar, Transferir, Terminar)</li><li>6.5 Monitoramento e análise crítica</li><li>6.6 Registro e reporte</li></ul>
+<h2>Matriz de Riscos (5×5)</h2>
+<p>A metodologia mais utilizada para avaliação qualitativa e semi-quantitativa de riscos, combinando Probabilidade (1–5) × Impacto (1–5) = Nível de Risco (1–25):</p>
+<ul><li><strong>Mínimo/Baixo (1–6):</strong> monitorar, sem ação prioritária</li><li><strong>Médio (8–12):</strong> plano de ação com prazo definido</li><li><strong>Alto (15–20):</strong> ação urgente com responsável designado</li><li><strong>Crítico (25):</strong> ação imediata e reporte à alta gestão</li></ul>
+<h2>Tratamento de Riscos — Os 4Ts</h2>
+<ul><li><strong>Tolerar (Aceitar):</strong> quando o custo de tratar supera o benefício, dentro do apetite ao risco</li><li><strong>Tratar (Mitigar):</strong> implementar controles para reduzir probabilidade ou impacto</li><li><strong>Transferir (Compartilhar):</strong> contratar seguro, terceirizar atividade ou usar derivativos</li><li><strong>Terminar (Evitar):</strong> cessar a atividade que origina o risco inaceitável</li></ul>
+<h2>Como a LC Consultoria implementa a ISO 31000</h2>
+<ul><li>Diagnóstico de maturidade em gestão de riscos</li><li>Definição de apetite, tolerância e critérios de risco</li><li>Workshop de identificação e avaliação de riscos</li><li>Construção da Matriz de Riscos Corporativos</li><li>Elaboração de planos de tratamento com responsáveis e prazos</li><li>Implementação de KRIs (Key Risk Indicators)</li><li>Dashboard de riscos para a alta gestão</li><li>Treinamento da equipe de gestão de riscos</li></ul>
+<div style="margin-top:2rem;text-align:center"><button class="btn-gold" onclick="goPage('home');scrollToSection('#contato')">Implementar ISO 31000 →</button></div>
+</div></div>
+
+<!-- ISO 37001 -->
+<div id="pg-iso37001" class="page">
+<div class="page-hero"><div class="page-hero-inner"><div class="breadcrumb"><span onclick="goPage('home')" style="cursor:pointer;color:var(--gold)">Início</span><span>/</span>ISO 37001</div><h1><em>ISO 37001</em>:2016</h1><p>Sistema de Gestão Antissuborno — Certificação internacional contra corrupção.</p></div></div>
+<div class="legal-content">
+<div class="legal-alert"><p><strong>ISO 37001:2016</strong> — Sistema de Gestão Antissuborno. Publicada em outubro de 2016, é certificável por organismos de certificação acreditados. Complementar à ISO 37002 (whistleblowing) e ISO 37301 (compliance).</p></div>
+<h2>O que é a ISO 37001?</h2>
+<p>A ISO 37001 especifica requisitos e fornece orientações para o estabelecimento, implementação, manutenção, análise crítica e melhoria de um Sistema de Gestão Antissuborno (SGAS). É a primeira norma internacional certificável especificamente voltada ao combate ao suborno — que inclui tanto o pagamento quanto o recebimento de vantagens indevidas.</p>
+<h2>Escopo de Aplicação</h2>
+<p>A norma se aplica ao suborno envolvendo:</p>
+<ul><li>Setor público (servidores e agentes públicos)</li><li>Setor privado (parceiros comerciais, fornecedores, clientes)</li><li>Organizações sem fins lucrativos e filantrópicas</li><li>Transações nacionais e internacionais</li></ul>
+<h2>Requisitos-Chave da Norma</h2>
+<h3>Liderança e Governança (Seção 5)</h3>
+<ul><li>Comprometimento formal da alta direção e do conselho</li><li>Política antissuborno aprovada e comunicada</li><li>Função de compliance antissuborno designada com independência</li></ul>
+<h3>Avaliação de Riscos de Suborno (Seção 6)</h3>
+<ul><li>Avaliação periódica de riscos de suborno por processo e área</li><li>Due Diligence de funcionários em posições de risco elevado</li><li>Due Diligence de parceiros de negócios e terceiros</li></ul>
+<h3>Controles Antissuborno (Seção 8)</h3>
+<ul><li>Procedimentos para presentes, hospitalidade, doações e patrocínios</li><li>Controles sobre contribuições políticas</li><li>Gestão de conflitos de interesse</li><li>Controles financeiros e não financeiros</li><li>Procedimentos de reporte e investigação</li></ul>
+<h3>Canal de Alertas e Investigação (Seção 8.9)</h3>
+<ul><li>Canal seguro para reporte de suspeitas de suborno</li><li>Proteção aos denunciantes contra retaliação</li><li>Procedimento formal de investigação</li><li>Medidas corretivas e disciplinares</li></ul>
+<h2>Diferença entre ISO 37001 e ISO 37301 (Compliance)</h2>
+<ul><li><strong>ISO 37001:</strong> foco específico em suborno — requisitos mais detalhados para este risco específico</li><li><strong>ISO 37301:2021</strong> (substitui ISO 19600): framework amplo de sistema de gestão de compliance, abrangendo todas as obrigações de conformidade</li><li>As normas são complementares e podem ser implementadas simultaneamente</li></ul>
+<h2>Processo de Certificação</h2>
+<ul><li>Fase 1: Diagnóstico de gaps e planejamento da implementação</li><li>Fase 2: Implementação dos requisitos e documentação do SGAS</li><li>Fase 3: Auditoria interna e análise crítica pela direção</li><li>Fase 4: Auditoria de certificação por organismo acreditado (estágio 1 e 2)</li><li>Fase 5: Emissão do certificado (válido por 3 anos, com auditorias de manutenção anuais)</li></ul>
+<h2>Como a LC Consultoria apoia a certificação</h2>
+<ul><li>Diagnóstico de aderência à ISO 37001 (gap analysis)</li><li>Elaboração da política antissuborno e documentação do SGAS</li><li>Mapeamento de riscos de suborno por processo</li><li>Due Diligence de terceiros e parceiros de risco elevado</li><li>Implementação do canal de alertas e procedimento de investigação</li><li>Treinamentos para toda a organização</li><li>Auditoria interna pré-certificação</li><li>Suporte durante a auditoria de certificação externa</li></ul>
+<div style="margin-top:2rem;text-align:center"><button class="btn-gold" onclick="goPage('home');scrollToSection('#contato')">Iniciar Processo ISO 37001 →</button></div>
+</div></div>
+
+
+<!-- ══════════════════════ FOOTER (shared) ══════════ -->
+<footer id="site-footer">
+  <div class="footer-top">
+    <div class="fb">
+      <div class="nav-brand" onclick="goPage('home')" style="cursor:pointer;text-decoration:none">
+        <div class="nav-logo-icon">LC</div>
+        <div class="nav-brand-text" style="color:#fff">LC Consultoria e Auditorias<small>Rio de Janeiro · Todo Brasil</small></div>
+      </div>
+      <p>Especialistas em governança corporativa, gestão de riscos e auditoria interna para organizações que buscam excelência e conformidade.</p>
+    </div>
+    <div class="fcol"><h5>Serviços</h5><ul>
+      <li><a onclick="goPage('home');scrollToSection('#compliance-sec')">Compliance Regulatório</a></li>
+      <li><a onclick="goPage('home');scrollToSection('#risco')">Gestão de Riscos</a></li>
+      <li><a onclick="goPage('home');scrollToSection('#auditoria')">Auditoria Interna</a></li>
+      <li><a onclick="goPage('lgpd-page')">LGPD / Dados</a></li>
+      <li><a onclick="goPage('home');scrollToSection('#contato')">Treinamentos</a></li>
+    </ul></div>
+    <div class="fcol"><h5>Institucional</h5><ul>
+      <li><a onclick="goPage('sobre')">Sobre Nós</a></li>
+      <li><a onclick="goPage('blog')">Blog</a></li>
+      <li><a onclick="goPage('iso31000')">ISO 31000</a></li>
+      <li><a onclick="goPage('iso37001')">ISO 37001</a></li>
+      <li><a onclick="goPage('anticorrupcao')">Lei Anticorrupção</a></li>
+    </ul></div>
+    <div class="fcol"><h5>Legal & Contato</h5><ul>
+      <li><a onclick="goPage('privacidade')">Política de Privacidade</a></li>
+      <li><a onclick="goPage('termos')">Termos de Uso</a></li>
+      <li><a onclick="goPage('lgpd-page')">LGPD</a></li>
+      <li><a href="mailto:contato@lcconsultoria.com.br">contato@lcconsultoria.com.br</a></li>
+      <li><a href="https://wa.me/5521984821444" target="_blank">(21) 98482-1444</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bot">
+    <p>© 2025 LC Consultoria e Auditorias. Todos os direitos reservados. Rio de Janeiro, RJ.</p>
+    <p>Compliance · Risco · Auditoria</p>
+  </div>
+</footer>
+
+<!-- ══════════════════════ MODALS ══════════════════ -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal-box" id="modal-box">
+    <div class="modal-head">
+      <h3 id="modal-title">Título</h3>
+      <p id="modal-sub">Subtítulo</p>
+      <button class="modal-close" onclick="closeAllModals()">✕</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<!-- AI CHAT -->
+<div id="ai-overlay">
+  <div id="ai-chat">
+    <div class="chat-head">
+      <div class="chat-avatar">🤖</div>
+      <div class="chat-info"><strong>LC IA Consultora</strong><div class="chat-status"><span class="dot"></span><small style="font-size:.68rem;color:var(--gold2)">Online agora</small></div></div>
+      <button class="chat-close" onclick="closeChat()">✕</button>
+    </div>
+    <div class="chat-msgs" id="chat-msgs">
+      <div class="msg msg-ai"><div class="msg-bubble">Olá! 👋 Sou a <strong>IA Consultora da LC Consultoria</strong>. Estou aqui para tirar suas dúvidas sobre <strong>Compliance, Riscos e Auditoria</strong>.<br><br>Como posso ajudar?</div><div class="msg-time">agora</div></div>
+    </div>
+    <div class="chat-sugs" id="chat-sugs">
+      <button class="sug" onclick="sendSug(this)">O que é compliance?</button>
+      <button class="sug" onclick="sendSug(this)">Como estruturar auditoria?</button>
+      <button class="sug" onclick="sendSug(this)">Matriz de riscos 5x5</button>
+      <button class="sug" onclick="sendSug(this)">LGPD — o que fazer?</button>
+    </div>
+    <div class="chat-inp-row">
+      <textarea id="chat-inp" rows="1" placeholder="Digite sua pergunta..." onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+      <button class="chat-send" onclick="sendMsg()">➤</button>
+    </div>
+  </div>
+</div>
+<button id="ai-fab" onclick="openChat()" title="IA Consultora">🤖</button>
+
+<script>
+// ══════════════════════════════════════════
+// PAGE ROUTER
+// ══════════════════════════════════════════
+const pages = ['home','sobre','blog','article','privacidade','termos','lgpd-page','anticorrupcao','iso31000','iso37001'];
+function goPage(id){
+  pages.forEach(p=>{
+    const el = document.getElementById('pg-'+p);
+    if(el) el.classList.toggle('active', p===id);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+  closeAllModals();
+  // close mobile menu
+  const nl=document.getElementById('nav-links');
+  if(window.innerWidth<=680) nl.style.display='';
+}
+function scrollToSection(sel){
+  setTimeout(()=>{
+    const el=document.querySelector(sel);
+    if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  },100);
+}
+function toggleMenu(){
+  const nl=document.getElementById('nav-links');
+  nl.style.cssText=nl.style.display==='flex'?'':'display:flex;flex-direction:column;position:fixed;top:62px;left:0;right:0;background:rgba(11,31,58,0.99);padding:1.4rem 2rem;gap:1rem;z-index:999;border-bottom:1px solid rgba(201,151,58,.2)';
+}
+
+// ══════════════════════════════════════════
+// MODALS DATA
+// ══════════════════════════════════════════
+const modals = {
+  'm-compliance':{title:'Compliance Regulatório',sub:'Metodologia LC Consultoria',body:`<h4>O que é Compliance?</h4><p>Compliance é o conjunto de disciplinas, processos e controles que garantem que uma organização opere em conformidade com leis, regulamentos, normas internas e padrões éticos aplicáveis ao seu negócio.</p><div class="modal-alert">Um programa de compliance eficaz não é apenas uma exigência legal — é uma vantagem competitiva que protege reputação, reduz riscos e constrói confiança com clientes, investidores e reguladores.</div><h4>Etapas do Programa LC</h4><p><strong>1. Diagnóstico (4–6 semanas):</strong> mapeamento de todas as obrigações legais e análise de gaps.</p><p><strong>2. Estruturação (2–4 meses):</strong> elaboração de políticas, código de conduta e procedimentos.</p><p><strong>3. Implementação (3–6 meses):</strong> treinamentos, canal de denúncias e sistemas de controle.</p><p><strong>4. Monitoramento (contínuo):</strong> KPIs, dashboards e melhoria contínua.</p><h4>Regulamentações Cobertas</h4><div>${['LGPD','Lei Anticorrupção','PLD/FT','Trabalhista','Tributário','Ambiental','BACEN','CVM','ANVISA','SOX','ESG','ISO 37001'].map(t=>`<span class="modal-tag">${t}</span>`).join('')}</div><div style="margin-top:1.5rem;text-align:center"><button class="btn-gold" onclick="goPage('home');scrollToSection('#contato');closeAllModals()">Solicitar Proposta →</button></div>`},
+  'm-riscos':{title:'Gestão de Riscos Corporativos',sub:'ERM — Enterprise Risk Management',body:`<h4>Metodologia ISO 31000 + COSO ERM</h4><p>Implementamos gestão de riscos integrada baseada nos frameworks mais reconhecidos globalmente, customizada para a realidade e o apetite ao risco de cada organização.</p><h4>Processo ERM — 6 Etapas</h4><ul><li><strong>Contexto:</strong> entendimento do ambiente interno e externo da organização</li><li><strong>Identificação:</strong> workshops com gestores para mapear riscos estratégicos e operacionais</li><li><strong>Análise:</strong> avaliação qualitativa e quantitativa de probabilidade e impacto</li><li><strong>Avaliação:</strong> priorização dos riscos críticos que exigem tratamento imediato</li><li><strong>Tratamento:</strong> planos de ação (4Ts: Tolerar, Tratar, Transferir, Terminar)</li><li><strong>Monitoramento:</strong> KRIs, dashboards e reporte periódico à gestão</li></ul><h4>Entregáveis</h4><ul><li>Matriz de Riscos Corporativos (5×5) em formato visual interativo</li><li>Política de Gestão de Riscos e Apetite ao Risco</li><li>Planos de Tratamento com responsáveis e prazos</li><li>Dashboard executivo de KRIs</li><li>Relatório ERM para o Conselho</li></ul><div style="margin-top:1.5rem;text-align:center"><button class="btn-gold" onclick="goPage('home');scrollToSection('#contato');closeAllModals()">Solicitar Diagnóstico de Riscos →</button></div>`},
+  'm-auditoria':{title:'Auditoria Interna',sub:'Metodologia baseada nos padrões IIA',body:`<h4>Auditoria Interna de Alto Valor</h4><p>Nossa abordagem vai além de identificar problemas — fornecemos recomendações acionáveis que geram valor real para a organização e fortalecem os controles internos.</p><h4>Tipos de Auditoria</h4><ul><li><strong>Auditoria de Conformidade:</strong> verificação do cumprimento de normas e regulamentos</li><li><strong>Auditoria Operacional:</strong> avaliação da eficiência e eficácia dos processos</li><li><strong>Auditoria Financeira:</strong> confiabilidade das informações contábeis e financeiras</li><li><strong>Auditoria de TI:</strong> controles de sistemas e segurança da informação</li><li><strong>Auditoria de Processos:</strong> mapeamento e melhoria de fluxos operacionais</li><li><strong>Auditoria Integrada:</strong> combinação de múltiplas perspectivas</li></ul><h4>Diferenciais LC Consultoria</h4><ul><li>Auditores CIA, CISA e CFE certificados</li><li>Relatórios com linguagem executiva e visual</li><li>Follow-up ativo até a implementação das recomendações</li><li>Alinhamento com as melhores práticas do IIA (Institute of Internal Auditors)</li></ul><div style="margin-top:1.5rem;text-align:center"><button class="btn-gold" onclick="goPage('home');scrollToSection('#contato');closeAllModals()">Contratar Auditoria →</button></div>`},
+  'm-kpi1':{title:'Efetividade dos Controles — 97%',sub:'Como calculamos este indicador',body:`<h4>Metodologia de Cálculo</h4><p>O índice de efetividade dos controles é calculado com base nos resultados dos testes de controles internos realizados durante as auditorias. Controles classificados como "efetivos" ou "efetivos com oportunidades de melhoria" são considerados no numerador.</p><div class="modal-alert">Fórmula: (Controles Efetivos ÷ Total de Controles Testados) × 100 = 97%</div><h4>Evolução Histórica</h4><ul><li>2021: 78% → 2022: 84% → 2023: 93% → 2024: 97%</li></ul><h4>O que isso significa</h4><p>Um índice de 97% significa que, em média, apenas 3 em cada 100 controles testados apresentam deficiência que requer plano de ação. É um resultado acima da média do mercado, que gira em torno de 82–88% para empresas com programas maduros.</p>`},
+  'm-kpi2':{title:'284 Auditorias Realizadas',sub:'Portfólio acumulado LC Consultoria',body:`<h4>Distribuição por Tipo</h4><ul><li><strong>Auditorias Operacionais:</strong> 98 (34%)</li><li><strong>Auditorias de Conformidade:</strong> 74 (26%)</li><li><strong>Auditorias Financeiras:</strong> 56 (20%)</li><li><strong>Auditorias de TI/Cibersegurança:</strong> 32 (11%)</li><li><strong>Auditorias de Contratos:</strong> 24 (9%)</li></ul><h4>Distribuição por Setor</h4><ul><li>Financeiro e Seguros: 22%</li><li>Saúde e Farmacêutico: 18%</li><li>Indústria e Manufatura: 16%</li><li>Varejo e E-commerce: 15%</li><li>Construção e Infraestrutura: 12%</li><li>Tecnologia: 10%</li><li>Outros: 7%</li></ul>`},
+  'm-kpi3':{title:'93% de Planos de Ação Implementados',sub:'Taxa de follow-up e resolução',body:`<h4>O que significa este indicador</h4><p>De todos os planos de ação acordados em nossas auditorias, 93% foram efetivamente implementados dentro dos prazos acordados. É um dos indicadores mais importantes de auditoria interna — um achado que não gera mudança não gera valor.</p><div class="modal-alert">A média do mercado para implementação de planos de ação é de 65–75%. Nosso resultado de 93% reflete o nosso modelo de follow-up ativo e suporte à implementação.</div><h4>Nosso Processo de Follow-up</h4><ul><li>Acompanhamento mensal do status de cada plano de ação</li><li>Reuniões trimestrais com os responsáveis pelas áreas auditadas</li><li>Reporte semestral ao Comitê de Auditoria com status consolidado</li><li>Validação presencial da implementação antes de fechar o achado</li></ul>`},
+  'm-kpi4':{title:'ROI de 12x em Compliance',sub:'Retorno sobre investimento em governança',body:`<h4>Como calcular o ROI do Compliance</h4><p>Para cada R$ 1 investido em programas de compliance e auditoria interna, as organizações atendidas pela LC Consultoria economizaram em média R$ 12 — considerando multas evitadas, litígios prevenidos, ineficiências corrigidas e custos operacionais reduzidos.</p><h4>Componentes do ROI</h4><ul><li><strong>Multas e sanções evitadas:</strong> LGPD (até R$50M/infração), Lei Anticorrupção (até 20% do faturamento)</li><li><strong>Litígios trabalhistas prevenidos:</strong> média de R$ 28K por processo evitado</li><li><strong>Retrabalho e ineficiências corrigidas:</strong> 15–25% de redução em processos auditados</li><li><strong>Acesso a crédito e seguros:</strong> empresas com programas de compliance obtêm melhores taxas</li><li><strong>Reputação:</strong> impacto estimado em faturamento e retenção de clientes</li></ul>`},
+  'm-case1':{title:'Programa de Integridade — Grupo Industrial',sub:'Compliance · Lei Anticorrupção',body:`<h4>Contexto do Projeto</h4><p>Empresa industrial de médio porte com 800 funcionários e contratos com o setor público, identificou riscos significativos após auditoria interna revelar lacunas no programa de conformidade.</p><h4>Desafios Encontrados</h4><ul><li>Ausência de código de ética e conduta formal</li><li>Sem canal de denúncias estruturado</li><li>Due Diligence de fornecedores inexistente</li><li>Funcionários sem treinamento em conformidade</li><li>Conflitos de interesse não documentados</li></ul><h4>Solução Implantada (18 meses)</h4><ul><li>Implantação completa do Programa de Integridade (Decreto 11.129/2022)</li><li>Código de Ética e Conduta aprovado pelo Conselho</li><li>Canal de denúncias 24h com gestão independente</li><li>Política de Due Diligence de fornecedores e parceiros</li><li>Trilha de treinamento para 800 colaboradores</li><li>Dashboard de compliance para diretoria</li></ul><h4>Resultados Obtidos</h4><ul><li>Redução de 68% nos riscos de corrupção mapeados</li><li>300+ colaboradores treinados e certificados</li><li>Zero ocorrências de sanção após a implementação</li><li>Reconhecimento como fornecedor de excelência por 3 órgãos públicos</li></ul>`},
+  'm-case2':{title:'Matriz ERM — Grupo Financeiro',sub:'Gestão de Riscos · ISO 31000 · COSO',body:`<h4>Contexto</h4><p>Grupo financeiro com 5 empresas (banco, corretora, seguradora, administradora e holding) precisava unificar a visão de riscos e atender exigências do BACEN sobre gestão de riscos corporativos.</p><h4>Solução</h4><ul><li>Estruturação do ERM integrado para todo o grupo</li><li>Mapeamento de +180 riscos em 12 categorias</li><li>Definição de apetite e tolerância ao risco por empresa</li><li>Implementação de KRIs com alertas automáticos</li><li>Dashboard executivo em tempo real para o Conselho</li><li>Relatório trimestral de riscos para o BACEN</li></ul><h4>Resultados</h4><ul><li>180+ riscos mapeados e priorizados</li><li>Aprovação pelo BACEN no ciclo de supervisão</li><li>Redução de 40% em perdas operacionais no primeiro ano</li><li>Maturidade ERM elevada de nível 2 para nível 4 (escala 1–5)</li></ul>`},
+  'm-case3':{title:'Reestruturação da Auditoria Interna — Saúde',sub:'Auditoria Interna · Padrões IIA',body:`<h4>Situação Inicial</h4><p>Rede hospitalar com 4 unidades e 2.000 funcionários possuía estrutura de auditoria informal, sem metodologia baseada em riscos, plano anual ou relatórios padronizados.</p><h4>Escopo do Projeto</h4><ul><li>Reestruturação completa da função de Auditoria Interna</li><li>Elaboração da Carta de Auditoria Interna</li><li>Implementação do PAA baseado em riscos</li><li>Criação de metodologia de testes e evidências</li><li>Sistema de gestão de achados e follow-up</li><li>Dashboard para o Comitê de Auditoria</li></ul><h4>Resultados em 8 meses</h4><ul><li>24 auditorias realizadas no primeiro ano (vs. 3 anteriores)</li><li>Identificação de R$ 1,4MM em ineficiências nos processos de suprimentos</li><li>Conformidade com padrões IIA alcançada</li><li>Criação do Comitê de Auditoria com 3 membros independentes</li></ul>`},
+  'm-case4':{title:'Adequação à LGPD — Varejo Digital',sub:'LGPD · Proteção de Dados · DPO',body:`<h4>Contexto</h4><p>E-commerce com 500.000 clientes cadastrados e operações em 12 estados. Após o início das sanções da ANPD, a empresa identificou exposição significativa por ausência de governança de dados.</p><h4>Diagnóstico Inicial</h4><ul><li>Sem mapeamento de dados pessoais (Data Mapping)</li><li>Política de privacidade genérica e desatualizada</li><li>Sem DPO designado</li><li>Consentimento dos clientes não documentado adequadamente</li><li>Sem procedimento de resposta a incidentes</li></ul><h4>Implementação (6 meses)</h4><ul><li>Data Mapping completo: 38 fluxos de dados pessoais mapeados</li><li>Nova Política de Privacidade e Termos de Uso</li><li>Designação de DPO e implementação do processo de atendimento a titulares</li><li>Plataforma de gestão de consentimento</li><li>Treinamento de 120 colaboradores em proteção de dados</li></ul><h4>Resultado</h4><ul><li>Zero notificações da ANPD desde a implementação</li><li>NPS dos clientes aumentou 12 pontos após transparência nas comunicações</li></ul>`},
+  'm-case5':{title:'Auditoria Contratual — Construtora',sub:'Auditoria de Contratos · Recuperação de Recursos',body:`<h4>Objeto da Auditoria</h4><p>Auditoria especial nos contratos de fornecedores e subcontratados de obra de grande porte (R$ 240MM), após denúncia anônima no canal de conformidade da empresa.</p><h4>Escopo e Metodologia</h4><ul><li>Análise de 240 contratos ativos e encerrados (últimos 3 anos)</li><li>Entrevistas com 45 gestores e compradores</li><li>Cruzamento de dados com ERP, NF-e e registros bancários</li><li>Análise forense de e-mails e documentação contratual</li></ul><h4>Principais Achados</h4><ul><li>Sobrepreços em 18 contratos (desvio médio de 23%)</li><li>Pagamentos sem entrega comprovada em 7 contratos</li><li>3 casos de conflito de interesse não declarado</li><li>Ausência de 3 cotações em 34% dos contratos auditados</li></ul><h4>Resultado</h4><ul><li>R$ 3,2MM em recursos recuperados/ressarcidos</li><li>Rescisão de 12 contratos irregulares</li><li>Desligamento de 4 colaboradores</li><li>Novo regulamento de compras implementado</li></ul>`},
+  'm-case6':{title:'Framework de Cibersegurança',sub:'Risco Cibernético · NIST CSF · ISO 27001',body:`<h4>Contexto</h4><p>Empresa de tecnologia SaaS com dados de 200 clientes corporativos. Após um incidente de ransomware que impactou um concorrente, a empresa decidiu avaliar e fortalecer sua postura de segurança.</p><h4>Avaliação NIST CSF</h4><ul><li>Função Identificar: maturidade 2,1/5 — principais gaps em inventário de ativos e gestão de riscos</li><li>Função Proteger: maturidade 2,4/5 — lacunas em controle de acesso e treinamentos</li><li>Função Detectar: maturidade 1,8/5 — monitoramento insuficiente</li><li>Função Responder: maturidade 1,5/5 — sem plano de resposta a incidentes</li><li>Função Recuperar: maturidade 2,0/5 — backups não testados</li></ul><h4>Roadmap ISO 27001 (18 meses)</h4><ul><li>Fase 1 (0–6m): políticas, inventário de ativos, gestão de acesso</li><li>Fase 2 (6–12m): monitoramento SOC, plano de resposta a incidentes, pentests</li><li>Fase 3 (12–18m): auditoria interna e certificação ISO 27001</li></ul><h4>Resultado</h4><ul><li>Maturidade média elevada de 1,96 para 3,8 em 12 meses</li><li>Zero incidentes de segurança no período pós-implementação</li><li>Aprovação em due diligence de segurança por 3 grandes clientes</li></ul>`},
+  'm-risco-fin':{title:'Risco Financeiro',sub:'Gestão e mitigação',body:`<h4>Tipos de Risco Financeiro</h4><ul><li><strong>Risco de Mercado:</strong> variações nas taxas de juros, câmbio, preços de commodities</li><li><strong>Risco de Crédito:</strong> inadimplência de clientes, contraparte e parceiros</li><li><strong>Risco de Liquidez:</strong> incapacidade de honrar obrigações no curto prazo</li><li><strong>Risco Operacional Financeiro:</strong> fraudes, erros contábeis, falhas em processos de pagamento</li></ul><h4>Controles Recomendados</h4><ul><li>Política de gestão de capital de giro e liquidez mínima</li><li>Limites de crédito e análise de rating de clientes</li><li>Segregação de funções no ciclo financeiro (4 olhos)</li><li>Reconciliações bancárias diárias e relatórios gerenciais</li><li>Hedge cambial para exposições significativas</li><li>Seguro D&O para diretores e conselheiros</li></ul>`},
+  'm-risco-op':{title:'Risco Operacional',sub:'Falhas em processos, sistemas e pessoas',body:`<h4>Categorias de Risco Operacional (Basileia III)</h4><ul><li>Fraude interna e externa</li><li>Relações trabalhistas e segurança do trabalho</li><li>Práticas com clientes, produtos e serviços</li><li>Danos a ativos físicos (desastres, vandalismos)</li><li>Falhas em sistemas e interrupções tecnológicas</li><li>Execução, entrega e gestão de processos</li></ul><h4>Metodologia de Avaliação</h4><p>Utilizamos o método RCSA (Risk & Control Self-Assessment): os próprios gestores avaliam os riscos de seus processos, com validação independente pela equipe de riscos/auditoria. Isso promove ownership e cultura de risco na organização.</p>`},
+  'm-risco-leg':{title:'Risco Legal e Regulatório',sub:'Sanções e litígios',body:`<h4>Principais Fontes de Risco Legal</h4><ul><li>Descumprimento da LGPD (multa até R$50MM)</li><li>Violação da Lei Anticorrupção (multa até 20% do faturamento)</li><li>Passivos trabalhistas não provisionados</li><li>Infrações ambientais e licenciamentos</li><li>Descumprimento de regulamentação setorial (BACEN, CVM, ANVISA, ANS)</li><li>Litígios com consumidores (CDC)</li></ul><h4>Controles de Mitigação</h4><ul><li>Monitoramento contínuo de alterações regulatórias</li><li>Assessoria jurídica preventiva (compliance legal)</li><li>Provisionamento adequado de contingências</li><li>Gestão de contratos com cláusulas de conformidade</li></ul>`},
+  'm-risco-cib':{title:'Risco Cibernético',sub:'Nível Crítico — maior crescimento em 2024',body:`<h4>Panorama do Risco Cibernético no Brasil</h4><div class="modal-alert">O Brasil está entre os 5 países mais atacados do mundo. Em 2024, o custo médio de um incidente de segurança no Brasil foi de R$ 6,2 milhões (IBM Security Cost of a Data Breach Report).</div><h4>Principais Ameaças</h4><ul><li><strong>Ransomware:</strong> sequestro de dados com pedido de resgate</li><li><strong>Phishing:</strong> engenharia social para roubo de credenciais</li><li><strong>Vazamento de dados:</strong> exposição de dados pessoais de clientes/funcionários</li><li><strong>Ataques à cadeia de suprimentos:</strong> comprometimento via fornecedores</li><li><strong>DDoS:</strong> interrupção de serviços digitais</li></ul><h4>Frameworks de Mitigação</h4><ul><li>NIST Cybersecurity Framework (CSF)</li><li>ISO 27001/27002 — Segurança da Informação</li><li>CIS Controls v8</li><li>LGPD — responsabilidade pelo vazamento de dados</li></ul>`},
+  'm-risco-esg':{title:'Risco ESG',sub:'Ambiental, Social e Governança',body:`<h4>Por que ESG é um risco material?</h4><p>Investidores, bancos, reguladores e grandes clientes exigem crescentemente que suas contrapartes demonstrem gestão responsável de riscos ESG. Empresas sem governança ESG enfrentam restrições de crédito, perda de contratos e danos reputacionais severos.</p><h4>Dimensões do Risco ESG</h4><ul><li><strong>Ambiental (E):</strong> emissões de carbono, gestão de resíduos, uso de água, biodiversidade</li><li><strong>Social (S):</strong> direitos humanos na cadeia de fornecimento, diversidade e inclusão, saúde e segurança</li><li><strong>Governança (G):</strong> composição do conselho, remuneração executiva, anticorrupção, transparência</li></ul><h4>Serviços LC Consultoria em ESG</h4><ul><li>Diagnóstico de maturidade ESG</li><li>Relatório de Sustentabilidade (GRI ou SASB)</li><li>Due Diligence ESG em M&A</li><li>Integração ESG no programa de compliance</li></ul>`},
+  'm-aud1':{title:'Fase 1: Planejamento da Auditoria',sub:'Plano Anual de Auditoria baseado em riscos',body:`<h4>O que é o PAA (Plano Anual de Auditoria)?</h4><p>O Plano Anual de Auditoria é o documento que define quais áreas, processos e temas serão auditados no ano, com base em uma avaliação formal de riscos. É aprovado pelo Comitê de Auditoria ou Conselho.</p><h4>Metodologia de Priorização</h4><p>Utilizamos um modelo de scoring que considera:</p><ul><li>Nível de risco inerente do processo (de acordo com a matriz de riscos)</li><li>Tempo desde a última auditoria (processos não auditados há mais de 2 anos ganham prioridade)</li><li>Mudanças significativas no processo no período</li><li>Solicitações da gestão e reguladores</li><li>Resultados de auditorias anteriores e status de planos de ação</li></ul><h4>Entregáveis desta Fase</h4><ul><li>PAA aprovado pelo Comitê de Auditoria</li><li>Escopo detalhado de cada trabalho</li><li>Cronograma anual com alocação de recursos</li><li>Comunicação formal às áreas que serão auditadas</li></ul>`},
+  'm-aud2':{title:'Fase 2: Trabalho de Campo',sub:'Execução da auditoria e coleta de evidências',body:`<h4>Técnicas de Auditoria Utilizadas</h4><ul><li><strong>Testes de Design:</strong> verificam se o controle está corretamente desenhado para mitigar o risco</li><li><strong>Testes de Efetividade Operacional:</strong> verificam se o controle opera conforme desenhado na prática</li><li><strong>Testes Substantivos:</strong> verificação direta da integridade de transações e saldos</li><li><strong>Walkthrough:</strong> rastreamento end-to-end de transações representativas</li><li><strong>Análise de Dados:</strong> uso de ferramentas analíticas (IDEA, ACL, Power BI) em 100% da população</li><li><strong>Entrevistas:</strong> com gestores e executores dos processos</li></ul><h4>Padrões de Evidência</h4><p>Toda evidência coletada deve ser: <strong>Suficiente</strong> (quantidade adequada), <strong>Confiável</strong> (origem auditável), <strong>Relevante</strong> (relacionada ao objetivo) e <strong>Útil</strong> (suporta as conclusões).</p>`},
+  'm-aud3':{title:'Fase 3: Análise e Avaliação',sub:'Classificação de achados e root cause analysis',body:`<h4>Classificação dos Achados</h4><ul><li><strong>Crítico:</strong> controle inexistente ou totalmente inefetivo; exposição imediata a perdas ou sanções</li><li><strong>Alto:</strong> controle deficiente com exposição significativa; requer ação em até 30 dias</li><li><strong>Médio:</strong> controle parcialmente efetivo; requer ação em até 90 dias</li><li><strong>Baixo:</strong> oportunidade de melhoria; requer ação em até 180 dias</li><li><strong>Informativo:</strong> observação de melhores práticas, sem impacto material</li></ul><h4>Root Cause Analysis (5 Porquês)</h4><p>Para cada achado significativo, aplicamos a técnica dos "5 Porquês" para identificar a causa-raiz, garantindo que o plano de ação ataque a origem do problema e não apenas os sintomas.</p>`},
+  'm-aud4':{title:'Fase 4: Relatório de Auditoria',sub:'Estrutura e melhores práticas',body:`<h4>Estrutura do Relatório LC Consultoria</h4><ul><li><strong>Executive Summary:</strong> opinião geral sobre o controle interno da área, resumo dos achados e recomendações</li><li><strong>Contexto:</strong> objetivo, escopo, período e metodologia da auditoria</li><li><strong>Resultados Detalhados:</strong> cada achado com descrição, evidência, risco, recomendação e plano de ação acordado</li><li><strong>Mapa de Calor:</strong> visualização gráfica dos achados por criticidade e área</li><li><strong>Anexos:</strong> amostras testadas, documentação de suporte, matrizes</li></ul><h4>Processo de Validação</h4><p>Antes da emissão final, o relatório passa por processo de quality review interno e é submetido à gestão da área auditada para validação dos fatos e acordos nos planos de ação — garantindo que as recomendações são implementáveis e os prazos são realistas.</p>`},
+  'm-aud5':{title:'Fase 5: Monitoramento (Follow-up)',sub:'Acompanhamento até a implementação',body:`<h4>Processo de Follow-up LC Consultoria</h4><p>Diferentemente da maioria das firmas de auditoria, acompanhamos ativamente a implementação dos planos de ação até o seu fechamento.</p><ul><li>Status report mensal de todos os planos de ação abertos</li><li>Reuniões trimestrais de follow-up com os responsáveis</li><li>Validação presencial da implementação antes de classificar como "resolvido"</li><li>Reporte semestral ao Comitê de Auditoria com taxa de implementação por área</li><li>Achados não resolvidos no prazo são escalados ao Comitê</li></ul><h4>Indicadores de Follow-up</h4><ul><li>Taxa de implementação no prazo: meta > 80%</li><li>Prazo médio de resolução por criticidade</li><li>Achados reabertos (controle voltou a falhar após correção)</li></ul>`},
+  'm-coso':{title:'COSO ERM 2017',sub:'Enterprise Risk Management — Integrating with Strategy and Performance',body:`<h4>O que é o COSO ERM?</h4><p>O COSO (Committee of Sponsoring Organizations of the Treadway Commission) publicou em 2017 a atualização do seu framework de Enterprise Risk Management, incorporando a gestão de riscos à estratégia e à performance da organização.</p><h4>5 Componentes do COSO ERM</h4><ul><li><strong>1. Governança e Cultura:</strong> define os valores, filosofia e práticas que guiam como riscos são gerenciados</li><li><strong>2. Estratégia e Definição de Objetivos:</strong> alinhamento do apetite ao risco com a estratégia</li><li><strong>3. Desempenho:</strong> identificação, avaliação, priorização e resposta a riscos</li><li><strong>4. Revisão e Monitoramento:</strong> avaliação da eficácia do ERM e comunicação de resultados</li><li><strong>5. Informação, Comunicação e Reporte:</strong> uso de informação relevante para apoio ao ERM</li></ul><h4>Diferença entre COSO I e COSO ERM</h4><ul><li><strong>COSO I (2013):</strong> focado em controles internos para relatórios financeiros — base do SOX</li><li><strong>COSO ERM (2017):</strong> foco em riscos estratégicos e operacionais integrados à estratégia corporativa</li></ul>`},
+  'm-iia':{title:'Padrões IIA — Auditoria Interna',sub:'Institute of Internal Auditors — Global Standards 2024',body:`<h4>Sobre o IIA</h4><p>O Institute of Internal Auditors (IIA) é a organização profissional global da auditoria interna, com mais de 220.000 membros em 170 países. Em 2024, o IIA publicou uma atualização significativa dos seus Padrões Globais para a Prática Profissional de Auditoria Interna.</p><h4>Estrutura dos Padrões IIA 2024</h4><ul><li><strong>Princípios Fundamentais:</strong> demonstração de valor para a organização</li><li><strong>Padrões de Atributo (1000–1300):</strong> propósito, autoridade, independência, objetividade e competência</li><li><strong>Padrões de Desempenho (2000–2600):</strong> gestão, planejamento, execução, comunicação e monitoramento</li><li><strong>Considerações de Implementação:</strong> orientações específicas por contexto</li></ul><h4>Certificações IIA</h4><ul><li><strong>CIA (Certified Internal Auditor):</strong> principal certificação global em auditoria interna</li><li><strong>CISA (Certified Information Systems Auditor — ISACA):</strong> auditoria de TI</li><li><strong>CFE (Certified Fraud Examiner — ACFE):</strong> prevenção e detecção de fraudes</li><li><strong>CRMA (Certification in Risk Management Assurance):</strong> gestão de riscos</li></ul><p>Nossa equipe possui 6 profissionais com certificações IIA/ISACA/ACFE ativas.</p>`}
+};
+
+function openModal(id){
+  const m=modals[id];
+  if(!m)return;
+  document.getElementById('modal-title').textContent=m.title;
+  document.getElementById('modal-sub').textContent=m.sub;
+  document.getElementById('modal-body').innerHTML=m.body;
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal(e){if(e.target===document.getElementById('modal-overlay'))closeAllModals();}
+function closeAllModals(){
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+// ══════════════════════════════════════════
+// EXPAND CARDS
+// ══════════════════════════════════════════
+function toggleExpand(id){
+  const card=document.getElementById(id);
+  const isOpen=card.classList.contains('open');
+  document.querySelectorAll('.expand-card.open').forEach(c=>c.classList.remove('open'));
+  if(!isOpen) card.classList.add('open');
+}
+
+// ══════════════════════════════════════════
+// CHARTS
+// ══════════════════════════════════════════
+let chartsInit=false;
+function initCharts(){
+  if(chartsInit)return;
+  chartsInit=true;
+  const G={gold:'rgba(201,151,58,1)',gold2:'rgba(232,190,110,1)',blue:'rgba(59,130,246,0.8)',green:'rgba(34,197,94,0.8)',red:'rgba(239,68,68,0.8)',amber:'rgba(245,158,11,0.8)',purple:'rgba(139,92,246,0.8)'};
+  const tickFont={family:'JetBrains Mono',size:9};
+  const tickColor='#4a5568';
+
+  new Chart(document.getElementById('cEvol'),{type:'line',data:{labels:['2019','2020','2021','2022','2023','2024'],datasets:[{label:'Compliance',data:[42,55,63,72,84,93],borderColor:G.gold,backgroundColor:'rgba(201,151,58,0.07)',fill:true,tension:.4,pointRadius:4,pointBackgroundColor:G.gold},{label:'Riscos',data:[38,48,57,68,78,90],borderColor:G.blue,backgroundColor:'rgba(59,130,246,0.04)',fill:true,tension:.4,pointRadius:4,pointBackgroundColor:G.blue},{label:'Auditoria',data:[35,50,60,70,82,94],borderColor:G.green,backgroundColor:'rgba(34,197,94,0.04)',fill:true,tension:.4,pointRadius:4,pointBackgroundColor:G.green}]},options:{responsive:true,plugins:{legend:{position:'top',labels:{font:tickFont,color:tickColor}}},scales:{y:{min:0,max:100,ticks:{font:tickFont,color:tickColor,callback:v=>v+'%'},grid:{color:'rgba(0,0,0,0.04)'}},x:{ticks:{font:tickFont,color:tickColor},grid:{display:false}}}}});
+
+  new Chart(document.getElementById('cDist'),{type:'doughnut',data:{labels:['Operacional','Financeiro','Legal','Cibernético','ESG','Reputacional'],datasets:[{data:[28,22,18,15,10,7],backgroundColor:[G.gold,G.blue,G.red,G.purple,G.green,G.amber],borderWidth:0,hoverOffset:6}]},options:{responsive:true,cutout:'65%',plugins:{legend:{position:'bottom',labels:{font:{family:'JetBrains Mono',size:8},color:tickColor,padding:6}}}}});
+
+  new Chart(document.getElementById('cAchados'),{type:'bar',data:{labels:['Q1','Q2','Q3','Q4'],datasets:[{label:'Crítico',data:[3,2,4,2],backgroundColor:G.red},{label:'Alto',data:[8,6,9,5],backgroundColor:G.amber},{label:'Médio',data:[14,12,16,11],backgroundColor:G.gold},{label:'Baixo',data:[20,18,22,15],backgroundColor:'rgba(34,197,94,0.55)'}]},options:{responsive:true,scales:{x:{stacked:true,ticks:{font:tickFont,color:tickColor},grid:{display:false}},y:{stacked:true,ticks:{font:tickFont,color:tickColor},grid:{color:'rgba(0,0,0,0.04)'}}},plugins:{legend:{position:'bottom',labels:{font:{family:'JetBrains Mono',size:8},color:tickColor,padding:6}}}}});
+
+  new Chart(document.getElementById('cRadar'),{type:'radar',data:{labels:['Trabalhista','Tributário','LGPD','Anticorrupção','PLD/FT','Ambiental'],datasets:[{label:'Atual',data:[88,75,70,92,65,80],borderColor:G.gold,backgroundColor:'rgba(201,151,58,0.1)',pointBackgroundColor:G.gold},{label:'Meta',data:[95,90,90,95,85,90],borderColor:'rgba(34,197,94,.6)',backgroundColor:'rgba(34,197,94,.05)',borderDash:[5,3],pointBackgroundColor:'rgba(34,197,94,.8)'}]},options:{responsive:true,scales:{r:{min:0,max:100,ticks:{font:{size:7},color:'#aaa',stepSize:25},grid:{color:'rgba(0,0,0,0.06)'},pointLabels:{font:{family:'JetBrains Mono',size:8},color:tickColor}}},plugins:{legend:{position:'bottom',labels:{font:{family:'JetBrains Mono',size:8},color:tickColor}}}}});
+
+  new Chart(document.getElementById('cMitig'),{type:'bar',data:{labels:['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],datasets:[{label:'Implementados',data:[12,18,15,22,19,25,21,28,24,30,26,32],backgroundColor:G.gold,borderRadius:2},{label:'Pendentes',data:[5,4,6,3,5,2,4,3,4,2,3,2],backgroundColor:'rgba(239,68,68,0.45)',borderRadius:2}]},options:{responsive:true,scales:{x:{ticks:{font:{family:'JetBrains Mono',size:7},color:tickColor},grid:{display:false}},y:{ticks:{font:tickFont,color:tickColor},grid:{color:'rgba(0,0,0,0.04)'}}},plugins:{legend:{position:'bottom',labels:{font:{family:'JetBrains Mono',size:8},color:tickColor,padding:6}}}}});
+
+  document.querySelectorAll('.kpi-fill[data-w]').forEach(el=>{el.style.width=el.dataset.w+'%'});
+}
+
+// ══════════════════════════════════════════
+// BLOG DATA & RENDER
+// ══════════════════════════════════════════
+const articles=[
+  {id:'a1',cat:'compliance',catLabel:'Compliance',title:'Os 12 Elementos do Programa de Integridade segundo o Decreto 11.129/2022',date:'15 Fev 2025',read:'8 min',emoji:'⚖️',bg:'linear-gradient(135deg,#0b1f3a,#1a3a6c)',summary:'O Decreto 11.129/2022 regulamentou detalhadamente o Programa de Integridade exigido pela Lei Anticorrupção. Entenda cada componente obrigatório e como estruturar um programa robusto e eficaz.',content:`<h2>O que mudou com o Decreto 11.129/2022?</h2><p>Publicado em julho de 2022, o Decreto 11.129 substituiu o antigo Decreto 8.420/2015 e trouxe novidades importantes para as empresas que contratam com o poder público ou que desejam demonstrar comprometimento genuíno com a integridade.</p><p>A principal mudança foi a ampliação e detalhamento dos elementos do Programa de Integridade, passando de 5 para 12 componentes avaliados pela Controladoria-Geral da União (CGU).</p><div class="article-highlight">"A existência de um Programa de Integridade robusto não apenas reduz sanções em caso de infração, mas, acima de tudo, previne a ocorrência dos ilícitos."</div><h2>Os 12 Componentes do Programa</h2><ul><li><strong>1. Comprometimento da Alta Direção:</strong> o "tone at the top" é o elemento mais avaliado. Sem comprometimento genuíno da diretoria e do conselho, o programa é apenas fachada.</li><li><strong>2. Padrões de Conduta:</strong> código de ética e conduta aprovado, comunicado e de fácil acesso a todos os colaboradores.</li><li><strong>3. Treinamentos Periódicos:</strong> capacitação continuada, com conteúdo adaptado ao cargo e ao nível de risco de cada função.</li><li><strong>4. Análise Periódica de Riscos:</strong> mapeamento formal dos riscos de corrupção e atualização a cada mudança relevante no negócio.</li><li><strong>5. Registros Contábeis:</strong> controles que garantam contabilidade precisa, sem "caixas pretas" ou registros fictícios.</li><li><strong>6. Controles Internos:</strong> procedimentos que assegurem demonstrações financeiras confiáveis e prevenção de fraudes.</li><li><strong>7. Procedimentos para Terceiros:</strong> Due Diligence de fornecedores, parceiros e agentes que representem a empresa.</li><li><strong>8. Canal de Denúncias:</strong> canal acessível, seguro e com proteção ao denunciante de boa-fé.</li><li><strong>9. Medidas Disciplinares:</strong> procedimento claro e célere para apuração e punição de violações.</li><li><strong>10. Procedimentos de Due Diligence em M&A:</strong> verificação de integridade em fusões e aquisições.</li><li><strong>11. Monitoramento Contínuo:</strong> KPIs, relatórios periódicos e auditoria interna sobre o programa.</li><li><strong>12. Abertura e Transparência com Investigações:</strong> postura cooperativa com autoridades em investigações.</li></ul><h2>Como a LC Consultoria pode ajudar</h2><p>Nossa equipe tem experiência em implantar programas de integridade completos e certificáveis, com foco em substância — não apenas documentação.</p>`},
+  {id:'a2',cat:'riscos',catLabel:'Gestão de Riscos',title:'Matriz de Riscos 5×5: como construir e usar na prática',date:'28 Jan 2025',read:'7 min',emoji:'🎯',bg:'linear-gradient(135deg,#1a3a6c,#0b1f3a)',summary:'A Matriz de Riscos 5×5 é a ferramenta mais utilizada em gestão de riscos. Saiba como construí-la corretamente, evitar armadilhas comuns e extrair o máximo valor desta metodologia.',content:`<h2>O que é a Matriz de Riscos 5×5?</h2><p>A Matriz de Riscos (ou Heat Map) é uma ferramenta visual que combina dois eixos: <strong>Probabilidade</strong> (chance de ocorrência) e <strong>Impacto</strong> (magnitude das consequências). O resultado (1 a 25) define a prioridade de tratamento.</p><div class="article-highlight">Uma matriz bem construída é o ponto de partida de todo programa de ERM. Mal construída, gera uma falsa sensação de controle e pode levar a decisões erradas.</div><h2>5 Escalas de Probabilidade</h2><ul><li><strong>1 - Raro:</strong> ocorre apenas em circunstâncias excepcionais (menos de 1 vez em 10 anos)</li><li><strong>2 - Improvável:</strong> pode ocorrer alguma vez (1 vez entre 5 e 10 anos)</li><li><strong>3 - Possível:</strong> poderia ocorrer em algum momento (1 vez entre 1 e 5 anos)</li><li><strong>4 - Provável:</strong> provavelmente ocorrerá em algum momento (1 vez por ano)</li><li><strong>5 - Quase Certo:</strong> espera-se que ocorra na maioria das circunstâncias (mais de 1 vez por ano)</li></ul><h2>5 Escalas de Impacto</h2><ul><li><strong>1 - Insignificante:</strong> impacto financeiro < 0,1% da receita; nenhum impacto reputacional perceptível</li><li><strong>2 - Menor:</strong> 0,1–0,5% da receita; reclamação isolada sem repercussão</li><li><strong>3 - Moderado:</strong> 0,5–2% da receita; notícia local negativa</li><li><strong>4 - Significativo:</strong> 2–10% da receita; notícia nacional negativa; investigação regulatória</li><li><strong>5 - Catastrófico:</strong> > 10% da receita; ameaça à continuidade do negócio; crise reputacional severa</li></ul><h2>Armadilhas Comuns</h2><ul><li>Construir a matriz sem envolver os gestores das áreas — perde-se perspectiva e ownership</li><li>Usar escalas genéricas sem calibrá-las para o porte e setor da empresa</li><li>Não revisar a matriz periodicamente (mínimo anual ou após eventos relevantes)</li><li>Focar apenas nos riscos do quadrante vermelho e ignorar os amarelos, que somados podem ser tão impactantes quanto os críticos</li></ul>`},
+  {id:'a3',cat:'auditoria',catLabel:'Auditoria Interna',title:'Plano Anual de Auditoria baseado em Riscos (PAA): guia completo',date:'10 Jan 2025',read:'10 min',emoji:'🔍',bg:'linear-gradient(135deg,#0d2e52,#0b1f3a)',summary:'O PAA baseado em riscos é o documento central da função de auditoria interna. Aprenda a construí-lo de forma que maximize o valor da auditoria e satisfaça as exigências do Comitê de Auditoria.',content:`<h2>Por que o PAA deve ser baseado em riscos?</h2><p>Segundo os Padrões IIA (Norma 2010), "a atividade de auditoria interna deve desenvolver um plano baseado em riscos para determinar as prioridades da atividade de auditoria interna". Isso significa que o tempo limitado dos auditores deve ser alocado onde os riscos são maiores.</p><div class="article-highlight">Um PAA que não reflete os riscos reais da organização é apenas uma lista de trabalhos — não um instrumento de governança.</div><h2>Processo de Construção do PAA</h2><ul><li><strong>Etapa 1 — Universe de Auditoria:</strong> liste todos os processos, entidades, sistemas e temas que poderiam ser auditados. Um universe típico tem 80–200 itens.</li><li><strong>Etapa 2 — Scoring de Riscos:</strong> avalie cada item do universe com base em critérios como: risco inerente, controles existentes, tempo desde a última auditoria, complexidade, impacto regulatório.</li><li><strong>Etapa 3 — Priorização:</strong> ordene os itens pelo score total e selecione os que caberão no ano considerando a capacidade da equipe.</li><li><strong>Etapa 4 — Validação:</strong> apresente o PAA proposto ao Comitê de Auditoria, à Diretoria e ao Conselho para validação e eventuais ajustes.</li><li><strong>Etapa 5 — Aprovação Formal:</strong> o PAA é aprovado pelo Comitê de Auditoria e comunicado à organização.</li></ul><h2>Flexibilidade do PAA</h2><p>O PAA não é um documento rígido. É recomendável manter 15–20% da capacidade de auditoria como "reserva" para trabalhos emergenciais solicitados pela gestão, reguladores ou decorrentes de incidentes relevantes.</p>`},
+  {id:'a4',cat:'lgpd',catLabel:'LGPD',title:'Data Mapping: como fazer o inventário de dados pessoais da sua empresa',date:'22 Dez 2024',read:'9 min',emoji:'🔒',bg:'linear-gradient(135deg,#1e3a5f,#0b1f3a)',summary:'O mapeamento de dados (Data Mapping) é o ponto de partida de qualquer programa de adequação à LGPD. Entenda a metodologia, as ferramentas e os erros mais comuns neste processo.',content:`<h2>O que é o Data Mapping?</h2><p>O Data Mapping (ou Inventário de Dados Pessoais) é o processo de identificar e documentar todos os dados pessoais que a organização coleta, utiliza, armazena, compartilha e descarta — mapeando o fluxo completo do dado desde sua coleta até sua eliminação.</p><p>A LGPD não exige formalmente um Data Mapping, mas ele é a base de praticamente todos os outros requisitos da lei: sem saber quais dados você tem, não é possível definir bases legais, atender direitos dos titulares, notificar incidentes ou implementar controles adequados.</p><div class="article-highlight">O artigo 37 da LGPD determina que controladores e operadores devem manter registro das operações de tratamento. O Data Mapping é a forma mais eficaz de cumprir este requisito.</div><h2>Metodologia em 5 Passos</h2><ul><li><strong>1. Definir Escopo:</strong> identifique quais áreas e sistemas serão mapeados na primeira fase (comece pelas áreas com maior volume de dados: RH, Comercial, Marketing, TI).</li><li><strong>2. Coletar Informações:</strong> entreviste os gestores de cada área e analise os sistemas, formulários, contratos e processos. Use um questionário padronizado.</li><li><strong>3. Documentar os Fluxos:</strong> registre cada operação de tratamento em uma tabela com: tipo de dado, titular, finalidade, base legal, origem, destinatários, prazo de retenção, medidas de segurança.</li><li><strong>4. Analisar Riscos:</strong> identifique as operações de maior risco (dados sensíveis, grande volume, transferência internacional) que demandam Relatório de Impacto à Proteção de Dados (RIPD/DPIA).</li><li><strong>5. Manter Atualizado:</strong> o mapa deve ser revisado ao menos anualmente e sempre que novos sistemas ou processos forem implementados.</li></ul><h2>Ferramentas Disponíveis</h2><p>O mercado oferece ferramentas especializadas (OneTrust, TrustArc, Ativo) que automatizam parte do processo. Para empresas menores, uma planilha Excel bem estruturada é suficiente na fase inicial.</p>`},
+  {id:'a5',cat:'compliance',catLabel:'Compliance',title:'Canal de Denúncias: 7 erros que comprometem sua eficácia',date:'05 Dez 2024',read:'6 min',emoji:'📞',bg:'linear-gradient(135deg,#0b2a4a,#0b1f3a)',summary:'O canal de denúncias é um dos pilares do Programa de Integridade, mas muitas empresas cometem erros que tornam o canal ineficaz. Conheça os 7 erros mais comuns e como evitá-los.',content:`<h2>A importância do Canal de Denúncias</h2><p>Segundo pesquisas da ACFE (Association of Certified Fraud Examiners), mais de 40% dos casos de fraude corporativa são detectados por denúncias. Um canal eficaz é, portanto, uma das ferramentas mais poderosas de detecção e dissuasão de irregularidades.</p><div class="article-highlight">A ACFE estima que organizações com canais de denúncias ativos sofrem perdas por fraude 50% menores do que aquelas sem o canal.</div><h2>Os 7 Erros Mais Comuns</h2><ul><li><strong>Erro 1 — Falta de divulgação:</strong> o canal existe mas os colaboradores não sabem. Sem comunicação contínua, a taxa de uso cai próxima a zero.</li><li><strong>Erro 2 — Ausência de anonimato real:</strong> o canal "permite" anonimato, mas na prática o número de pessoas que conhecem determinada situação é tão pequeno que o denunciante seria facilmente identificado.</li><li><strong>Erro 3 — Gestão interna sem independência:</strong> o canal é gerido pelo próprio RH ou área jurídica. Há conflito de interesse se a denúncia envolver gestores seniores.</li><li><strong>Erro 4 — Sem feedback ao denunciante:</strong> o denunciante não recebe nenhuma confirmação de que a denúncia foi recebida e investigada. Isso desestimula futuros reportes.</li><li><strong>Erro 5 — Ausência de política de não-retaliação:</strong> sem proteção formal e exemplos concretos de que não há retaliação, os colaboradores não utilizam o canal.</li><li><strong>Erro 6 — Investigações demoradas ou superficiais:</strong> denúncias levam meses para serem investigadas ou as conclusões são sempre "improcedentes". Isso cria percepção de que o canal não funciona.</li><li><strong>Erro 7 — Falta de dados e métricas:</strong> a empresa não acompanha o volume de denúncias, os tipos de violação reportada, o prazo de resolução — dados essenciais para o monitoramento do programa.</li></ul>`},
+  {id:'a6',cat:'riscos',catLabel:'Gestão de Riscos',title:'ERM vs. Gestão de Riscos Tradicional: qual a diferença real?',date:'18 Nov 2024',read:'7 min',emoji:'🏢',bg:'linear-gradient(135deg,#12355b,#0b1f3a)',summary:'O Enterprise Risk Management (ERM) vai muito além de matrizes e controles. Entenda como uma abordagem integrada de riscos transforma a tomada de decisão estratégica.',content:`<h2>Gestão de Riscos Tradicional</h2><p>Na abordagem tradicional (ou "silo approach"), cada área gerencia seus próprios riscos de forma independente: o financeiro cuida do risco de câmbio, o jurídico monitora litígios, a TI acompanha vulnerabilidades de segurança. O problema? Os riscos não se comunicam, e a alta gestão não tem visão consolidada da exposição total da organização.</p><h2>O que é ERM?</h2><p>O Enterprise Risk Management (ERM) é uma abordagem integrada e abrangente que conecta a gestão de riscos à estratégia e aos objetivos de negócio. Mais do que um framework, é uma mudança de cultura — riscos deixam de ser problemas a esconder e passam a ser informações que orientam decisões.</p><div class="article-highlight">No ERM, a pergunta não é "como evitar esse risco?", mas "que nível de risco estamos dispostos a aceitar para atingir nossos objetivos estratégicos?"</div><h2>Diferenças Práticas</h2><ul><li><strong>Tradicional:</strong> riscos por silos × <strong>ERM:</strong> visão consolidada e integrada</li><li><strong>Tradicional:</strong> foco em evitar riscos × <strong>ERM:</strong> gestão do apetite ao risco</li><li><strong>Tradicional:</strong> reativo × <strong>ERM:</strong> proativo e preditivo</li><li><strong>Tradicional:</strong> responsabilidade da área de riscos × <strong>ERM:</strong> toda a organização é gestora de riscos</li><li><strong>Tradicional:</strong> relatórios estáticos × <strong>ERM:</strong> dashboards dinâmicos e KRIs em tempo real</li></ul><h2>As 3 Linhas de Defesa</h2><ul><li><strong>1ª Linha:</strong> gestores operacionais — são os donos dos riscos e dos controles</li><li><strong>2ª Linha:</strong> compliance, riscos, jurídico — monitoram e supervisionam a 1ª linha</li><li><strong>3ª Linha:</strong> auditoria interna — avalia independentemente a eficácia das 1ª e 2ª linhas</li></ul>`},
+  {id:'a7',cat:'auditoria',catLabel:'Auditoria Interna',title:'Análise de Dados em Auditoria: como usar Power BI e IDEA',date:'30 Out 2024',read:'8 min',emoji:'📊',bg:'linear-gradient(135deg,#0a2540,#0b1f3a)',summary:'A análise de dados revolucionou a auditoria interna, permitindo testar 100% das transações em vez de amostras. Conheça as ferramentas e técnicas mais utilizadas pelos auditores modernos.',content:`<h2>A revolução da análise de dados em auditoria</h2><p>Até recentemente, auditores selecionavam amostras de 30 a 100 itens para testar um processo com milhares de transações. Com ferramentas de análise de dados, é possível testar 100% da população — identificando anomalias que uma amostra jamais capturaria.</p><div class="article-highlight">O IIA classifica o uso de análise de dados como competência essencial para o auditor interno moderno. Auditores que não dominam estas ferramentas estão deixando valor na mesa.</div><h2>IDEA (CaseWare Analytics)</h2><p>O IDEA é o software mais utilizado por auditores internos em todo o mundo. Permite importar dados de praticamente qualquer sistema e realizar análises como:</p><ul><li>Detecção de duplicatas em pagamentos</li><li>Teste da Lei de Benford para detecção de manipulação de dados</li><li>Stratificação e aging de contas a receber</li><li>Testes de sequência e gaps em documentos numerados</li><li>Análise de transações fora do horário comercial ou em fins de semana</li></ul><h2>Power BI para Auditoria Contínua</h2><p>O Power BI da Microsoft permite criar dashboards de monitoramento contínuo conectados diretamente aos sistemas da empresa. O auditor interno pode monitorar indicadores de alerta (KRIs) em tempo real, sem esperar o trabalho de campo.</p><ul><li>Dashboard de exceções de aprovação de pagamentos</li><li>Monitoramento de transações com fornecedores relacionados</li><li>Análise de variações de custo por centro de custo</li><li>Alertas automáticos para transações acima de limites predefinidos</li></ul>`},
+  {id:'a8',cat:'lgpd',catLabel:'LGPD',title:'DPO (Data Protection Officer): quem precisa e como designar',date:'14 Out 2024',read:'6 min',emoji:'🛡️',bg:'linear-gradient(135deg,#1a3550,#0b1f3a)',summary:'A LGPD exige a designação de um Encarregado de Dados (DPO). Entenda quem precisa nomear, quais são as responsabilidades e como estruturar esta função na sua organização.',content:`<h2>O que é o DPO?</h2><p>O Encarregado de Dados (Data Protection Officer — DPO) é a pessoa indicada pelo controlador e pelo operador para atuar como canal de comunicação entre a empresa, os titulares de dados e a Autoridade Nacional de Proteção de Dados (ANPD).</p><p>O art. 41 da LGPD determina que o controlador deverá indicar um encarregado pelo tratamento de dados pessoais, mas a ANPD pode dispensar essa obrigação para controladores de menor porte.</p><div class="article-highlight">Mesmo empresas não obrigadas formalmente a ter um DPO beneficiam-se enormemente de designar alguém para esta função — é um sinal de maturidade em proteção de dados.</div><h2>Responsabilidades do DPO (Art. 41, §2º)</h2><ul><li>Aceitar reclamações e comunicações dos titulares e prestar esclarecimentos</li><li>Receber comunicações da ANPD e adotar providências</li><li>Orientar os funcionários e os contratados da entidade a respeito das práticas a serem tomadas em relação à proteção de dados pessoais</li><li>Executar as demais atribuições determinadas pelo controlador ou estabelecidas em normas complementares</li></ul><h2>DPO Interno vs. DPO Externo</h2><ul><li><strong>DPO Interno:</strong> colaborador da empresa, geralmente do jurídico, compliance ou TI. Vantagem: conhece a fundo os processos. Desvantagem: pode ter conflito de interesse.</li><li><strong>DPO Externo (as a Service):</strong> consultoria especializada que presta o serviço de DPO. Vantagem: independência, expertise e custo menor. Desvantagem: menor imersão no negócio.</li></ul><p>A LC Consultoria oferece o serviço de DPO Externo (DPO as a Service) para empresas de todos os portes.</p>`},
+  {id:'a9',cat:'compliance',catLabel:'Compliance',title:'Treinamentos de Compliance: como garantir engajamento real',date:'02 Out 2024',read:'5 min',emoji:'🎓',bg:'linear-gradient(135deg,#0f2d4e,#0b1f3a)',summary:'Treinamentos de compliance genéricos e obrigatórios têm baixíssima eficácia. Aprenda como estruturar uma trilha de aprendizagem que engaja os colaboradores e muda comportamentos.',content:`<h2>Por que os treinamentos de compliance falham?</h2><p>A maioria dos programas de treinamento de compliance sofre do mesmo problema: são desenvolvidos para "cumprir tabela" — o colaborador acessa o e-learning, clica "próximo" sem ler e obtém o certificado. Nenhuma aprendizagem real acontece.</p><div class="article-highlight">Pesquisa da Navex Global mostra que programas com vídeos curtos e relevantes ao contexto do colaborador têm taxa de completude 40% maior e retenção de conteúdo 60% superior a cursos longos e genéricos.</div><h2>Princípios de um Treinamento Eficaz</h2><ul><li><strong>Relevância contextual:</strong> o conteúdo deve refletir a realidade do trabalho do colaborador. Um vendedor precisa de exemplos de compliance em vendas — não em processos de RH.</li><li><strong>Formato adequado:</strong> vídeos curtos (3–5 min), podcasts, infográficos e quizzes são mais eficazes do que cursos de 2 horas.</li><li><strong>Casos reais e dilemas éticos:</strong> nada engaja mais do que situações que o colaborador poderia realmente enfrentar.</li><li><strong>Frequência:</strong> treinamento anual não é suficiente. Mensagens mensais curtas ("compliance pills") são mais eficazes.</li><li><strong>Liderança dando o exemplo:</strong> quando a diretoria participa visivelmente dos treinamentos, o engajamento aumenta drasticamente.</li></ul><h2>Métricas de Eficácia</h2><ul><li>Taxa de completude por área e nível hierárquico</li><li>Score médio nas avaliações de aprendizagem</li><li>Taxa de retenção (avaliação 30 dias após o treinamento)</li><li>Correlação com número de denúncias e incidentes éticos</li></ul>`},
+  {id:'a10',cat:'riscos',catLabel:'Gestão de Riscos',title:'Riscos Cibernéticos: o que o NIST CSF pode fazer pela sua empresa',date:'18 Set 2024',read:'9 min',emoji:'🌐',bg:'linear-gradient(135deg,#102040,#0b1f3a)',summary:'O NIST Cybersecurity Framework (CSF) se tornou o padrão de referência global para gestão de riscos cibernéticos. Entenda suas 5 funções e como aplicá-las na sua organização.',content:`<h2>Por que o NIST CSF?</h2><p>Publicado pelo National Institute of Standards and Technology (NIST) dos EUA, o Cybersecurity Framework (CSF) foi criado em 2014 e atualizado para a versão 2.0 em 2024. Diferentemente da ISO 27001, o NIST CSF não é certificável — é um framework de referência flexível, adaptável a qualquer organização.</p><div class="article-highlight">O NIST CSF v2.0 acrescentou uma 6ª função: Governança (Govern), reconhecendo que a cibersegurança é, acima de tudo, uma questão de governança corporativa.</div><h2>As 6 Funções do NIST CSF 2.0</h2><ul><li><strong>Govern (GV) — nova em 2024:</strong> estratégia, políticas, papéis e responsabilidades de cibersegurança no nível de governança</li><li><strong>Identify (ID):</strong> entenda o ambiente de negócios, ativos, dados e riscos cibernéticos</li><li><strong>Protect (PR):</strong> implemente salvaguardas para limitar o impacto de incidentes</li><li><strong>Detect (DE):</strong> identifique eventos de cibersegurança em tempo hábil</li><li><strong>Respond (RS):</strong> aja apropriadamente quando um incidente é detectado</li><li><strong>Recover (RC):</strong> restabeleça capacidades afetadas e aprenda com o incidente</li></ul><h2>Avaliação de Maturidade</h2><p>O NIST CSF utiliza 4 Tiers (níveis) de implementação: Parcial (1) → Informado por Riscos (2) → Repetível (3) → Adaptativo (4). A maioria das PMEs brasileiras está entre os Tiers 1 e 2, com lacunas principalmente nas funções Detect e Respond.</p>`},
+  {id:'a11',cat:'auditoria',catLabel:'Auditoria Interna',title:'Independência e Objetividade: os pilares da auditoria interna eficaz',date:'05 Set 2024',read:'6 min',emoji:'⚡',bg:'linear-gradient(135deg,#0b1f3a,#152d50)',summary:'Sem independência e objetividade, a auditoria interna perde sua razão de ser. Entenda como estruturar a função para garantir estes atributos fundamentais, mesmo em empresas menores.',content:`<h2>Por que independência e objetividade importam?</h2><p>A Norma 1100 dos Padrões IIA estabelece que "a atividade de auditoria interna deve ser independente, e os auditores internos devem ser objetivos no desempenho de seu trabalho." Sem esses atributos, a auditoria interna se torna uma função de controle gerencial, não de governança.</p><div class="article-highlight">Em pesquisa da KPMG com comitês de auditoria, 68% dos conselheiros citaram a independência como o principal fator que determina o valor da auditoria interna para o conselho.</div><h2>Independência Organizacional</h2><p>O auditor-chefe deve se reportar funcionalmente ao Comitê de Auditoria ou ao Conselho — não ao CEO ou CFO. O reporte administrativo (folha de pagamento, recursos) pode ser ao CEO, mas o reporte das constatações e o acesso direto ao Conselho são essenciais.</p><h2>Ameaças à Objetividade</h2><ul><li><strong>Auto-revisão:</strong> auditar processos que o próprio auditor ajudou a implementar</li><li><strong>Familiaridade:</strong> auditores que trabalham há muitos anos com as mesmas áreas criam vínculos que comprometem a objetividade</li><li><strong>Intimidação:</strong> pressão de gestores seniores para suavizar achados ou planos de ação</li><li><strong>Conflito de interesse pessoal:</strong> relações familiares ou financeiras com auditados</li></ul><h2>Salvaguardas Práticas</h2><ul><li>Rotação de auditores entre as áreas (a cada 2–3 anos)</li><li>Proibição de auditores revisarem processos que ajudaram a desenhar</li><li>Acesso direto ao Comitê de Auditoria sem intermediários</li><li>Processo de avaliação do Comitê sobre a independência da função anualmente</li></ul>`},
+  {id:'a12',cat:'compliance',catLabel:'Compliance',title:'ESG e Compliance: como integrar responsabilidade corporativa ao programa',date:'20 Ago 2024',read:'8 min',emoji:'🌿',bg:'linear-gradient(135deg,#0a2a1e,#0b1f3a)',summary:'ESG deixou de ser tendência para se tornar requisito regulatório e de mercado. Entenda como integrar Ambiental, Social e Governança ao seu programa de compliance de forma estruturada.',content:`<h2>ESG como driver de compliance</h2><p>Durante anos, compliance e ESG caminharam em paralelo — um focado em regulações e o outro em sustentabilidade. Hoje, com o avanço das regulamentações ESG no Brasil e no mundo, as duas agendas convergiram definitivamente.</p><div class="article-highlight">A Resolução CVM 193/2023 obriga empresas de capital aberto a reportar riscos e oportunidades climáticas seguindo o padrão TCFD. Para mercado de crédito, o BACEN também avança com a Resolução CMN 4.945/2021 sobre riscos ESG em instituições financeiras.</div><h2>Os Três Pilares ESG e o Compliance</h2><ul><li><strong>E — Ambiental:</strong> licenças ambientais, gestão de resíduos, emissões de carbono (Acordo de Paris), relatórios climáticos (TCFD/ISSB). Risco de sanções do IBAMA e SISNAMA.</li><li><strong>S — Social:</strong> direitos humanos na cadeia de fornecimento, diversidade e inclusão, saúde e segurança do trabalho (Lei 6.514/77 e NRs). Risco de litígios trabalhistas e boicotes de consumidores.</li><li><strong>G — Governança:</strong> composição e diversidade do conselho, política de remuneração executiva, anticorrupção, transparência e divulgação. Intimamente ligado ao Programa de Integridade.</li></ul><h2>Como Integrar ESG ao Programa de Compliance</h2><ul><li>Mapeie os riscos ESG materiais para o seu negócio (use o GRI, SASB ou o setor do TCFD)</li><li>Inclua KPIs ESG no dashboard do programa de compliance</li><li>Estenda o processo de Due Diligence de fornecedores para incluir critérios ESG</li><li>Treine a equipe de compliance sobre as regulamentações ESG aplicáveis ao seu setor</li><li>Inclua riscos ESG na Matriz de Riscos Corporativos</li><li>Elabore o Relatório de Sustentabilidade alinhado ao GRI ou ao ISSB</li></ul>`}
+];
+
+function renderBlog(filter='all'){
+  const grid=document.getElementById('blog-grid');
+  if(!grid)return;
+  const filtered=filter==='all'?articles:articles.filter(a=>a.cat===filter);
+  grid.innerHTML=filtered.map(a=>`
+    <div class="blog-card" onclick="openArticle('${a.id}')">
+      <div class="blog-img" style="background:${a.bg}">
+        <div class="blog-img-overlay">${a.emoji}</div>
+        <span class="blog-cat">${a.catLabel}</span>
+      </div>
+      <div class="blog-body">
+        <div class="blog-meta"><span class="blog-date">${a.date}</span><span class="blog-read">📖 ${a.read} leitura</span></div>
+        <h3>${a.title}</h3>
+        <p>${a.summary.substring(0,120)}...</p>
+      </div>
+      <div class="blog-footer"><span>LC Consultoria</span><span style="color:var(--gold)">Leia mais →</span></div>
+    </div>`).join('');
+}
+function filterBlog(btn,cat){
+  document.querySelectorAll('.dash-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  renderBlog(cat);
+}
+function openArticle(id){
+  const a=articles.find(x=>x.id===id);
+  if(!a)return;
+  document.getElementById('article-render').innerHTML=`
+    <div class="page-hero">
+      <div class="page-hero-inner">
+        <div class="breadcrumb"><span onclick="goPage('home')" style="cursor:pointer;color:var(--gold)">Início</span><span>/</span><span onclick="goPage('blog')" style="cursor:pointer;color:var(--gold)">Blog</span><span>/</span>${a.catLabel}</div>
+        <h1>${a.title}</h1>
+        <div style="display:flex;gap:1rem;margin-top:1rem;flex-wrap:wrap">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--gold2)">${a.date}</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:.68rem;color:rgba(255,255,255,.4)">📖 ${a.read} de leitura</span>
+        </div>
+      </div>
+    </div>
+    <div class="article-content">
+      <div class="article-img-hero" style="background:${a.bg}">${a.emoji}</div>
+      <span class="back-btn" onclick="goPage('blog')">← Voltar ao Blog</span>
+      ${a.content}
+      <div style="margin-top:3rem;padding:2rem;background:var(--mist);border-radius:8px;text-align:center">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--navy);margin-bottom:.5rem">Precisa de apoio especializado?</div>
+        <p style="font-size:.9rem;color:var(--slate);margin-bottom:1.2rem">Entre em contato com a LC Consultoria e Auditorias</p>
+        <button class="btn-gold" onclick="goPage('home');scrollToSection('#contato')">Falar com um Especialista →</button>
+      </div>
+    </div>`;
+  goPage('article');
+}
+
+// ══════════════════════════════════════════
+// SCROLL REVEAL
+// ══════════════════════════════════════════
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+// ══════════════════════════════════════════
+// CHARTS INIT (lazy)
+// ══════════════════════════════════════════
+const dashObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){initCharts();dashObs.unobserve(e.target);}});
+},{threshold:0.1});
+const dashEl=document.getElementById('dashboard');
+if(dashEl) dashObs.observe(dashEl);
+
+function switchTab(btn){document.querySelectorAll('.dash-tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active');}
+
+// ══════════════════════════════════════════
+// AI CHAT
+// ══════════════════════════════════════════
+function openChat(){document.getElementById('ai-overlay').style.display='flex';document.getElementById('chat-inp').focus();}
+function closeChat(){document.getElementById('ai-overlay').style.display='none';}
+document.getElementById('ai-overlay').addEventListener('click',e=>{if(e.target===document.getElementById('ai-overlay'))closeChat();});
+function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,76)+'px';}
+function handleKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}}
+function sendSug(btn){const q=btn.textContent;btn.parentElement.style.display='none';addMsg(q,'user');askAI(q);}
+function sendMsg(){const inp=document.getElementById('chat-inp');const txt=inp.value.trim();if(!txt)return;inp.value='';inp.style.height='auto';document.getElementById('chat-sugs').style.display='none';addMsg(txt,'user');askAI(txt);}
+function addMsg(text,role){const msgs=document.getElementById('chat-msgs');const div=document.createElement('div');div.className='msg msg-'+role;const now=new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});div.innerHTML=`<div class="msg-bubble">${text.replace(/\n/g,'<br>')}</div><div class="msg-time">${now}</div>`;msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;}
+function showTyping(){const msgs=document.getElementById('chat-msgs');const div=document.createElement('div');div.className='msg msg-ai';div.id='typing-ind';div.innerHTML='<div class="msg-bubble"><div class="typing"><span></span><span></span><span></span></div></div>';msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;}
+function removeTyping(){const t=document.getElementById('typing-ind');if(t)t.remove();}
+async function askAI(q){showTyping();try{const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:`Você é a IA Consultora da LC Consultoria e Auditorias, empresa especializada em Compliance, Gestão de Riscos e Auditoria Interna, sediada no Rio de Janeiro com atendimento online em todo o Brasil.\n\nContatos: E-mail: contato@lcconsultoria.com.br | WhatsApp: (21) 98482-1444 | Rio de Janeiro, RJ\n\nResponda dúvidas sobre Compliance (LGPD, Lei Anticorrupção, Programas de Integridade), Gestão de Riscos (ISO 31000, COSO ERM, Matriz de Riscos) e Auditoria Interna (IIA, PAA, controles internos). Seja claro, objetivo e profissional. Use quebras de linha para listas. Máx 200 palavras. Quando relevante, sugira contato com a LC Consultoria.`,messages:[{role:'user',content:q}]})});const data=await res.json();removeTyping();const txt=data.content?.map(b=>b.text||'').join('')||'Desculpe, erro ao processar. Entre em contato: (21) 98482-1444';addMsg(txt,'ai');}catch(e){removeTyping();addMsg('Desculpe, erro na conexão. Contate-nos pelo WhatsApp <strong>(21) 98482-1444</strong> ou <strong>contato@lcconsultoria.com.br</strong>','ai');}}
+
+// ══════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════
+renderBlog();
+// Init sobre grid fix
+document.querySelectorAll('.sobre-intro-grid').forEach(g=>{
+  if(window.innerWidth<=1100) g.style.gridTemplateColumns='1fr';
+});
+</script>
+</body>
+</html>
